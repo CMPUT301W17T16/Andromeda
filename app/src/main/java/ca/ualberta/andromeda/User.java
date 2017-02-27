@@ -6,7 +6,6 @@ import java.util.ArrayList;
  * Created by pensk on 2017/02/27.
  */
 public class User {
-
     private String Username;
     private String Password;
     private ArrayList<String> Following;
@@ -40,5 +39,12 @@ public class User {
 
     public void setPassword(String password) {
         Password = password;
+    }
+    public void addNewFollower(User user){
+        following.add(user);
+    }
+
+    public void addFollowRequest(User user){
+        followerRequest.add(user);
     }
 }

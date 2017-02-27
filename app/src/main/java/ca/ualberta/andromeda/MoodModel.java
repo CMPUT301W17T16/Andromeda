@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 
 public class MoodModel {
-    ArrayList<Mood> moodList;
+    private ArrayList<Mood> moodList;
 
     public MoodModel(){
         this.moodList = this.loadMoods();

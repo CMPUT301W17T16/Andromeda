@@ -7,13 +7,13 @@ import java.util.Date;
  */
 
 public class Mood {
-    User user;
-    String socialSituation;
-    Date date;
-    String location;
-    String detail;
-    String image;
-    String emotion;
+    private User user;
+    private String socialSituation;
+    private Date date;
+    private String location;
+    private String detail;
+    private String image;
+    private String emotion;
 
     public Mood(User user, String socialSituation, Date date){
         this.user = user;

@@ -20,8 +20,8 @@ public class testEmotion {
 
         test.setEmotion(Emotion);
 
-        assertEquals(test.getColor, Color);
-        
+        assertEquals(test.getColor(), Color);
+
 
     }
 }

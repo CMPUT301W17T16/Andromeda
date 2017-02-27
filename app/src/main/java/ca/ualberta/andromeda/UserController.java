@@ -6,10 +6,6 @@ package ca.ualberta.andromeda;
 
 import java.util.Date;
 
-package ca.ualberta.andromeda;
-
-import java.util.Date;
-
 /**
  * Created by pensk on 2017/02/27.
  */
@@ -19,6 +15,10 @@ public class UserController {
 
     public UserController(){
         model = new UserModel();
+    }
+
+    public Boolean hasUser(User user){
+        return model.getUsers().contains(user);
     }
 
     public void addUser(User User){

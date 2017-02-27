@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Jeff on 2/27/2017.
@@ -20,23 +21,23 @@ public class UserTest {
     @Test
     public void testSaveUser(){
 
-        UserList users = new UserList();
+        UserController users = new UserController();
         User user = new User("user1", "password");
 
-        User.addUser(user);
+        users.addUser(user);
+
         assertTrue(users.hasUser(user));
     }
 
     @Test
     public void testGetUser(){
-        UserList users = new UserList();
-        User user = new User("user1");
+        UserController users = new UserController();
+        User user = new User();
 
-        User.addUser(user);
+        users.addUser(user);
 
         User returnedUser = users.getUser(0);
 
-        assertEquals(user.getUsername(), user.getUsername());
-        assertEquals(user.getPassword(), user.getPassword());
+        assertEquals(user, returnedUser);
     }
 }

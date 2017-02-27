@@ -10,16 +10,19 @@ import static org.junit.Assert.*;
 public class UserControllerTest {
     @Test
     public void testAddUser() {
-
-    }
-
-    @Test
-    public void testGetUser() {
-
+        UserController controller = new UserController();
+        User user = new User();
+        controller.addUser(user);
+        assertEquals(user, controller.getUser(0));
     }
 
     @Test
     public void testDeleteUser() {
+        UserController controller = new UserController();
+        User user = new User();
+        controller.addUser(user);
+        controller.deleteUser(0);
+        assertEquals(null, controller.getUser(0));
 
     }
 

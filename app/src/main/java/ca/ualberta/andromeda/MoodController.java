@@ -7,7 +7,7 @@ import java.util.Date;
  */
 
 public class MoodController {
-    MoodModel model;
+    private MoodModel model;
 
     public MoodController(){
         model = new MoodModel();

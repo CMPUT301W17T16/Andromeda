@@ -11,7 +11,7 @@ public class Notifications {
     private ArrayList<String> requests;
 
     public void viewUser(String User) {
-        return ;
+
     }
 
     public void addToFollowingList() {

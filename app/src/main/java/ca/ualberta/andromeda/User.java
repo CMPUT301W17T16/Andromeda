@@ -20,6 +20,14 @@ public class User {
     }
 
     public ArrayList<User> getFollowRequest(){
+        return this.followerRequest;
+    }
 
+    public void addNewFollower(User user){
+        following.add(user);
+    }
+
+    public void addFollowRequest(User user){
+        followerRequest.add(user);
     }
 }

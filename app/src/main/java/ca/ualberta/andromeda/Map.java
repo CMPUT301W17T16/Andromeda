@@ -7,6 +7,22 @@ package ca.ualberta.andromeda;
 public class Map {
     // Stores latitude and longitude.
 
-    double latitude = 53.5444;
-    double longitude = 113.4909;
+    private double latitude = 53.5444;
+    private double longitude = 113.4909;
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 }

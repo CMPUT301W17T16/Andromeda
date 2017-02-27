@@ -6,5 +6,14 @@ package ca.ualberta.andromeda;
 
 public class Photo {
 
+    private String Location = "~/Desktop/CMPUT301/";
 
+
+    public String getLocation() {
+        return Location;
+    }
+
+    public void setLocation(String location) {
+        Location = location;
+    }
 }

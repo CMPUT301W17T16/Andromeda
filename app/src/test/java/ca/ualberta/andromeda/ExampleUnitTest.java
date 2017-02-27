@@ -10,21 +10,32 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
-    }
+//    @Test
+//    public void addition_isCorrect() throws Exception{
+//
+//        assertEquals(4, 2 + 2);
+//    }
     @Test
     public void login() throws Exception {
-        assertEquals(4, 2 + 2);
+        LogIn UserName = new LogIn();
+
+        assertEquals(UserName.getUser(), "UserHolder");
+        assertEquals(UserName.getPassword(), "PasswordHolder");
+        UserName.setUser("NewUser");
+        assertEquals(UserName.getUser(), "NewUser");
     }
     @Test
     public void Photo() throws Exception {
-        assertEquals(4, 2 + 2);
+        Photo location = new Photo();
+        assertEquals(location.getLocation(), "~/Desktop/CMPUT301/");
     }
     @Test
     public void Map() throws Exception {
-        assertEquals(4, 2 + 2);
+        Map map = new Map();
+
+        assertEquals(map.getLatitude(),"53.5444");
+        assertEquals(map.getLongitude(),"113.4909");
+
     }
     @Test
     public void Emotion() throws Exception {

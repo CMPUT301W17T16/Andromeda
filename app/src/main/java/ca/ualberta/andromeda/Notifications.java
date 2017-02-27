@@ -1,6 +1,7 @@
 package ca.ualberta.andromeda;
 
 import java.util.ArrayList;
+//import UserController;
 
 /**
  * Created by brettgarbitt on 2017-02-27.
@@ -9,8 +10,8 @@ import java.util.ArrayList;
 public class Notifications {
     private ArrayList<String> requests;
 
-    public void viewUser() {
-
+    public void viewUser(String User) {
+        return ;
     }
 
     public void addToFollowingList() {

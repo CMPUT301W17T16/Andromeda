@@ -15,7 +15,7 @@ public class MoodTest {
     public void testGetters(){
         Date now = new Date();
         User test = new User();
-        Mood mood = new Mood(test, "school", now);
+        Mood User = new Mood(test, "school", now);
 
         assertEquals(test,mood.getUser());
         assertEquals("school", mood.getSocialSituation());

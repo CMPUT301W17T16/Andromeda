@@ -14,4 +14,21 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+    @Test
+    public void login() throws Exception {
+        assertEquals(4, 2 + 2);
+    }
+    @Test
+    public void Photo() throws Exception {
+        assertEquals(4, 2 + 2);
+    }
+    @Test
+    public void Map() throws Exception {
+        assertEquals(4, 2 + 2);
+    }
+    @Test
+    public void Emotion() throws Exception {
+        assertEquals(4, 2 + 2);
+    }
+
 }

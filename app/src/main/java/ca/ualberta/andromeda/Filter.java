@@ -5,4 +5,10 @@ package ca.ualberta.andromeda;
  */
 
 public class Filter {
+    // Has a boolean for WithinWeek, search, emoticon
+
+    boolean WitihinWeek = true;
+    String search = "Searching";
+    String Emotion = "Sad";
+
 }

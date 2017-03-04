@@ -1,10 +1,13 @@
 package ca.ualberta.andromeda;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -68,5 +71,15 @@ public class UserModel implements Model<User> {
 
     public void saveList(){
         /* save to disk */
+        try {
+            FileOutputStream fos = ModelManager.getAppInstance().openFileOutput(FILENAME, Context.MODE_PRIVATE);
+            int length = this.userList.size();
+            for(int x=0; x<length; x++) {
+                fos.write((gson.toJson(this.userList.get(x))+"\n").getBytes());
+            }
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

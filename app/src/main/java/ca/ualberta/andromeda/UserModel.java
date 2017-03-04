@@ -1,5 +1,11 @@
 package ca.ualberta.andromeda;
 
+import com.google.gson.Gson;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -9,9 +15,13 @@ import java.util.ArrayList;
  */
 public class UserModel implements Model<User> {
     private ArrayList<User> userList;
+    private Gson gson;
+    private final String FILENAME = "users.json";
+
 
     public UserModel(){
         this.userList = this.loadList();
+        this.gson = new Gson();
     }
 
     public ArrayList<User> getList(){
@@ -39,7 +49,21 @@ public class UserModel implements Model<User> {
 
     public ArrayList<User> loadList(){
         /* load from disk */
-        return new ArrayList<User>();
+        this.userList = new ArrayList<User>();
+
+        try {
+            FileInputStream fis = ModelManager.getAppInstance().openFileInput(FILENAME);
+            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+            String line = in.readLine();
+            while (line != null) {
+                this.userList.add(gson.fromJson(line, User.class));
+                line = in.readLine();
+            }
+            fis.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            File file = new File(ModelManager.getAppInstance().getFilesDir(), FILENAME);
+        }
     }
 
     public void saveList(){

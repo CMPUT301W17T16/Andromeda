@@ -30,6 +30,12 @@ public class MoodModel implements Model<Mood> {
     }
 
     @Override
+    public void deleteItem(Mood mood) {
+        this.moodList.remove(mood);
+        this.saveList();
+    }
+
+    @Override
     public void addItem(Mood mood) {
         this.moodList.add(mood);
         this.saveList();

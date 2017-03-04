@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Created by pensk on 2017/02/27.
+ *
+ * The User model handles saving/loading the list of users
  */
 public class UserModel implements Model<User> {
     private ArrayList<User> userList;
@@ -27,6 +29,11 @@ public class UserModel implements Model<User> {
 
     public void deleteItem(int index){
         this.userList.remove(index);
+        this.saveList();
+    }
+
+    public void deleteItem(User user){
+        this.userList.remove(user);
         this.saveList();
     }
 

@@ -17,6 +17,8 @@ public interface Model<M> {
 
     public void deleteItem(int index);
 
+    public void deleteItem(M item);
+
     public void addItem(M item);
 
     public ArrayList<M> loadList();

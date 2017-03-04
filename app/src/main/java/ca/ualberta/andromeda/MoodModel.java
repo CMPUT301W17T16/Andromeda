@@ -1,10 +1,13 @@
 package ca.ualberta.andromeda;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -73,5 +76,15 @@ public class MoodModel implements Model<Mood> {
     @Override
     public void saveList() {
         /* save to disk */
+        try {
+            FileOutputStream fos = ModelManager.getAppInstance().openFileOutput(FILENAME, Context.MODE_PRIVATE);
+            int length = this.moodList.size();
+            for(int x=0; x<length; x++) {
+                fos.write((gson.toJson(this.moodList.get(x))+"\n").getBytes());
+            }
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

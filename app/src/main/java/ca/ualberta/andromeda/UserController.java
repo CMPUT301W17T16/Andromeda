@@ -4,6 +4,7 @@ package ca.ualberta.andromeda;
  * Created by pensk on 2017/02/27.
  */
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,19 +19,32 @@ public class UserController {
     }
 
     public Boolean hasUser(User user){
-        return model.getUsers().contains(user);
+        return model.getList().contains(user);
     }
 
     public void addUser(User User){
-        model.getUsers().add(User);
+        model.addItem(User);
     }
 
     public User getUser(int index){
-        return model.getUsers().get(index);
+        return model.getItem(index);
     }
 
     public void deleteUser(int index){
-        model.getUsers().remove(index);
+        model.deleteItem(index);
+    }
+
+    public User getUserByUsername(String username) { // throws UserNotFoundException{
+        ArrayList<User> list = model.getList();
+        int length = list.size();
+
+        for(int x=0; x<length; x++){
+            if(list.get(x).getUsername().equals(username)){
+                return list.get(x);
+            }
+        }
+
+        return null;
     }
 }
 

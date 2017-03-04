@@ -23,7 +23,7 @@ public class UserModel implements Model<User> {
 
 
     public UserModel(){
-        this.userList = this.loadList();
+        this.loadList();
         this.gson = new Gson();
     }
 
@@ -50,7 +50,7 @@ public class UserModel implements Model<User> {
         this.saveList();
     }
 
-    public ArrayList<User> loadList(){
+    public void loadList(){
         /* load from disk */
         this.userList = new ArrayList<User>();
 

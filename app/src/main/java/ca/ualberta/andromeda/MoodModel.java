@@ -1,5 +1,11 @@
 package ca.ualberta.andromeda;
 
+import com.google.gson.Gson;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -7,10 +13,13 @@ import java.util.ArrayList;
  */
 
 public class MoodModel implements Model<Mood> {
+    private final Gson gson;
     private ArrayList<Mood> moodList;
+    private final String FILENAME = "moods.json";
 
     public MoodModel(){
-        this.moodList = this.loadList();
+        this.loadList();
+        this.gson = new Gson();
     }
 
     @Override
@@ -42,8 +51,23 @@ public class MoodModel implements Model<Mood> {
     }
 
     @Override
-    public ArrayList<Mood> loadList() {
-        return this.moodList;
+    public void loadList() {
+        /* load from disk */
+        this.moodList = new ArrayList<Mood>();
+
+        try {
+            FileInputStream fis = ModelManager.getAppInstance().openFileInput(FILENAME);
+            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+            String line = in.readLine();
+            while (line != null) {
+                this.moodList.add(gson.fromJson(line, Mood.class));
+                line = in.readLine();
+            }
+            fis.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            File file = new File(ModelManager.getAppInstance().getFilesDir(), FILENAME);
+        }
     }
 
     @Override

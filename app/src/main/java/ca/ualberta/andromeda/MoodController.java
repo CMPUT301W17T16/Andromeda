@@ -7,25 +7,27 @@ import java.util.Date;
  */
 
 public class MoodController {
-    private MoodModel model;
+    private MoodModel moodModel;
+    private UserModel userModel;
 
     public MoodController(){
-        model = new MoodModel();
+        moodModel = ModelManager.getMoodModel();
+        userModel = ModelManager.getUserModel();
     }
 
     public void addMood(Mood mood){
-        model.getMoods().add(mood);
+        moodModel.addItem(mood);
     }
 
     public Mood getMood(int index){
-        return model.getMoods().get(index);
+        return moodModel.getItem(index);
     }
 
     public void updateMood(int index, User user, String situation, Date date){
-        model.getMoods().get(index).edit(user, situation, date);
+        moodModel.getItem(index).edit(user, situation, date);
     }
 
     public void deleteMood(int index){
-        model.getMoods().remove(index);
+        moodModel.deleteItem(index);
     }
 }

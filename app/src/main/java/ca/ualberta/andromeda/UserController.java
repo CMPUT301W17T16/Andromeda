@@ -17,12 +17,12 @@ public class UserController {
     private MoodModel moodModel;
 
     public UserController(){
-        userModel = ModelManager.getUserModel();
-        moodModel = ModelManager.getMoodModel();
+        this.userModel = ModelManager.getUserModel();
+        this.moodModel = ModelManager.getMoodModel();
     }
 
     public Boolean hasUser(User user){
-        return model.getList().contains(user);
+        return userModel.getList().contains(user);
     }
 
     public User createUser(String username, String password){
@@ -32,18 +32,18 @@ public class UserController {
     }
 
     public void addUser(User User){
-        model.addItem(User);
+        userModel.addItem(User);
     }
 
     public User getUser(int index){
-        return model.getItem(index);
+        return userModel.getItem(index);
     }
 
     public void deleteUser(int index){
-        model.deleteItem(index);
+        userModel.deleteItem(index);
     }
 
-    public void deleteUser(User user) { model.deleteItem(user); }
+    public void deleteUser(User user) { userModel.deleteItem(user); }
 
     public void deleteUserByUsername(String username){
         User user = this.getUserByUsername(username);
@@ -51,7 +51,7 @@ public class UserController {
     }
 
     public User getUserByUsername(String username) { // throws UserNotFoundException{
-        ArrayList<User> list = model.getList();
+        ArrayList<User> list = userModel.getList();
         int length = list.size();
 
         for(int x=0; x<length; x++){
@@ -65,7 +65,8 @@ public class UserController {
 
     public ArrayList<Mood> getMoodList(User user){
         ArrayList<Mood> myList = new ArrayList<Mood>();
-        ArrayList<Mood> moodList = mc.getList();
+        ArrayList<Mood> moodList = moodModel.getList();
+        return moodList;
     }
 }
 

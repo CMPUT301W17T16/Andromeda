@@ -21,7 +21,7 @@ public interface Model<M> {
 
     public void addItem(M item);
 
-    public ArrayList<M> loadList();
+    public void loadList();
 
     public void saveList();
 

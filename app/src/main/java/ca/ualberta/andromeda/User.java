@@ -20,6 +20,10 @@ public class User {
         this.password = password;
     }
 
+    public String getUsername(){
+        return this.username;
+    }
+
     public ArrayList<User> getFollowing(){
         return this.following;
     }

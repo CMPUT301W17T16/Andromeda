@@ -9,16 +9,14 @@ public class LogIn {
     // Compare to see if it matches
     // Opens MainPage
 
-    private String User = "UserHolder";
-    private String Password = "PasswordHolder";
+    private String User;
+    private String Password;
 
     public String getUser() {
         return User;
     }
 
-    public void setUser(String user) {
-        User = user;
-    }
+    public void setUser(String user) { User = user; }
 
     public String getPassword() {
         return Password;

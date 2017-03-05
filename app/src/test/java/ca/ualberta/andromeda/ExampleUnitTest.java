@@ -33,8 +33,8 @@ public class ExampleUnitTest {
     public void Map() throws Exception {
         Map map = new Map();
 
-        assertEquals(map.getLatitude(),"53.5444");
-        assertEquals(map.getLongitude(),"113.4909");
+        assertEquals(map.getLatitude(),53.5444);
+        assertEquals(map.getLongitude(),113.4909);
 
     }
     @Test

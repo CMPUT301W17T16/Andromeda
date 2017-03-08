@@ -47,7 +47,6 @@ public class UserController {
 
     public void deleteUserByUsername(String username){
         User user = this.getUserByUsername(username);
-
     }
 
     public User getUserByUsername(String username) { // throws UserNotFoundException{

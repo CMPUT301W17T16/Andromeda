@@ -11,6 +11,10 @@ public class User {
     private ArrayList<String> following;
     private ArrayList<String> followerRequest;
 
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
 
     public User(String username, String password,
                 ArrayList<String> following,

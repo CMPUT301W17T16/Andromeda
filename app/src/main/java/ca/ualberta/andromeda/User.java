@@ -6,18 +6,27 @@ import java.util.ArrayList;
  * Created by pensk on 2017/02/27.
  */
 public class User {
-    private String username;
-    private String password;
-    private ArrayList<User> following;
-    private ArrayList<User> followerRequest;
+    private String Username;
+    private String Password;
+    private ArrayList<String> Following;
+    private ArrayList<String> FollowerRequest;
 
-    public User(){
 
+    public User(String Username, String Password,
+                ArrayList<String> Following,
+                ArrayList<String> FollowerRequest) {
+        this.Username = Username;
+        this.Password = Password;
+        this.Following = Following;
+        this.FollowerRequest = FollowerRequest;
     }
 
-    public User(String username, String password){
-        this.username = username;
-        this.password = password;
+    public ArrayList<String> getFollowingList() { return this.Following; }
+
+    public ArrayList<String> getFollowRequest() { return this.FollowerRequest;}
+
+    public String getUsername() {
+        return Username;
     }
 
     public String getUsername(){
@@ -26,12 +35,18 @@ public class User {
 
     public ArrayList<User> getFollowing(){
         return this.following;
+
+    public void setUsername(String username) {
+        Username = username;
     }
 
-    public ArrayList<User> getFollowRequest(){
-        return this.followerRequest;
+    public String getPassword() {
+        return Password;
     }
 
+    public void setPassword(String password) {
+        Password = password;
+    }
     public void addNewFollower(User user){
         following.add(user);
     }

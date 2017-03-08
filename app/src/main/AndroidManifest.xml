@@ -20,6 +20,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+<<<<<<< HEAD
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity">
@@ -30,6 +31,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ViewFriendActivity"></activity>
+=======
+            </intent-filter>
+        </activity>
+        <activity android:name=".user_info"></activity>
+>>>>>>> master
     </application>
 
 </manifest>

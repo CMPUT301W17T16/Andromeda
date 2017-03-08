@@ -7,12 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import java.io.Serializable;
 
 /**
  * Created by livialee on 2017-03-05.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements Serializable{
 
     private EditText editTextBox;
     private String User;
@@ -32,8 +33,8 @@ public class LoginActivity extends AppCompatActivity {
                 LogIn UserName = new LogIn();
                 UserName.setUser(User);
 
-                Intent returnData = new Intent();
-                returnData.putExtra("Username", User);
+                Intent returnData = new Intent(this, LogIn.class);
+                returnData.putExtra("Username", UserName);
                 setResult(Activity.RESULT_OK,returnData);
                 finish();
             }

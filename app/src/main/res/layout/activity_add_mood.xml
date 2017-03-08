@@ -13,18 +13,17 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.06"
-            android:text="Username:" />
+            android:layout_weight="0.09"
+            android:text="Username" />
 
         <TextView
             android:id="@+id/UsernameHolder"
-            android:layout_width="100dp"
+            android:layout_width="252dp"
             android:layout_height="40dp"
-            android:text="FriendHolder"
-            android:textSize="18sp"
-            android:layout_weight="0.19" />
+            android:text="UsernameHolder"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -34,17 +33,21 @@
 
         <TextView
             android:id="@+id/Date"
-            android:layout_width="117dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
+            android:layout_weight="0.21"
             android:text="Date: " />
 
-        <TextView
+        <EditText
             android:id="@+id/DateHolder"
-            android:layout_width="252dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_weight="0.21"
-            android:text="DateHolder"
-            android:textSize="18sp" />
+            android:layout_weight="0.24"
+            android:ems="10"
+            android:inputType="date"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            tools:text="Pick a date" />
 
     </LinearLayout>
 
@@ -56,38 +59,37 @@
         <TextView
             android:id="@+id/Mood"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_weight="0.21"
             android:text="Mood: " />
 
-        <TextView
-            android:id="@+id/MoodHolder"
-            android:layout_width="269dp"
+        <Spinner
+            android:id="@+id/MoodSpinner"
+            android:layout_width="248dp"
             android:layout_height="40dp"
-            android:text="MoodHolder"
-            android:textSize="18sp" />
+            android:layout_weight="0.03"
+            android:textAlignment="center" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/SocialSit"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.15"
+            android:layout_height="40dp"
+            android:layout_weight="1.05"
             android:text="Social Situation:" />
 
-        <TextView
-            android:id="@+id/SocialSitHolder"
+        <Spinner
+            android:id="@+id/SocialSitSpinner"
             android:layout_width="252dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.15"
-            android:text="SocialSitHolder"
-            android:textSize="18sp" />
+            android:layout_height="match_parent"
+            android:textAlignment="center" />
 
     </LinearLayout>
 
@@ -103,13 +105,14 @@
             android:layout_weight="0.22"
             android:text="Details: " />
 
-        <TextView
-            android:id="@+id/DetailsHolder"
-            android:layout_width="252dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.10"
-            android:text="DetailsHolder"
-            android:textSize="18sp" />
+        <EditText
+            android:id="@+id/DetailsHOlder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.16"
+            android:ems="10"
+            android:hint="Details Holder"
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -118,6 +121,18 @@
         android:layout_height="match_parent"
         android:layout_weight="0.21"
         android:orientation="horizontal">
+
+        <Switch
+            android:id="@+id/LocationSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.24"
+            android:checked="false"
+            android:splitTrack="true"
+            android:switchMinWidth="30dp"
+            android:text="Add Location"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -133,21 +148,21 @@
         android:layout_gravity="center">
 
         <Button
-            android:id="@+id/LocationButton"
+            android:id="@+id/DeleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:backgroundTint="?attr/colorPrimaryDark"
-            android:text="Location"
+            android:text="Delete"
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/UserButton"
+            android:id="@+id/SaveButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:backgroundTint="@android:color/holo_red_light"
-            android:text="User"
+            android:text="Save"
             android:textSize="18sp" />
 
     </LinearLayout>

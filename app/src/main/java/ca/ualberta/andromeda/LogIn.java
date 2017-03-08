@@ -6,8 +6,6 @@ package ca.ualberta.andromeda;
 
 public class LogIn {
     // Get username and password
-    // Compare to see if it matches
-    // Opens MainPage
 
     private String User;
 

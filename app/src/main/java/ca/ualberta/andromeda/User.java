@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class User {
     private String username;
-    private String password;
+    private String password;        // We don't need the password anymore
     private ArrayList<User> following;
     private ArrayList<User> followerRequest;
 
@@ -17,7 +17,7 @@ public class User {
 
     public User(String username, String password){
         this.username = username;
-        this.password = password;
+        this.password = password;        // We don't need the password anymore
     }
 
     public String getUsername(){

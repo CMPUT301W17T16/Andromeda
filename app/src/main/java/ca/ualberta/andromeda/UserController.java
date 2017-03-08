@@ -4,6 +4,8 @@ package ca.ualberta.andromeda;
  * Created by pensk on 2017/02/27.
  */
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -11,26 +13,60 @@ import java.util.Date;
  */
 
 public class UserController {
-    private UserModel model;
+    private UserModel userModel;
+    private MoodModel moodModel;
 
     public UserController(){
-        model = new UserModel();
+        this.userModel = ModelManager.getUserModel();
+        this.moodModel = ModelManager.getMoodModel();
     }
 
     public Boolean hasUser(User user){
-        return model.getUsers().contains(user);
+        return userModel.getList().contains(user);
+    }
+
+    public User createUser(String username, String password){
+        User user = new User(username, password);
+        this.addUser(user);
+        return user;
     }
 
     public void addUser(User User){
-        model.getUsers().add(User);
+        userModel.addItem(User);
     }
 
     public User getUser(int index){
-        return model.getUsers().get(index);
+        return userModel.getItem(index);
     }
 
     public void deleteUser(int index){
-        model.getUsers().remove(index);
+        userModel.deleteItem(index);
+    }
+
+    public void deleteUser(User user) { userModel.deleteItem(user); }
+
+    public void deleteUserByUsername(String username){
+        User user = this.getUserByUsername(username);
+
+    }
+
+    public User getUserByUsername(String username) { // throws UserNotFoundException{
+        ArrayList<User> list = userModel.getList();
+        int length = list.size();
+
+        for(int x=0; x<length; x++){
+            if(list.get(x).getUsername().equals(username)){
+                return list.get(x);
+            }
+        }
+
+        return null;
+    }
+
+    public ArrayList<Mood> getMoodList(User user){
+        ArrayList<Mood> myList = new ArrayList<Mood>();
+        ArrayList<Mood> moodList = moodModel.getList();
+        return moodList;
     }
 }
 

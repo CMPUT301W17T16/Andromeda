@@ -23,7 +23,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ViewFriendActivity" />
-        <activity android:name=".user_info" />
+        <activity android:name=".ViewMoodActivity" />
+        <activity android:name=".FriendsMoods" />
+        <activity android:name=".UsersMoods" />
     </application>
 
 </manifest>

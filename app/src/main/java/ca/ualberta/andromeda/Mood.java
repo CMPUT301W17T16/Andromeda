@@ -39,4 +39,10 @@ public class Mood {
         return this.date;
     }
 
+    // TODO: Fix this to display in listview correctly
+    @Override
+    public String toString(){
+        return user.getUsername() + " " +socialSituation;
+    }
+
 }

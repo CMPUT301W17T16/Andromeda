@@ -16,25 +16,18 @@ import java.io.Serializable;
 public class LoginActivity extends AppCompatActivity implements Serializable{
 
     private EditText editTextBox;
-    private String User;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         editTextBox = (EditText) findViewById(R.id.editText);
-        Button enterButton = (Button) findViewById(R.id.enterButton) ;
+    }
 
-        enterButton.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                User = editTextBox.getText().toString();;
-
-                Intent i = new Intent();
-                i.putExtra("Username", User);
-                setResult(Activity.RESULT_OK,i);
-                finish();
-            }
-        });
+    public void login(View v){
+        Intent intent = new Intent(this, user_info.class);
+        intent.putExtra("user", editTextBox.getText().toString());
+        startActivity(intent);
+        finish();
     }
 }

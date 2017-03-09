@@ -49,5 +49,6 @@
         android:textAppearance="@android:style/TextAppearance.Small.Inverse"
         android:textColor="@android:color/holo_blue_dark"
         android:textStyle="normal|bold"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:onClick="login"/>
 </LinearLayout>

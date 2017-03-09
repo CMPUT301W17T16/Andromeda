@@ -97,6 +97,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1.02"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/Trigger"
+            android:layout_width="177dp"
+            android:layout_height="40dp"
+            android:text="Trigger: "
+            android:textAppearance="@android:style/TextAppearance.Large" />
+
+        <EditText
+            android:id="@+id/TriggerHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <TextView

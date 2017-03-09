@@ -15,7 +15,7 @@ public class MoodControllerTest {
     @Test
     public void testGet(){
         MoodController controller = new MoodController();
-        Mood mood = new Mood(new User(), "school", new Date());
+        Mood mood = new Mood(new User("User"), "school", new Date());
 
         controller.addMood(mood);
 
@@ -25,7 +25,7 @@ public class MoodControllerTest {
     @Test
     public void testDelete(){
         MoodController controller = new MoodController();
-        Mood mood = new Mood(new User(), "school", new Date());
+        Mood mood = new Mood(new User("User"), "school", new Date());
 
         controller.addMood(mood);
         controller.deleteMood(0);

@@ -7,28 +7,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/activity_main"
-    tools:context="ca.ualberta.andromeda.user_info">
+    tools:context="ca.ualberta.andromeda.FriendsMoods">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/linearLayout2">
 
         <TextView
-            android:id="@+id/userMood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textStyle="normal|bold"
-            tools:text="My Moods" />
+            tools:text="Friends Moods"
+            android:textAlignment="center"
+            android:id="@+id/nameTextView" />
 
         <ListView
             android:id="@+id/MoodList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:scrollbars="horizontal|vertical" />
     </LinearLayout>
 
@@ -60,14 +61,6 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_input_add"
-            android:id="@+id/addMood"
-            android:layout_weight="1"
-            android:onClick="newMood"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_menu_search"
             android:id="@+id/filterButton"
             android:layout_weight="1"
@@ -89,6 +82,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="start"
+            android:layout_weight="1"
+            android:textAlignment="center" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center" />
 

@@ -30,7 +30,6 @@ public class ViewMoodActivity extends Activity {
         // TODO Load all the info in the correct textViews
 
 
-
         // Delete entry
         deleteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

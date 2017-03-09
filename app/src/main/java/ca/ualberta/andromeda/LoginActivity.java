@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity implements Serializable{
     }
 
     public void login(View v){
-        Intent intent = new Intent(this, user_info.class);
+        Intent intent = new Intent(this, UsersMoods.class);
         intent.putExtra("user", editTextBox.getText().toString());
         startActivity(intent);
         finish();

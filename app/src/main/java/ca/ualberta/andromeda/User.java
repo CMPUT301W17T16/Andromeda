@@ -20,6 +20,7 @@ public class User {
         this.username = username;
         this.following = following;
         this.followerRequest = followerRequest;
+
     }
 
     public ArrayList<String> getFollowingList() { return this.following; }

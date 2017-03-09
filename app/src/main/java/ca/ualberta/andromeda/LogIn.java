@@ -6,25 +6,12 @@ package ca.ualberta.andromeda;
 
 public class LogIn {
     // Get username and password
-    // Compare to see if it matches
-    // Opens MainPage
 
-    private String User = "UserHolder";
-    private String Password = "PasswordHolder";
+    private String User;
 
     public String getUser() {
         return User;
     }
 
-    public void setUser(String user) {
-        User = user;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
+    public void setUser(String user) { User = user; }
 }

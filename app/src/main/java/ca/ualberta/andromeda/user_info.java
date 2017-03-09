@@ -1,5 +1,6 @@
 package ca.ualberta.andromeda;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,7 +27,8 @@ public class user_info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
 
-        moodListView = (ListView) findViewById(R.id.MoodList);
+        Intent intent = getIntent();
+        //moodListView = (ListView) findViewById(R.id.MoodList);
     }
 
     @Override
@@ -36,8 +38,8 @@ public class user_info extends AppCompatActivity {
         // TODO: get all the users moods
 
         // display all the users Moods
-        adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview, moodList);
-        moodListView.setAdapter(adapter);
+        //adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview, moodList);
+        //moodListView.setAdapter(adapter);
     }
 
     // User is already following

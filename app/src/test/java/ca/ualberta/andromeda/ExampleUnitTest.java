@@ -16,15 +16,6 @@ public class ExampleUnitTest {
 //        assertEquals(4, 2 + 2);
 //    }
     @Test
-    public void login() throws Exception {
-        LogIn UserName = new LogIn();
-
-        assertEquals(UserName.getUser(), "UserHolder");
-        assertEquals(UserName.getPassword(), "PasswordHolder");
-        UserName.setUser("NewUser");
-        assertEquals(UserName.getUser(), "NewUser");
-    }
-    @Test
     public void Photo() throws Exception {
         Photo location = new Photo();
         assertEquals(location.getLocation(), "~/Desktop/CMPUT301/");
@@ -33,8 +24,8 @@ public class ExampleUnitTest {
     public void Map() throws Exception {
         Map map = new Map();
 
-        assertEquals(map.getLatitude(),"53.5444");
-        assertEquals(map.getLongitude(),"113.4909");
+        assertEquals(map.getLatitude(),53.5444);
+        assertEquals(map.getLongitude(),113.4909);
 
     }
     @Test

@@ -26,7 +26,7 @@ public class UserController {
     }
 
     public User createUser(String username, String password){
-        User user = new User(username, password);
+        User user = new User(username);
         this.addUser(user);
         return user;
     }

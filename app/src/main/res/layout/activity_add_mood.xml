@@ -16,12 +16,14 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="0.09"
-            android:text="Username" />
+            android:text="Username"
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
         <TextView
             android:id="@+id/UsernameHolder"
             android:layout_width="252dp"
             android:layout_height="40dp"
+            android:layout_weight="0.07"
             android:text="UsernameHolder"
             android:textSize="18sp" />
     </LinearLayout>
@@ -34,20 +36,17 @@
         <TextView
             android:id="@+id/Date"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.21"
-            android:text="Date: " />
-
-        <EditText
-            android:id="@+id/DateHolder"
-            android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_weight="0.24"
-            android:ems="10"
-            android:inputType="date"
-            android:selectAllOnFocus="false"
-            android:singleLine="true"
-            tools:text="Pick a date" />
+            android:layout_weight="0.02"
+            android:text="Date: "
+            android:textAppearance="@android:style/TextAppearance.Large" />
+
+        <TextView
+            android:id="@+id/DateHolder"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.14"
+            android:text="DateHolder" />
 
     </LinearLayout>
 
@@ -61,7 +60,8 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_weight="0.21"
-            android:text="Mood: " />
+            android:text="Mood: "
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
         <Spinner
             android:id="@+id/MoodSpinner"
@@ -82,14 +82,38 @@
             android:id="@+id/SocialSit"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_weight="1.05"
-            android:text="Social Situation:" />
+            android:layout_weight="1.02"
+            android:text="Social Situation:"
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
         <Spinner
             android:id="@+id/SocialSitSpinner"
-            android:layout_width="252dp"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
             android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.02"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/Trigger"
+            android:layout_width="177dp"
+            android:layout_height="40dp"
+            android:text="Trigger: "
+            android:textAppearance="@android:style/TextAppearance.Large" />
+
+        <EditText
+            android:id="@+id/TriggerHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
     </LinearLayout>
 
@@ -103,7 +127,8 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_weight="0.22"
-            android:text="Details: " />
+            android:text="Details: "
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
         <EditText
             android:id="@+id/DetailsHOlder"

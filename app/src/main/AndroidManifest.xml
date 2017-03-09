@@ -31,7 +31,6 @@
         </activity>
         <activity android:name=".ViewFriendActivity" />
         <activity android:name=".AddMoodActivity" />
-        <activity android:name=".DatePickerCode"></activity>
     </application>
 
 </manifest>

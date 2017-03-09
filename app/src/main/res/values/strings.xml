@@ -12,8 +12,10 @@
     </string-array>
 
     <string-array name="social_sit_array">
+        <item> </item>
         <item>Alone</item>
-        <item>With friends</item>
+        <item>Two to several people</item>
+        <item>Crowd</item>
     </string-array>
 
     <string-array name="months_array">

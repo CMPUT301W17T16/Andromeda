@@ -22,9 +22,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         editTextBox = (EditText) findViewById(R.id.editText);
-        Button enterButton = (Button) findViewById(R.id.enterButton) ;
+        Button enterButton = (Button) findViewById(R.id.enterButton);
 
-        // Pass back to MainActivity
+        // Pass a string back to MainActivity
         enterButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

@@ -25,17 +25,14 @@ public class LoginActivity extends AppCompatActivity implements Serializable{
         editTextBox = (EditText) findViewById(R.id.editText);
         Button enterButton = (Button) findViewById(R.id.enterButton) ;
 
-        // Pass back to MainActivity
         enterButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                User = editTextBox.getText().toString();
-                LogIn UserName = new LogIn();
-                UserName.setUser(User);
+                User = editTextBox.getText().toString();;
 
-                Intent returnData = new Intent(this, LogIn.class);
-                returnData.putExtra("Username", UserName);
-                setResult(Activity.RESULT_OK,returnData);
+                Intent i = new Intent();
+                i.putExtra("Username", User);
+                setResult(Activity.RESULT_OK,i);
                 finish();
             }
         });

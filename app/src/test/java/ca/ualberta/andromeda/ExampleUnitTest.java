@@ -16,15 +16,6 @@ public class ExampleUnitTest {
 //        assertEquals(4, 2 + 2);
 //    }
     @Test
-    public void login() throws Exception {
-        LogIn UserName = new LogIn();
-
-        assertEquals(UserName.getUser(), "UserHolder");
-        assertEquals(UserName.getPassword(), "PasswordHolder");
-        UserName.setUser("NewUser");
-        assertEquals(UserName.getUser(), "NewUser");
-    }
-    @Test
     public void Photo() throws Exception {
         Photo location = new Photo();
         assertEquals(location.getLocation(), "~/Desktop/CMPUT301/");

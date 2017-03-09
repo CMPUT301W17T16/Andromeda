@@ -14,12 +14,12 @@ public class MoodTest {
     @Test
     public void testGetters(){
         Date now = new Date();
-        User test = new User("user");
-        Mood mood = new Mood(test, "school", now);
+        User user = new User("user");
+        Mood mood = new Mood(user, "school", now);
 
-        assertEquals(test, User.getUser());
-        assertEquals("school", User.getSocialSituation());
-        assertEquals(now, User.getDate());
+        assertEquals(user,mood.getUser());
+        assertEquals("school", mood.getSocialSituation());
+        assertEquals(now, mood.getDate());
     }
 
     @Test

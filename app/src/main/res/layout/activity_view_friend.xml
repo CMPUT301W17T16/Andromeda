@@ -1,9 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="ca.ualberta.andromeda.ViewFriendActivity">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.06"
+            android:text="Username:" />
+
+        <TextView
+            android:id="@+id/UsernameHolder"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="FriendHolder"
+            android:textSize="18sp"
+            android:layout_weight="0.19" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/Date"
+            android:layout_width="117dp"
+            android:layout_height="match_parent"
+            android:text="Date: " />
+
+        <TextView
+            android:id="@+id/DateHolder"
+            android:layout_width="252dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.21"
+            android:text="DateHolder"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/Mood"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.21"
+            android:text="Mood: " />
+
+        <TextView
+            android:id="@+id/MoodHolder"
+            android:layout_width="269dp"
+            android:layout_height="40dp"
+            android:text="MoodHolder"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/SocialSit"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15"
+            android:text="Social Situation:" />
+
+        <TextView
+            android:id="@+id/SocialSitHolder"
+            android:layout_width="252dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.15"
+            android:text="SocialSitHolder"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/Details"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.22"
+            android:text="Details: " />
+
+        <TextView
+            android:id="@+id/DetailsHolder"
+            android:layout_width="252dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.10"
+            android:text="DetailsHolder"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.21"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:srcCompat="@android:color/transparent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/LocationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="Location"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/UserButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@android:color/holo_blue_bright"
+            android:text="User"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -26,6 +26,7 @@
         <activity android:name=".ViewMoodActivity" />
         <activity android:name=".FriendsMoods" />
         <activity android:name=".UsersMoods" />
+        <activity android:name=".AddMoodActivity" />
     </application>
 
 </manifest>

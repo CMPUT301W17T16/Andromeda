@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2017. Andromeda
+ */
+
 package ca.ualberta.andromeda;
 
 import android.os.Bundle;

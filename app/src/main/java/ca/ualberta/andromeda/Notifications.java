@@ -4,6 +4,8 @@
 
 package ca.ualberta.andromeda;
 
+import android.os.Bundle;
+
 import java.util.ArrayList;
 //import UserController;
 
@@ -14,6 +16,10 @@ import java.util.ArrayList;
 public class Notifications {
     private ArrayList<String> requests;
 
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.notifications);
+    }
     public void viewUser(String User) {
 
     }

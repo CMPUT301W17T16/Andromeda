@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ca.ualberta.andromeda.MainActivity">
+    tools:context="ca.ualberta.andromeda.MainPage">
 
     <ListView
         android:id="@+id/MoodList"
@@ -20,15 +20,15 @@
     </ListView>
 
     <Button
-        android:text="MY MOODS"
+        android:text="@string/my_moods"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
 
     <Button
-        android:text="MAP"
+        android:text="@string/map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button3"
@@ -36,7 +36,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Filter"
+        android:text="@string/filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"

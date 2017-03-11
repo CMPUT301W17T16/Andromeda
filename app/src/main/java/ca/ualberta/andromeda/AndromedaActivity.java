@@ -32,7 +32,9 @@ public abstract class AndromedaActivity extends AppCompatActivity {
      * @param v the v
      */
     public void openMap(View v){
-
+        Intent intent = new Intent(v.getContext(), Map.class);
+        startActivity(intent);
+        finish();
     }
 
     /**
@@ -42,6 +44,8 @@ public abstract class AndromedaActivity extends AppCompatActivity {
      */
 // goes to filter view
     public void openFilter(View v){
-
+        Intent intent = new Intent(v.getContext(), Filter.class);
+        startActivity(intent);
+        finish();
     }
 }

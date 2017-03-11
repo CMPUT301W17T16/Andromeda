@@ -28,6 +28,7 @@
         <activity android:name=".UsersMoods" />
         <activity android:name=".AddMoodActivity" />
         <activity android:name=".FilterActivity"></activity>
+        <activity android:name=".MainPage"></activity>
     </application>
 
 </manifest>

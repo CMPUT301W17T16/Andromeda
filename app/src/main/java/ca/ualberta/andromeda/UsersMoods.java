@@ -38,6 +38,7 @@ public class UsersMoods extends AppCompatActivity implements toActivity {
         // Get the username
         Intent intent = getIntent();
         username = intent.getStringExtra("user");
+        intent.putExtra("user", username);
 
         // Display the user name at the top
         String Message = username + "'s Moods";
@@ -59,7 +60,7 @@ public class UsersMoods extends AppCompatActivity implements toActivity {
     public void newMood(View v){
 
         // TODO: Change to correct activity when its made
-        Intent intent = new Intent(this, ViewMoodActivity.class);
+        Intent intent = new Intent(this, AddMoodActivity.class);
         intent.putExtra("user", username);
         startActivity(intent);
     }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,9 +15,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class FriendsMoods extends AppCompatActivity implements toActivity{
+public class FriendsMoods extends AndromedaActivity{
 
-    User user;
     ArrayList<Mood> moodList;
     UserController userController;
 
@@ -28,15 +28,22 @@ public class FriendsMoods extends AppCompatActivity implements toActivity{
         setContentView(R.layout.activity_friends_moods);
         moodListView = (ListView) findViewById(R.id.MoodList);
         moodList = new ArrayList<Mood>();
+        final Intent intent = new Intent(this, ViewFriendActivity.class);
+
+        moodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                intent.putExtra("user", username);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     protected void onStart(){
         super.onStart();
 
-        // Get the username
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("user");
+        getUsername();
 
         // Display the user name at the top
         String Message = username + "'s Moods";

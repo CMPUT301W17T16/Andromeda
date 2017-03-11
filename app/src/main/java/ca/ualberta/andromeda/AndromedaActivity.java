@@ -1,5 +1,6 @@
 package ca.ualberta.andromeda;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,10 +10,7 @@ import android.view.View;
  *
  * Base abstract  Activity
  */
-public abstract class AndromedaActivity extends AppCompatActivity {
-
-    private UserController userController;
-    private MoodController moodController;
+public abstract class AndromedaActivity extends Activity {
 
     String username;
     User user;

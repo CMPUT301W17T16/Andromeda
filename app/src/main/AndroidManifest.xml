@@ -25,9 +25,10 @@
         <activity android:name=".ViewFriendActivity" />
         <activity android:name=".ViewMoodActivity" />
         <activity android:name=".FriendsMoods" />
-        <activity android:name=".UsersMoods" />
+        <activity android:name=".MyMoods" />
         <activity android:name=".AddMoodActivity" />
-        <activity android:name=".FilterActivity"></activity>
+        <activity android:name=".FilterActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

@@ -13,7 +13,7 @@ import java.io.Serializable;
  * Created by livialee on 2017-03-05.
  */
 
-public class LoginActivity extends AppCompatActivity implements Serializable{
+public class LoginActivity extends AndromedaActivity{
 
     private EditText editTextBox;
 

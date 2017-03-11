@@ -31,7 +31,7 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.enterText((EditText) solo.getView(R.id.editText), "User");
         solo.clickOnButton("enterButton");
 
-        solo.assertCurrentActivity("Wrong Activity", MainActivity.class);
+        solo.assertCurrentActivity("Wrong Activity", MainPage.class);
     }
 
     public void testMainActivity(){
@@ -39,7 +39,7 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.enterText((EditText) solo.getView(R.id.editText), "User");
         solo.clickOnButton("enterButton");
 
-        solo.assertCurrentActivity("Wrong Activity", MainActivity.class);
+        solo.assertCurrentActivity("Wrong Activity", MainPage.class);
 
     }
 

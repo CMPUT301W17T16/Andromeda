@@ -1,6 +1,5 @@
 package ca.ualberta.andromeda;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -19,6 +19,9 @@ public class AddMoodActivity extends AppCompatActivity{
     public String testString;
     private String theMood;
     private String SocialSit;
+    private String Details;
+    private String Trigger;
+    public String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +29,18 @@ public class AddMoodActivity extends AppCompatActivity{
         setContentView(R.layout.activity_add_mood);
         Button DeleteButton = (Button) findViewById(R.id.DeleteButton);
         Button SaveButton = (Button) findViewById(R.id.SaveButton);
+
+        TextView UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
+        TextView date = (TextView) findViewById(R.id.DateHolder);
         Spinner MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
         Spinner SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
-        TextView test = (TextView) findViewById(R.id.UsernameHolder);
-        TextView date = (TextView) findViewById(R.id.DateHolder);
+        EditText TriggerHolder = (EditText) findViewById(R.id.TriggerHolder);
+        EditText DetailHolder = (EditText) findViewById(R.id.DetailHolder);
+
+        // Loads the username
+        Intent intent = getIntent();
+        username = intent.getStringExtra("user");
+        UsernameHolder.setText(username);
 
         // Loads the current date and time, saved as a string
         DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
@@ -51,28 +62,26 @@ public class AddMoodActivity extends AppCompatActivity{
         // Saves the selected social situation as a string in "SocialSit"
         SocialSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView test = (TextView) findViewById(R.id.UsernameHolder);
-                System.out.println(parent);
                 SocialSit = parent.getItemAtPosition(position).toString();
-                test.setText(SocialSit);
             }
             public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
             }
         });
 
         // Saves the selected mood as a string in "Mood"
         MoodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView test = (TextView) findViewById(R.id.UsernameHolder);
-                System.out.println(parent);
                 theMood = parent.getItemAtPosition(position).toString();
-                test.setText(theMood);
             }
             public void onNothingSelected(AdapterView<?> parentView) {
-
             }
         });
+
+        // Loads the input from trigger
+        Trigger = TriggerHolder.getText().toString();
+
+        // Loads the inout from details
+        Details = DetailHolder.getText().toString();
 
 
         //Delete Button finishes activity and saves nothing
@@ -81,14 +90,13 @@ public class AddMoodActivity extends AppCompatActivity{
                 finish();
             }
         });
+
         // Save button save everything in the controller
 
         SaveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                TextView test = (TextView) findViewById(R.id.UsernameHolder);
-                test.setText(theMood);
-
                 // Pass information to the controllers.
+
 //                finish();
             }
         });}

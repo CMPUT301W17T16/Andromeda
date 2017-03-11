@@ -8,87 +8,85 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="100dp"
+            android:layout_width="127dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.09"
-            android:text="Username"
+            android:text="Username:"
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <TextView
             android:id="@+id/UsernameHolder"
-            android:layout_width="252dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.07"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="UsernameHolder"
             android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/Date"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.02"
+            android:layout_width="125dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
             android:text="Date: "
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <TextView
             android:id="@+id/DateHolder"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.14"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
             android:text="DateHolder" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/Mood"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.21"
+            android:layout_width="125dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
             android:text="Mood: "
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <Spinner
             android:id="@+id/MoodSpinner"
-            android:layout_width="248dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.03"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
             android:textAlignment="center" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
         <TextView
             android:id="@+id/SocialSit"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_weight="1.02"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:text="Social Situation:"
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <Spinner
             android:id="@+id/SocialSitSpinner"
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center" />
 
@@ -96,44 +94,44 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.02"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
         <TextView
             android:id="@+id/Trigger"
-            android:layout_width="177dp"
-            android:layout_height="40dp"
+            android:layout_width="127dp"
+            android:layout_height="match_parent"
             android:text="Trigger: "
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <EditText
             android:id="@+id/TriggerHolder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="256dp"
+            android:layout_height="match_parent"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:hint="TriggerHolder"
+            android:inputType="text" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="45dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/Details"
-            android:layout_width="80dp"
+            android:layout_width="125dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.22"
+            android:layout_weight="0.02"
             android:text="Details: "
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <EditText
-            android:id="@+id/DetailsHOlder"
+            android:id="@+id/DetailHolder"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="0.16"
             android:ems="10"
             android:hint="Details Holder"
@@ -143,7 +141,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="45dp"
         android:layout_weight="0.21"
         android:orientation="horizontal">
 
@@ -164,12 +162,12 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="165dp"
         app:srcCompat="@android:color/transparent" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:layout_gravity="center">
 
         <Button

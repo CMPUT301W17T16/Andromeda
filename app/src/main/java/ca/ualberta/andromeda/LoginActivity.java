@@ -25,7 +25,7 @@ public class LoginActivity extends AndromedaActivity{
     }
 
     public void login(View v){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainPage.class);
         intent.putExtra("user", editTextBox.getText().toString());
         startActivity(intent);
         finish();

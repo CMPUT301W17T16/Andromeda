@@ -21,7 +21,8 @@ import org.w3c.dom.Text;
  * Created by livialee on 2017-03-05.
  */
 
-public class ViewMoodActivity extends Activity {
+public class ViewMoodActivity extends AndromedaActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,5 +66,12 @@ public class ViewMoodActivity extends Activity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        // TODO Load all the info in the correct textViews
+
     }
 }

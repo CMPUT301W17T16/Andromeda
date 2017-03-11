@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class UsersMoods extends AppCompatActivity implements toActivity {
+public class UsersMoods extends AppCompatActivity{
 
     User user;
     String username;

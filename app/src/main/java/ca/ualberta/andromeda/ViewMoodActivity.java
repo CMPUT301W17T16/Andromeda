@@ -27,7 +27,6 @@ public class ViewMoodActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_mood);
 
-        Button locationButton = (Button) findViewById(R.id.LocationButton);
         Button deleteButton = (Button) findViewById(R.id.DeleteButton);
         Button saveButton = (Button) findViewById(R.id.SaveButton);
 
@@ -42,16 +41,6 @@ public class ViewMoodActivity extends Activity {
         // TODO Load all the info in the correct textViews
 
         // TODO Change the color of the background to match the mood
-
-        // Location
-        locationButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                setResult(RESULT_OK);
-
-                // TODO make a map pop up
-
-            }
-        });
 
         // Delete entry
         deleteButton.setOnClickListener(new View.OnClickListener() {

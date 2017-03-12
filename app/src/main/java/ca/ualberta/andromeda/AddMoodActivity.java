@@ -16,12 +16,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class AddMoodActivity extends AppCompatActivity{
-    public String testString;
-    private String theMood;
-    private String SocialSit;
-    private String Details;
-    private String Trigger;
+    public String theMood;
+    private User user;
+    public String SocialSit;
+    public String Details;
+    public String Trigger;
     public String username;
+    private MoodController moodController;
+    private UserController userController;
+    private Emotion.State state;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,17 @@ public class AddMoodActivity extends AppCompatActivity{
         MoodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 theMood = parent.getItemAtPosition(position).toString();
+                switch (theMood) {
+                    case "Happiness":
+                        state = Emotion.State.HAPPY;
+                        break;
+                    case "Sadness":
+                        state = Emotion.State.SAD;
+                        break;
+                    default:
+                        break;
+                }
+
             }
             public void onNothingSelected(AdapterView<?> parentView) {
             }
@@ -96,8 +111,9 @@ public class AddMoodActivity extends AppCompatActivity{
         SaveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Pass information to the controllers.
-
-//                finish();
+                User user = new User(username);
+                moodController.createMood(user, SocialSit, state);
+                finish();
             }
         });}
 

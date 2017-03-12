@@ -21,17 +21,18 @@ import java.util.ArrayList;
  */
 
 public class MoodModel implements Model<Mood> {
-    private final Gson gson;
+    private Gson gson;
     private ArrayList<Mood> moodList;
     private final String FILENAME = "moods.json";
 
     public MoodModel(){
-        this.loadList();
         this.gson = new Gson();
+        this.loadList();
     }
 
     @Override
     public ArrayList<Mood> getList() {
+        this.loadList();
         return this.moodList;
     }
 
@@ -69,6 +70,7 @@ public class MoodModel implements Model<Mood> {
             String line = in.readLine();
             while (line != null) {
                 this.moodList.add(gson.fromJson(line, Mood.class));
+                System.out.println(gson.fromJson(line, Mood.class));
                 line = in.readLine();
             }
             fis.close();
@@ -86,6 +88,7 @@ public class MoodModel implements Model<Mood> {
             int length = this.moodList.size();
             for(int x=0; x<length; x++) {
                 fos.write((gson.toJson(this.moodList.get(x))+"\n").getBytes());
+                System.out.println(gson.toJson(this.moodList.get(x)));
             }
             fos.close();
         } catch (Exception e) {

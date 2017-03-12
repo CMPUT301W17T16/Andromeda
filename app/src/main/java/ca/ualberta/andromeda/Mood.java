@@ -17,12 +17,13 @@ public class Mood {
     private String location;
     private String detail;
     private String image;
-    private String emotion;
+    private Emotion emotion;
 
-    public Mood(User user, String socialSituation, Date date){
+    public Mood(User user, String socialSituation, Date date, Emotion.State state){
         this.user = user;
         this.socialSituation = socialSituation;
         this.date = date;
+        this.emotion = new Emotion(Emotion.State.HAPPY);
     }
 
     public void edit(User user, String socialSituation, Date date){
@@ -30,6 +31,8 @@ public class Mood {
         this.socialSituation = socialSituation;
         this.date = date;
     }
+
+    public Emotion getEmotion(){ return this.emotion; }
 
     public User getUser(){
         return this.user;
@@ -41,6 +44,12 @@ public class Mood {
 
     public Date getDate(){
         return this.date;
+    }
+
+    // TODO: Fix this to display in listview correctly
+    @Override
+    public String toString(){
+        return user.getUsername() + " " + socialSituation;
     }
 
 }

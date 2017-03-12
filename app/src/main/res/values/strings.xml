@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Andromeda</string>
+    <string name="filter">Filter</string>
+    <string name="follow">Follow</string>
+    <string name="map">Map</string>
+    <string name="add_mood">Add Mood</string>
+    <string name="my_moods">MY MOODS</string>
+
+    <string-array name="moods_array">
+        <item>Anger</item>
+        <item>Confusion</item>
+        <item>Disgust</item>
+        <item>Fear</item>
+        <item>Happiness</item>
+        <item>Sadness</item>
+        <item>Shame</item>
+        <item>Surprise</item>
+    </string-array>
+
+    <string-array name="social_sit_array">
+        <item> </item>
+        <item>Alone</item>
+        <item>Two to several people</item>
+        <item>Crowd</item>
+    </string-array>
+
 </resources>

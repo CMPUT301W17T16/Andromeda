@@ -11,20 +11,17 @@ import java.util.ArrayList;
  */
 public class User {
     private String username;
-    private String password;
     private ArrayList<String> following;
     private ArrayList<String> followerRequest;
 
-    public User(String username, String password){
+    public User(String username){
         this.username = username;
-        this.password = password;
     }
 
-    public User(String username, String password,
+    public User(String username,
                 ArrayList<String> following,
                 ArrayList<String> followerRequest) {
         this.username = username;
-        this.password = password;
         this.following = following;
         this.followerRequest = followerRequest;
     }
@@ -37,7 +34,6 @@ public class User {
         return username;
     }
 
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -46,13 +42,6 @@ public class User {
         return this.following;
     }
 
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
     public void addNewFollower(User user){
         following.add(user.getUsername());
     }

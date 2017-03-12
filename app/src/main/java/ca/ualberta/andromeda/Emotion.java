@@ -9,22 +9,30 @@ package ca.ualberta.andromeda;
  */
 
 public class Emotion {
-    String Emotion;
-    String Color;
+    public enum State { HAPPY, SAD }
 
-    public String getEmotion() {
-        return Emotion;
+    private State state;
+
+    public Emotion(State emotion){
+        this.state = emotion;
     }
 
-    public void setEmotion(String emotion) {
-        Emotion = emotion;
+    public State getEmotion() {
+        return state;
+    }
+
+    public void setEmotion(State emotion) {
+        this.state = emotion;
     }
 
     public String getColor() {
-        return Color;
-    }
-
-    public void setColor(String color) {
-        Color = color;
+        switch(state) {
+            case HAPPY:
+                return "green";
+            case SAD:
+                return "blue";
+            default:
+                return "white";
+        }
     }
 }

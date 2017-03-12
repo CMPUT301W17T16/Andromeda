@@ -11,7 +11,7 @@ public class UserControllerTest {
     @Test
     public void testAddUser() {
         UserController controller = new UserController();
-        User user = new User();
+        User user = new User("user");
         controller.addUser(user);
         assertEquals(user, controller.getUser(0));
     }
@@ -19,7 +19,7 @@ public class UserControllerTest {
     @Test
     public void testDeleteUser() {
         UserController controller = new UserController();
-        User user = new User();
+        User user = new User("user");
         controller.addUser(user);
         controller.deleteUser(0);
         assertEquals(null, controller.getUser(0));

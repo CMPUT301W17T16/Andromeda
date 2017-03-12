@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -46,6 +47,17 @@ public class MainPage extends AndromedaActivity {
                 R.layout.mood_listview, moodList);
         oldMoodList.setAdapter(adapter);
     }
+
+    //http://stackoverflow.com/questions/5565451/display-no-item-message-in-listview?noredirect=1&lq=1
+    @Override
+    public void onContentChanged() {
+        super.onContentChanged();
+
+        View empty = findViewById(R.id.empty);
+        ListView list = (ListView) findViewById(R.id.listView);
+        list.setEmptyView(empty);
+    }
+
 
     public void myMoods(View v){
         Intent intent = new Intent(this, MyMoods.class);

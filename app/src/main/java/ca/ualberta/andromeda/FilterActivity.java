@@ -3,14 +3,11 @@ package ca.ualberta.andromeda;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ViewFriendActivity extends AppCompatActivity {
+public class FilterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_friend);
-
-
-        // TODO DO FRIEND MOODS LATER
+        setContentView(R.layout.activity_filter);
     }
 }

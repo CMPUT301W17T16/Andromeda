@@ -13,12 +13,16 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by livialee on 2017-03-05.
  */
 
-public class ViewMoodActivity extends Activity {
+public class ViewMoodActivity extends AndromedaActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +31,17 @@ public class ViewMoodActivity extends Activity {
         Button deleteButton = (Button) findViewById(R.id.DeleteButton);
         Button saveButton = (Button) findViewById(R.id.SaveButton);
 
+        TextView Username = (TextView) findViewById(R.id.UsernameHolder);
+        TextView Date = (TextView) findViewById(R.id.DateHolder);
+        TextView Mood = (TextView) findViewById(R.id.MoodHolder);
+        TextView SocialSit = (TextView) findViewById(R.id.SocialSitHolder);
+        TextView Trigger = (TextView) findViewById(R.id.TriggerHolder);
+        TextView Detail = (TextView) findViewById(R.id.DetailHolder);
+
+
         // TODO Load all the info in the correct textViews
 
+        // TODO Change the color of the background to match the mood
 
         // Delete entry
         deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -53,5 +66,12 @@ public class ViewMoodActivity extends Activity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        // TODO Load all the info in the correct textViews
+
     }
 }

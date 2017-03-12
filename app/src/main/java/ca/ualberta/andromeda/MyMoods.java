@@ -15,15 +15,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class FriendsMoods extends UsersMoods{
+public class MyMoods extends UsersMoods {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends_moods);
+        setContentView(R.layout.activity_users_moods);
         moodListView = (ListView) findViewById(R.id.MoodList);
         moodList = new ArrayList<Mood>();
-        final Intent intent = new Intent(this, ViewFriendActivity.class);
+        final Intent intent = new Intent(this, ViewMoodActivity.class);
 
         moodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -34,10 +34,12 @@ public class FriendsMoods extends UsersMoods{
         });
     }
 
+    // goes to add mood view
+    public void newMood(View v){
 
-    // follows or unfollow the user
-    public void followUser(View v){
-        // TODO: check if already following
-
+        // TODO: Change to correct activity when its made
+        Intent intent = new Intent(this, AddMoodActivity.class);
+        intent.putExtra("user", username);
+        startActivity(intent);
     }
 }

@@ -34,7 +34,6 @@ public class LoginActivity extends AndromedaActivity{
         else {
             this.user = userController.createUser(editTextBox.getText().toString());
         }
-        System.out.println("_NAME || "+editTextBox.getText().toString());
         Intent intent = new Intent(this, MainPage.class);
         intent.putExtra("user", this.user.getUsername());
         startActivity(intent);

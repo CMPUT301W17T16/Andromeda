@@ -21,17 +21,18 @@ import java.util.ArrayList;
  */
 
 public class MoodModel implements Model<Mood> {
-    private final Gson gson;
+    private Gson gson;
     private ArrayList<Mood> moodList;
     private final String FILENAME = "moods.json";
 
     public MoodModel(){
-        this.loadList();
         this.gson = new Gson();
+        this.loadList();
     }
 
     @Override
     public ArrayList<Mood> getList() {
+        this.loadList();
         return this.moodList;
     }
 

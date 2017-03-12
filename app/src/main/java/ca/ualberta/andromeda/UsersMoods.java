@@ -39,4 +39,15 @@ public class UsersMoods extends AndromedaActivity {
         moodListView.setAdapter(adapter);
     }
 
+
+    //http://stackoverflow.com/questions/5565451/display-no-item-message-in-listview?noredirect=1&lq=1
+    @Override
+    public void onContentChanged() {
+        super.onContentChanged();
+
+        View empty = findViewById(R.id.empty);
+        ListView list = (ListView) findViewById(R.id.MoodList);
+        list.setEmptyView(empty);
+    }
+
 }

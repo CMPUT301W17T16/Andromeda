@@ -4,19 +4,17 @@
 
 package ca.ualberta.andromeda;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-//import UserController;
 
 /**
  * Created by brettgarbitt on 2017-02-27.
  */
 
-public class Notifications extends Activity implements UserModel<UserController> {
+public class Notifications extends AndromedaActivity {
     private ArrayList<String> requests;
     ArrayList<User> userList;
     UserController userController;

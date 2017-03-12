@@ -45,6 +45,7 @@ public class MainPage extends AndromedaActivity {
         moodList = moodController.getAllMoods();
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this,
                 R.layout.mood_listview, moodList);
+        adapter.clear();
         adapter.addAll(moodList);
         oldMoodList.setAdapter(adapter);
     }

@@ -5,22 +5,22 @@ package ca.ualberta.andromeda;
  */
 
 public class Emotion {
-    String Emotion;
-    String Color;
+    private String emotion;
+    private String color;
 
     public String getEmotion() {
-        return Emotion;
+        return emotion;
     }
 
     public void setEmotion(String emotion) {
-        Emotion = emotion;
+        this.emotion = emotion;
     }
 
     public String getColor() {
-        return Color;
+        return color;
     }
 
     public void setColor(String color) {
-        Color = color;
+        this.color = color;
     }
 }

@@ -13,7 +13,7 @@ public class Mood {
     private String location;
     private String detail;
     private String image;
-    private String emotion;
+    private Emotion emotion;
 
     public Mood(User user, String socialSituation, Date date){
         this.user = user;

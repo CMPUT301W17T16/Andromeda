@@ -19,15 +19,19 @@ public class MoodController {
     public Mood createMood(User user, String socialSituation, Date date) {
         Mood newMood = new Mood(user, socialSituation, date);
         this.addMood(newMood);
+        return newMood;
     }
 
     public Mood createMood(User user, String socialSituation){
         Mood newMood = new Mood(user, socialSituation, new Date());
         this.addMood(newMood);
+        return newMood;
     }
 
     public ArrayList<Mood> getUserMoods(User user){
-        
+        ArrayList<Mood> moodList = moodModel.getList();
+        ArrayList<Mood> userMoods = new ArrayList<Mood>();
+        return userMoods;
     }
 
     public Mood getMood(int index){

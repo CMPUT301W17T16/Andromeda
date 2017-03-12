@@ -6,6 +6,8 @@ package ca.ualberta.andromeda;
 
 import java.util.Date;
 
+import io.searchbox.annotations.JestId;
+
 /**
  * Created by pensk on 2017/02/27.
  */
@@ -18,6 +20,16 @@ public class Mood {
     private String detail;
     private String image;
     private Emotion emotion;
+    @JestId
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Mood(User user, String socialSituation, Date date, Emotion.State state){
         this.user = user;

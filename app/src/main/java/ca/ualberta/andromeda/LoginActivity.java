@@ -16,17 +16,28 @@ import java.io.Serializable;
 public class LoginActivity extends AndromedaActivity{
 
     private EditText editTextBox;
+    private UserController userController;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        userController = ModelManager.getUserController();
         setContentView(R.layout.activity_login);
         editTextBox = (EditText) findViewById(R.id.editText);
+
+
+        if (userController.hasUser(editTextBox.getText().toString())) {
+            this.user = userController.getUserByUsername(editTextBox.getText().toString());
+        }
+        else {
+            this.user = userController.createUser(editTextBox.getText().toString());
+        }
     }
 
     public void login(View v){
         Intent intent = new Intent(this, MainPage.class);
-        intent.putExtra("user", editTextBox.getText().toString());
+        intent.putExtra("user", this.user.getUsername());
         startActivity(intent);
         finish();
     }

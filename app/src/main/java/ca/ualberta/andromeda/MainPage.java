@@ -41,6 +41,7 @@ public class MainPage extends AndromedaActivity {
         username = intent.getStringExtra("user");
 
 
+
         // TODO:need getMoodList in the moodController 2017/3/5
         // moodList = MoodController.getModdList();
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this,

@@ -30,6 +30,9 @@ public class AddMoodActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        moodController = ModelManager.getMoodController();
+        userController = ModelManager.getUserController();
+
         setContentView(R.layout.activity_add_mood);
         Button DeleteButton = (Button) findViewById(R.id.DeleteButton);
         Button SaveButton = (Button) findViewById(R.id.SaveButton);
@@ -111,9 +114,10 @@ public class AddMoodActivity extends AppCompatActivity{
         SaveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Pass information to the controllers.
-                User user = new User(username);
+
+                user = userController.getUserByUsername(username);
                 moodController.createMood(user, SocialSit, state);
-                finish();
+                //finish();
             }
         });}
 

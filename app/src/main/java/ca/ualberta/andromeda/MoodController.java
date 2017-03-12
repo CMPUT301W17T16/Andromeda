@@ -4,6 +4,7 @@
 
 package ca.ualberta.andromeda;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,12 +20,30 @@ public class MoodController {
         userModel = ModelManager.getUserModel();
     }
 
-    public void addMood(Mood mood){
-        moodModel.addItem(mood);
+    public Mood createMood(User user, String socialSituation, Emotion.State state, Date date) {
+        Mood newMood = new Mood(user, socialSituation, date, state);
+        this.addMood(newMood);
+        return newMood;
+    }
+
+    public Mood createMood(User user, String socialSituation, Emotion.State state){
+        Mood newMood = new Mood(user, socialSituation, new Date(), state);
+        this.addMood(newMood);
+        return newMood;
+    }
+
+    public ArrayList<Mood> getUserMoods(User user){
+        ArrayList<Mood> moodList = moodModel.getList();
+        ArrayList<Mood> userMoods = new ArrayList<Mood>();
+        return userMoods;
     }
 
     public Mood getMood(int index){
         return moodModel.getItem(index);
+    }
+
+    public void addMood(Mood mood){
+        moodModel.addItem(mood);
     }
 
     public void updateMood(int index, User user, String situation, Date date){
@@ -33,5 +52,9 @@ public class MoodController {
 
     public void deleteMood(int index){
         moodModel.deleteItem(index);
+    }
+
+    public void deleteMood(Mood mood){
+        moodModel.deleteItem(mood);
     }
 }

@@ -1,24 +1,13 @@
 package ca.ualberta.andromeda;
 
 import org.junit.Test;
-<<<<<<< HEAD
 import java.util.Date;
 import static org.junit.Assert.*;
-
-/**
- * Created by brettgarbitt on 2017-02-27.
- */
-
-=======
-
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by Jeff on 2/27/2017.
- */
 
 public class UserTest {
 
@@ -31,7 +20,7 @@ public class UserTest {
     public void testSaveUser(){
 
         UserController users = new UserController();
-        User user = new User("user1", "password");
+        User user = new User("user");
 
         users.addUser(user);
 
@@ -41,7 +30,7 @@ public class UserTest {
     @Test
     public void testGetUser(){
         UserController users = new UserController();
-        User user = new User();
+        User user = new User("user");
 
         users.addUser(user);
 
@@ -50,4 +39,3 @@ public class UserTest {
         assertEquals(user, returnedUser);
     }
 }
->>>>>>> 08b971a56ec64928306cdf0c2d7af7d44f9501b1

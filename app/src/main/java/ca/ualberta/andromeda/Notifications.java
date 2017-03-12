@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 
 public class Notifications extends AndromedaActivity {
-    private ArrayList<String> requests;
+    private ArrayList<User> requests;
     private String username;
     ArrayList<User> userList;
     UserController userController;
@@ -28,6 +28,10 @@ public class Notifications extends AndromedaActivity {
         Button accept = (Button) findViewById(R.id.acceptButton);
         Button decline = (Button) findViewById(R.id.declineButton);
 
+        /**
+         * When we accept a follow request, we will add that user to the
+         *
+         */
         acceptButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setResult(RESULT_OK);
@@ -55,7 +59,7 @@ public class Notifications extends AndromedaActivity {
     }
 
     public void getRequests() {
-
+        return super.getRequests;
     }
 
     public void removeFollowingList() {

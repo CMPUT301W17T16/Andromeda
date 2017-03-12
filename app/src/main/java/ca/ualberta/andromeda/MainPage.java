@@ -28,16 +28,10 @@ public class MainPage extends AndromedaActivity {
         moodController = ModelManager.getMoodController();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
     protected void onStart() {
 
         super.onStart();
-        Intent intent = getIntent();
 
 
 
@@ -55,9 +49,9 @@ public class MainPage extends AndromedaActivity {
     public void onContentChanged() {
         super.onContentChanged();
 
-        //View empty = findViewById(R.id.empty);
-        //ListView list = (ListView) findViewById(R.id.MoodList);
-        //list.setEmptyView(empty);
+        View empty = findViewById(R.id.empty);
+        ListView list = (ListView) findViewById(R.id.MoodList);
+        list.setEmptyView(empty);
     }
 
 
@@ -67,5 +61,10 @@ public class MainPage extends AndromedaActivity {
         startActivity(intent);
     }
 
+    public void notification(View v){
+        Intent intent = new Intent(this, Notifications.class);
+        intent.putExtra("user", user.getUsername());
+        startActivity(intent);
+    }
 
 }

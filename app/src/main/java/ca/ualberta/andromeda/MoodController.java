@@ -16,14 +16,14 @@ public class MoodController {
         userModel = ModelManager.getUserModel();
     }
 
-    public Mood createMood(User user, String socialSituation, Date date) {
-        Mood newMood = new Mood(user, socialSituation, date);
+    public Mood createMood(User user, String socialSituation, Emotion.State state, Date date) {
+        Mood newMood = new Mood(user, socialSituation, date, state);
         this.addMood(newMood);
         return newMood;
     }
 
-    public Mood createMood(User user, String socialSituation){
-        Mood newMood = new Mood(user, socialSituation, new Date());
+    public Mood createMood(User user, String socialSituation, Emotion.State state){
+        Mood newMood = new Mood(user, socialSituation, new Date(), state);
         this.addMood(newMood);
         return newMood;
     }

@@ -41,13 +41,13 @@
             android:onClick="openMap"
             android:contentDescription="" />
 
-        <ImageButton
+        <Button
+            android:text="My Moods"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_input_add"
-            android:id="@+id/addMood"
+            android:id="@+id/follow"
             android:layout_weight="1"
-            android:onClick="newMood"/>
+            android:onClick="myMoods"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
             android:textAlignment="center" />
 
         <TextView
-            android:text="@string/add_mood"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

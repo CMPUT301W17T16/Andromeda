@@ -29,7 +29,7 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
     public void testLogin(){
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.enterText((EditText) solo.getView(R.id.editText), "User");
-        solo.clickOnButton("enterButton");
+        solo.clickOnButton("Enter");
 
         solo.assertCurrentActivity("Wrong Activity", MainPage.class);
     }
@@ -37,10 +37,18 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
     public void testMainActivity(){
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.enterText((EditText) solo.getView(R.id.editText), "User");
-        solo.clickOnButton("enterButton");
+        solo.clickOnButton("Enter");
 
         solo.assertCurrentActivity("Wrong Activity", MainPage.class);
 
+        // To myMoods
+        solo.clickOnButton("My Moods");
+        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+
+        solo.goBack();
+        solo.assertCurrentActivity("Wrong Activity", MainPage.class);
+
+        // TODO: ADD to map and to filter test
     }
 
     @Override

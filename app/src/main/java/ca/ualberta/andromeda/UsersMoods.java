@@ -16,12 +16,15 @@ import java.util.ArrayList;
 
 public class UsersMoods extends AndromedaActivity {
 
-    ArrayList<Mood> moodList;
-    ListView moodListView;
+    protected MoodController moodController;
+    protected ArrayList<Mood> moodList;
+    protected ListView moodListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        moodController = ModelManager.getMoodController();
     }
 
     @Override

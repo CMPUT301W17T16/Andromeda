@@ -15,12 +15,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class AddMoodActivity extends AppCompatActivity{
-    public String theMood;
-    private User user;
-    public String SocialSit;
-    public String Details;
-    public String Trigger;
+
+public class AddMoodActivity extends AndromedaActivity{
+    public String testString;
+    private String theMood;
+    private String SocialSit;
+    private String Details;
+    private String Trigger;
     public String username;
     private MoodController moodController;
     private UserController userController;

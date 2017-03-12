@@ -11,7 +11,7 @@ import android.view.View;
  *
  * Base abstract  Activity
  */
-public abstract class AndromedaActivity extends Activity {
+public abstract class AndromedaActivity extends AppCompatActivity {
 
     protected User user;
     protected UserController userController;
@@ -32,9 +32,9 @@ public abstract class AndromedaActivity extends Activity {
      * @param v the v
      */
     public void openMap(View v){
-        Intent intent = new Intent(v.getContext(), Map.class);
-        startActivity(intent);
-        finish();
+        //Intent intent = new Intent(v.getContext(), Map.class);
+        //startActivity(intent);
+        //finish();
     }
 
     /**
@@ -44,8 +44,8 @@ public abstract class AndromedaActivity extends Activity {
      */
 // goes to filter view
     public void openFilter(View v){
-        Intent intent = new Intent(v.getContext(), Filter.class);
-        startActivity(intent);
-        finish();
+        //Intent intent = new Intent(v.getContext(), Filter.class);
+        //startActivity(intent);
+        //finish();
     }
 }

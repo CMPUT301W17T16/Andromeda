@@ -20,12 +20,14 @@ public class MainPage extends AndromedaActivity {
     private ArrayList<Mood> moodList = new ArrayList<Mood>();
     User user;
     String username;
+    MoodController moodController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         oldMoodList = (ListView) findViewById(R.id.MoodList);
+        moodController = ModelManager.getMoodController();
     }
 
     @Override
@@ -43,9 +45,10 @@ public class MainPage extends AndromedaActivity {
 
 
         // TODO:need getMoodList in the moodController 2017/3/5
-        // moodList = MoodController.getModdList();
+        moodList = moodController.getAllMoods();
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this,
                 R.layout.mood_listview, moodList);
+        adapter.addAll(moodList);
         oldMoodList.setAdapter(adapter);
     }
 

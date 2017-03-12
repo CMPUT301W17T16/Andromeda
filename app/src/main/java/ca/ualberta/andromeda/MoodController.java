@@ -39,6 +39,10 @@ public class MoodController {
         return userMoods;
     }
 
+    public ArrayList<Mood> getAllMoods(){
+        return moodModel.getList();
+    }
+
     public Mood getMood(int index){
         return moodModel.getItem(index);
     }

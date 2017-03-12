@@ -5,6 +5,7 @@
 package ca.ualberta.andromeda;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 
 public class Notifications extends AndromedaActivity {
     private ArrayList<String> requests;
+    private String username;
     ArrayList<User> userList;
     UserController userController;
 
@@ -25,9 +27,27 @@ public class Notifications extends AndromedaActivity {
         requests = (ListView) findViewById(R.id.notificationsList);
         Button accept = (Button) findViewById(R.id.acceptButton);
         Button decline = (Button) findViewById(R.id.declineButton);
+
+        acceptButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setResult(RESULT_OK);
+                tweetList.clear();
+                adapter.notifyDataSetChanged();
+                //saveInFile();
+            }
+        });
+
+        declineButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setResult(RESULT_OK);
+                tweetList.clear();
+                adapter.notifyDataSetChanged();
+                //saveInFile();
+            }
+        });
     }
     public void viewUser(String User) {
-
+        username = super.getUser();
     }
 
     public void addToFollowingList() {

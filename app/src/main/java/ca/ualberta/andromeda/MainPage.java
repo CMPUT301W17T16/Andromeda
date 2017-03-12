@@ -18,8 +18,6 @@ public class MainPage extends AndromedaActivity {
 
     private ListView oldMoodList;
     private ArrayList<Mood> moodList = new ArrayList<Mood>();
-    User user;
-    String username;
     MoodController moodController;
 
     @Override
@@ -40,7 +38,6 @@ public class MainPage extends AndromedaActivity {
 
         super.onStart();
         Intent intent = getIntent();
-        username = intent.getStringExtra("user");
 
 
 
@@ -65,7 +62,7 @@ public class MainPage extends AndromedaActivity {
 
     public void myMoods(View v){
         Intent intent = new Intent(this, MyMoods.class);
-        intent.putExtra("user", username);
+        intent.putExtra("user", user.getUsername());
         startActivity(intent);
     }
 

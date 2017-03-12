@@ -25,7 +25,7 @@ public class MainPage extends AndromedaActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        oldMoodList = (ListView) findViewById(R.id.listView);
+        oldMoodList = (ListView) findViewById(R.id.MoodList);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class MainPage extends AndromedaActivity {
         super.onContentChanged();
 
         View empty = findViewById(R.id.empty);
-        ListView list = (ListView) findViewById(R.id.listView);
+        ListView list = (ListView) findViewById(R.id.MoodList);
         list.setEmptyView(empty);
     }
 

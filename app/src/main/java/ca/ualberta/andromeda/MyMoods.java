@@ -17,6 +17,8 @@ import java.util.Date;
 
 public class MyMoods extends UsersMoods {
 
+    private ArrayAdapter<Mood> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,22 @@ public class MyMoods extends UsersMoods {
                 startActivity(intent);
             }
         });
+
+        // Load all of the moods from the user
+        adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        moodListView.setAdapter(adapter);
+
+
+
+    }
+    @Override
+    protected void onStart(){
+        // Load all of the moods from the user
+        super.onStart();
+        adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        moodListView.setAdapter(adapter);
+
+
     }
 
     // goes to add mood view

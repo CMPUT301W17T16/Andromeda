@@ -44,6 +44,7 @@ public class MyMoods extends UsersMoods {
         super.onStart();
 
         adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        adapter.clear();
         adapter.addAll(moodController.getUserMoods(this.user));
         moodListView.setAdapter(adapter);
 

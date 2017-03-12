@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Created by brettgarbitt on 2017-02-27.
  */
 
-public class Notifications {
+public class Notifications extends AndromedaActivity {
     private ArrayList<String> requests;
 
     public void onCreate(Bundle savedInstanceState) {

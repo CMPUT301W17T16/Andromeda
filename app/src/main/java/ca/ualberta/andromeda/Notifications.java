@@ -20,6 +20,7 @@ public class Notifications {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notifications);
     }
+
     public void viewUser(String User) {
 
     }

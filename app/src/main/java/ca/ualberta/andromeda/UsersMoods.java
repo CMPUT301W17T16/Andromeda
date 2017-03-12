@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Created by Jeff on 3/11/2017.
  */
 
-public class UsersMoods extends AndromedaActivity {
+public abstract class UsersMoods extends AndromedaActivity {
 
     protected MoodController moodController;
     protected ArrayList<Mood> moodList;

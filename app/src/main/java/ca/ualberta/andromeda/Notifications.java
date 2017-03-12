@@ -18,8 +18,11 @@ import java.util.ArrayList;
 public class Notifications extends AndromedaActivity {
     private ArrayList<User> requests;
     private String username;
-    ArrayList<User> userList;
-    UserController userController;
+
+    protected User user;
+    protected UserController userController;
+
+    private ArrayList<User> userList;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,7 @@ public class Notifications extends AndromedaActivity {
 
         /**
          * When we accept a follow request, we will add that user to the
-         *
+         * FollowingList
          */
         acceptButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -59,12 +59,10 @@ public class MainPage extends AndromedaActivity {
         list.setEmptyView(empty);
     }
 
-
     public void myMoods(View v){
         Intent intent = new Intent(this, MyMoods.class);
         intent.putExtra("user", username);
         startActivity(intent);
     }
-
 
 }

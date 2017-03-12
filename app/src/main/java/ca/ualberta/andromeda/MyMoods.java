@@ -17,12 +17,14 @@ import java.util.Date;
 
 public class MyMoods extends UsersMoods {
 
+    private ArrayAdapter<Mood> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_moods);
         moodListView = (ListView) findViewById(R.id.MoodList);
-        moodList = new ArrayList<Mood>();
+
         final Intent intent = new Intent(this, ViewMoodActivity.class);
 
         moodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -32,6 +34,20 @@ public class MyMoods extends UsersMoods {
                 startActivity(intent);
             }
         });
+
+
+
+    }
+    @Override
+    protected void onStart(){
+        // Load all of the moods from the user
+        super.onStart();
+
+        adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        adapter.addAll(moodController.getUserMoods(this.user));
+        moodListView.setAdapter(adapter);
+
+
     }
 
     // goes to add mood view

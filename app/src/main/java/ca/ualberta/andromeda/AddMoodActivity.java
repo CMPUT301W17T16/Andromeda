@@ -118,7 +118,7 @@ public class AddMoodActivity extends AndromedaActivity{
 
                 user = userController.getUserByUsername(username);
                 moodController.createMood(user, SocialSit, state);
-                //finish();
+                finish();
             }
         });}
 

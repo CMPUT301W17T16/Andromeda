@@ -18,13 +18,14 @@ public class MainPage extends AndromedaActivity {
 
     private ListView oldMoodList;
     private ArrayList<Mood> moodList = new ArrayList<Mood>();
-
+    MoodController moodController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         oldMoodList = (ListView) findViewById(R.id.MoodList);
+        moodController = ModelManager.getMoodController();
     }
 
     @Override
@@ -41,9 +42,10 @@ public class MainPage extends AndromedaActivity {
 
 
         // TODO:need getMoodList in the moodController 2017/3/5
-        // moodList = MoodController.getModdList();
+        moodList = moodController.getAllMoods();
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this,
                 R.layout.mood_listview, moodList);
+        adapter.addAll(moodList);
         oldMoodList.setAdapter(adapter);
     }
 
@@ -52,9 +54,9 @@ public class MainPage extends AndromedaActivity {
     public void onContentChanged() {
         super.onContentChanged();
 
-        View empty = findViewById(R.id.empty);
-        ListView list = (ListView) findViewById(R.id.MoodList);
-        list.setEmptyView(empty);
+        //View empty = findViewById(R.id.empty);
+        //ListView list = (ListView) findViewById(R.id.MoodList);
+        //list.setEmptyView(empty);
     }
 
 

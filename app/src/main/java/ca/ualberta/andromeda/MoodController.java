@@ -35,7 +35,16 @@ public class MoodController {
     public ArrayList<Mood> getUserMoods(User user){
         ArrayList<Mood> moodList = moodModel.getList();
         ArrayList<Mood> userMoods = new ArrayList<Mood>();
+        for(int x=0; x<moodList.size(); x++){
+            if(moodList.get(x).getUser() == user){
+                userMoods.add(moodList.get(x));
+            }
+        }
         return userMoods;
+    }
+
+    public ArrayList<Mood> getAllMoods(){
+        return moodModel.getList();
     }
 
     public Mood getMood(int index){

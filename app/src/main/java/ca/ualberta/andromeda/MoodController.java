@@ -36,7 +36,7 @@ public class MoodController {
         ArrayList<Mood> moodList = moodModel.getList();
         ArrayList<Mood> userMoods = new ArrayList<Mood>();
         for(int x=0; x<moodList.size(); x++){
-            if(moodList.get(x).getUser() == user.getUsername()){
+            if(moodList.get(x).getUser().equals(user.getUsername())){
                 userMoods.add(moodList.get(x));
             }
         }

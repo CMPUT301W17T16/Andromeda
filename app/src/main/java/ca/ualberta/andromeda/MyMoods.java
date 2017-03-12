@@ -28,7 +28,7 @@ public class MyMoods extends UsersMoods {
         moodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                intent.putExtra("user", username);
+                intent.putExtra("user", user.getUsername());
                 startActivity(intent);
             }
         });
@@ -39,7 +39,7 @@ public class MyMoods extends UsersMoods {
 
         // TODO: Change to correct activity when its made
         Intent intent = new Intent(this, AddMoodActivity.class);
-        intent.putExtra("user", username);
+        intent.putExtra("user", user.getUsername());
         startActivity(intent);
     }
 }

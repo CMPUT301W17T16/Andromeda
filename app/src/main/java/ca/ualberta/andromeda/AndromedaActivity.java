@@ -2,6 +2,7 @@ package ca.ualberta.andromeda;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -12,16 +13,17 @@ import android.view.View;
  */
 public abstract class AndromedaActivity extends Activity {
 
-    String username;
-    User user;
+    protected User user;
+    protected UserController userController;
 
-    protected void getUsername(){
-        Intent intent = getIntent();
-        username = intent.getStringExtra("user");
-    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        userController = ModelManager.getUserController();
 
-    protected void getUser() {
-        user = new User(username);
+        if (getIntent().hasExtra("user")) {
+            user = userController.getUserByUsername(getIntent().getStringExtra("user"));
+        }
     }
 
     /**

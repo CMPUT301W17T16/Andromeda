@@ -16,15 +16,17 @@ import java.util.ArrayList;
  * Created by brettgarbitt on 2017-02-27.
  */
 
-public class Notifications extends Activity{
+public class Notifications extends Activity implements UserModel<UserController> {
     private ArrayList<String> requests;
+    ArrayList<User> userList;
+    UserController userController;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notifications);
         requests = (ListView) findViewById(R.id.notificationsList);
         Button accept = (Button) findViewById(R.id.acceptButton);
-        Button reject = (Button) findViewById(R.id.rejectButton);
+        Button decline = (Button) findViewById(R.id.declineButton);
     }
     public void viewUser(String User) {
 

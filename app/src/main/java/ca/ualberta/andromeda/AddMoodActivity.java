@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class AddMoodActivity extends AndromedaActivity{
@@ -52,8 +53,10 @@ public class AddMoodActivity extends AndromedaActivity{
 
         // Loads the current date and time, saved as a string
         DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
-        String currentDateandTime = df.format(Calendar.getInstance().getTime());
-        date.setText(currentDateandTime);
+        final Date dateTest = Calendar.getInstance().getTime();
+//        final Date currentDateandTime = df.format(Calendar.getInstance().getTime());
+        date.setText(dateTest.toString());
+
 
         // Drop down list for the moods
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,
@@ -117,7 +120,7 @@ public class AddMoodActivity extends AndromedaActivity{
                 // Pass information to the controllers.
 
                 user = userController.getUserByUsername(username);
-                moodController.createMood(user, SocialSit, state);
+                moodController.createMood(user, theMood, SocialSit, state, dateTest);
                 finish();
             }
         });}

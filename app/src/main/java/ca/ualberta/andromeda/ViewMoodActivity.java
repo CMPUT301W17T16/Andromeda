@@ -23,10 +23,18 @@ import org.w3c.dom.Text;
 
 public class ViewMoodActivity extends AndromedaActivity {
 
+    private MoodController moodController;
+    private UserController userController;
+    private String username;
+    private String date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_mood);
+
+        moodController = ModelManager.getMoodController();
+        userController = ModelManager.getUserController();
 
         Button deleteButton = (Button) findViewById(R.id.DeleteButton);
         Button saveButton = (Button) findViewById(R.id.SaveButton);
@@ -37,6 +45,15 @@ public class ViewMoodActivity extends AndromedaActivity {
         TextView SocialSit = (TextView) findViewById(R.id.SocialSitHolder);
         TextView Trigger = (TextView) findViewById(R.id.TriggerHolder);
         TextView Detail = (TextView) findViewById(R.id.DetailHolder);
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra("user");
+        Username.setText(username);
+
+        date = intent.getStringExtra("position");
+        Date.setText(date);
+
+        moodController.getAllMoods();
 
 
         // TODO Load all the info in the correct textViews

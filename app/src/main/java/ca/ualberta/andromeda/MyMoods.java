@@ -30,7 +30,9 @@ public class MyMoods extends UsersMoods {
         moodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 intent.putExtra("user", user.getUsername());
+                intent.putExtra("position", position);
                 startActivity(intent);
             }
         });
@@ -42,12 +44,9 @@ public class MyMoods extends UsersMoods {
     protected void onStart(){
         // Load all of the moods from the user
         super.onStart();
-
         adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.addAll(moodController.getUserMoods(this.user));
         moodListView.setAdapter(adapter);
-
-
     }
 
     // goes to add mood view

@@ -24,7 +24,6 @@ public class MyMoods extends UsersMoods {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_moods);
         moodListView = (ListView) findViewById(R.id.MoodList);
-        moodList = moodController.getUserMoods(this.user);
 
         final Intent intent = new Intent(this, ViewMoodActivity.class);
 
@@ -36,11 +35,6 @@ public class MyMoods extends UsersMoods {
             }
         });
 
-        // Load all of the moods from the user
-        adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
-        adapter.addAll(moodList);
-        moodListView.setAdapter(adapter);
-
 
 
     }
@@ -48,6 +42,7 @@ public class MyMoods extends UsersMoods {
     protected void onStart(){
         // Load all of the moods from the user
         super.onStart();
+
         adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.addAll(moodController.getUserMoods(this.user));
         moodListView.setAdapter(adapter);

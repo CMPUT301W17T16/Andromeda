@@ -19,7 +19,7 @@ public class Mood {
         this.user = user;
         this.socialSituation = socialSituation;
         this.date = date;
-        this.emotion = new Emotion(Emotion.State.HAPPY);
+        this.emotion = new Emotion(state);
     }
 
     public void edit(User user, String socialSituation, Date date){

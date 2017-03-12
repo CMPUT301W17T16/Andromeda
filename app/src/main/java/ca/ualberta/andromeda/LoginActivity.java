@@ -16,17 +16,26 @@ import java.io.Serializable;
 public class LoginActivity extends Activity{
 
     private EditText editTextBox;
+    private UserController userController;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        userController = ModelManager.getUserController();
         setContentView(R.layout.activity_login);
         editTextBox = (EditText) findViewById(R.id.editText);
     }
 
     public void login(View v){
+        if (userController.hasUser(editTextBox.getText().toString())) {
+            this.user = userController.getUserByUsername(editTextBox.getText().toString());
+        }
+        else {
+            this.user = userController.createUser(editTextBox.getText().toString());
+        }
         Intent intent = new Intent(this, MainPage.class);
-        intent.putExtra("user", editTextBox.getText().toString());
+        intent.putExtra("user", this.user.getUsername());
         startActivity(intent);
         finish();
     }

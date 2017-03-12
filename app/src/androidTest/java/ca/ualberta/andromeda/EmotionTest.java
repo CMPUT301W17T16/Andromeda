@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class EmotionTest {
+    /*
     @Test
     public void Emotion() throws Exception {
         Emotion emotion = new Emotion();
@@ -22,4 +23,5 @@ public class EmotionTest {
 
 
     }
+    */
 }

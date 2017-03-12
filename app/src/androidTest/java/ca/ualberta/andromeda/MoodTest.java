@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
  * Created by pensk on 2017/02/27.
  */
 public class MoodTest {
-
+    /*
     @Test
     public void testGetters(){
         Date now = new Date();
@@ -34,4 +34,5 @@ public class MoodTest {
         assertEquals("cafe", mood.getSocialSituation());
         assertEquals(now, mood.getDate());
     }
+    */
 }

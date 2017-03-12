@@ -20,14 +20,16 @@ public class UsersMoods extends AndromedaActivity {
     ListView moodListView;
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     protected void onStart(){
         super.onStart();
 
-        getUsername();
-        getUser();
-
         // Display the user name at the top
-        String Message = username + "'s Moods";
+        String Message = user.getUsername() + "'s Moods";
         TextView textView = (TextView) findViewById(R.id.nameTextView);
         textView.setText(Message);
 

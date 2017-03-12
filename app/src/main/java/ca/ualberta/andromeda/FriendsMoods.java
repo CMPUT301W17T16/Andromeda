@@ -28,7 +28,7 @@ public class FriendsMoods extends UsersMoods{
         moodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                intent.putExtra("user", username);
+                intent.putExtra("user", user.getUsername());
                 startActivity(intent);
             }
         });

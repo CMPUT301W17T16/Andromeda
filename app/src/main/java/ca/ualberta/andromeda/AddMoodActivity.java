@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
 public class AddMoodActivity extends AndromedaActivity{
     public String testString;
     private String theMood;
@@ -22,10 +23,17 @@ public class AddMoodActivity extends AndromedaActivity{
     private String Details;
     private String Trigger;
     public String username;
+    private MoodController moodController;
+    private UserController userController;
+    private Emotion.State state;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        moodController = ModelManager.getMoodController();
+        userController = ModelManager.getUserController();
+
         setContentView(R.layout.activity_add_mood);
         Button DeleteButton = (Button) findViewById(R.id.DeleteButton);
         Button SaveButton = (Button) findViewById(R.id.SaveButton);
@@ -72,6 +80,17 @@ public class AddMoodActivity extends AndromedaActivity{
         MoodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 theMood = parent.getItemAtPosition(position).toString();
+                switch (theMood) {
+                    case "Happiness":
+                        state = Emotion.State.HAPPY;
+                        break;
+                    case "Sadness":
+                        state = Emotion.State.SAD;
+                        break;
+                    default:
+                        break;
+                }
+
             }
             public void onNothingSelected(AdapterView<?> parentView) {
             }
@@ -97,7 +116,9 @@ public class AddMoodActivity extends AndromedaActivity{
             public void onClick(View v) {
                 // Pass information to the controllers.
 
-//                finish();
+                user = userController.getUserByUsername(username);
+                moodController.createMood(user, SocialSit, state);
+                //finish();
             }
         });}
 

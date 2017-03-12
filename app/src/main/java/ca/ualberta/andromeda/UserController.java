@@ -25,6 +25,10 @@ public class UserController {
         return userModel.getList().contains(user);
     }
 
+    public Boolean hasUser(String username){
+        return userModel.getList().contains(this.getUserByUsername(username));
+    }
+
     public User createUser(String username){
         User user = new User(username);
         this.addUser(user);

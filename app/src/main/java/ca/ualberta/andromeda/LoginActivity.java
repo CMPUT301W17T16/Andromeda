@@ -25,17 +25,16 @@ public class LoginActivity extends AndromedaActivity{
         userController = ModelManager.getUserController();
         setContentView(R.layout.activity_login);
         editTextBox = (EditText) findViewById(R.id.editText);
+    }
 
-
+    public void login(View v){
         if (userController.hasUser(editTextBox.getText().toString())) {
             this.user = userController.getUserByUsername(editTextBox.getText().toString());
         }
         else {
             this.user = userController.createUser(editTextBox.getText().toString());
         }
-    }
-
-    public void login(View v){
+        System.out.println("_NAME || "+editTextBox.getText().toString());
         Intent intent = new Intent(this, MainPage.class);
         intent.putExtra("user", this.user.getUsername());
         startActivity(intent);

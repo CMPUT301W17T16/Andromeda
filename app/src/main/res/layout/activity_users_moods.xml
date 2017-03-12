@@ -15,6 +15,7 @@
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:color="#fff020"
         android:layout_above="@+id/linearLayout2">
 
         <TextView
@@ -26,11 +27,19 @@
             tools:text="My Moods"
             android:textAlignment="center" />
 
-        <ListView
-            android:id="@+id/MoodList"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="horizontal|vertical" />
+            android:backgroundTint="@color/colorPrimary">
+
+            <ListView
+                android:id="@+id/MoodList"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="horizontal|vertical" />
+        </FrameLayout>
+
     </LinearLayout>
 
     <LinearLayout

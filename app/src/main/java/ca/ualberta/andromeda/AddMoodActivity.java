@@ -15,7 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class AddMoodActivity extends AppCompatActivity{
+public class AddMoodActivity extends AndromedaActivity{
     public String testString;
     private String theMood;
     private String SocialSit;

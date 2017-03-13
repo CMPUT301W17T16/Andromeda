@@ -65,7 +65,6 @@ public class Notifications extends AndromedaActivity {
 
     public void addToFollowingList(String user) {
 
-
     }
 
     public void getRequests() {

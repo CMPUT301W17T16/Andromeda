@@ -21,7 +21,7 @@ public class MoodController {
     }
 
     public Mood createMood(String user, String socialSituation, Emotion.State state){
-        Mood newMood = new Mood(user, socialSituation, new Date(), state);
+        Mood newMood = new Mood(user, socialSituation, new Date(), state, moodModel.getList().size());
         this.addMood(newMood);
         return newMood;
     }

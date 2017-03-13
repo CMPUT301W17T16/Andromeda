@@ -23,11 +23,12 @@ public class Mood {
     private Emotion emotion;
     private int id;
 
-    public Mood(String user, String socialSituation, Date date, Emotion.State state){
+    public Mood(String user, String socialSituation, Date date, Emotion.State state, int id){
         this.user = user;
         this.socialSituation = socialSituation;
         this.date = date;
         this.emotion = new Emotion(state);
+        this.id = id;
     }
 
     public void edit(String user, String socialSituation, Date date, Emotion.State state){

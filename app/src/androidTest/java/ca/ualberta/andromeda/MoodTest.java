@@ -35,7 +35,7 @@ public class MoodTest {
         assertEquals(moodController.getMood("id1").getId(), mood1.getId());
         assertEquals(moodController.getUserMoods(user1).get(0).getId(),mood1.getId());
 
-        //String id, String user, String situation, Date date, Emotion.State state, String trigger, String detail
+        //int index, String user, String situation, Date date, Emotion.State state, String trigger, String detail
         moodController.updateMood("id1", user2.getUsername(), "Two People", date1, Emotion.State.CONFUSION, "", "");
 
         assertEquals(moodController.getMood("id1").getEmotion().getState(), "Confusion");

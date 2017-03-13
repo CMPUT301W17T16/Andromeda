@@ -94,6 +94,16 @@ public class MoodController {
         return moodModel.getItem(index);
     }
 
+    public Mood getMood(String id) {
+        for (int x = 0; x < moodModel.getList().size(); x++) {
+            if (moodModel.getItem(x).getId().equals(id)) {
+                return moodModel.getItem(x);
+            }
+        }
+        //TODO -- throw an exception
+        return moodModel.getItem(0);
+    }
+
     /**
      * Add mood.
      *
@@ -106,7 +116,7 @@ public class MoodController {
     /**
      * Update mood.
      *
-     * @param index     the index
+     * @param id     the index
      * @param user      the user
      * @param situation the situation
      * @param date      the date
@@ -114,8 +124,9 @@ public class MoodController {
      * @param trigger   the trigger
      * @param detail    the detail
      */
-    public void updateMood(int index, String user, String situation, Date date, Emotion.State state, String trigger, String detail){
-        moodModel.getItem(index).edit(user, situation, date, state, trigger, detail);
+
+    public void updateMood(String id, String user, String situation, Date date, Emotion.State state, String trigger, String detail) {
+        this.getMood(id).edit(user, situation, date, state, trigger, detail);
         moodModel.saveList();
     }
 

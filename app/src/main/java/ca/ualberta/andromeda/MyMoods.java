@@ -34,8 +34,6 @@ public class MyMoods extends UsersMoods {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent.putExtra("user", user.getUsername());
-
-                // TODO: FIX THIS
                 Mood mood = (Mood)parent.getItemAtPosition(position);
                 intent.putExtra("ID", String.valueOf(mood.getId()));
                 startActivity(intent);

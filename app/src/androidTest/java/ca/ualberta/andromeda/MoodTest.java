@@ -10,12 +10,20 @@ import static org.junit.Assert.*;
  * Created by pensk on 2017/02/27.
  */
 public class MoodTest {
-    /*
+
+    @Test
+    public void testMood(){
+        User user1 = new User("1");
+        User user2 = new User("2");
+
+        
+    }
+
     @Test
     public void testAddMood(){
 
         Date now = new Date();
-        Mood mood = new Mood("user", "school", now);
+
 
         assertEquals("user",mood.getUser());
         assertEquals("school", mood.getSocialSituation());
@@ -43,5 +51,5 @@ public class MoodTest {
 
 
     }
-    */
+
 }

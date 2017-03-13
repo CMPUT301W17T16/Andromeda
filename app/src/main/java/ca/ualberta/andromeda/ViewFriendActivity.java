@@ -3,7 +3,7 @@ package ca.ualberta.andromeda;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ViewFriendActivity extends AppCompatActivity {
+public class ViewFriendActivity extends AndromedaActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

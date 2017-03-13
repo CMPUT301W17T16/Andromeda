@@ -20,12 +20,6 @@ public class MoodController {
         userModel = ModelManager.getUserModel();
     }
 
-    public Mood createMood(String user, String socialSituation, Emotion.State state, Date date) {
-        Mood newMood = new Mood(user, socialSituation, date, state);
-        this.addMood(newMood);
-        return newMood;
-    }
-
     public Mood createMood(String user, String socialSituation, Emotion.State state){
         Mood newMood = new Mood(user, socialSituation, new Date(), state);
         this.addMood(newMood);
@@ -55,8 +49,8 @@ public class MoodController {
         moodModel.addItem(mood);
     }
 
-    public void updateMood(int index, String user, String mood, String situation, Date date, Emotion.State state){
-        moodModel.getItem(index).edit(user, mood, situation, date, state);
+    public void updateMood(int index, String user, String situation, Date date, Emotion.State state){
+        moodModel.getItem(index).edit(user, situation, date, state);
     }
 
     public void deleteMood(int index){

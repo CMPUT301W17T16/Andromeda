@@ -15,6 +15,7 @@ public abstract class AndromedaActivity extends AppCompatActivity {
 
     protected User user;
     protected UserController userController;
+    protected MoodController moodController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

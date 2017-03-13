@@ -28,20 +28,10 @@ public class MainPage extends AndromedaActivity {
         moodController = ModelManager.getMoodController();
     }
 
-
+    @Override
     protected void onStart() {
-
         super.onStart();
 
-        ElasticSearchManager.GetMoodTask getMoodTask= new ElasticSearchManager.GetMoodTask();
-        getMoodTask.execute("");
-        try {
-            moodList = getMoodTask.get();
-        } catch (Exception e) {
-            Log.i("Error", "Failed to get the tweets from the async object");
-        }
-
-        // TODO:need getMoodList in the moodController 2017/3/5
         moodList = moodController.getAllMoods();
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.clear();

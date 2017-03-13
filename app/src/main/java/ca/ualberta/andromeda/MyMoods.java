@@ -34,22 +34,13 @@ public class MyMoods extends UsersMoods {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent.putExtra("user", user.getUsername());
-                intent.putExtra("ID", String.valueOf(position));
+
+                // TODO: FIX THIS
+                intent.putExtra("ID", String.valueOf(id));
                 startActivity(intent);
             }
         });
 
-    }
-    @Override
-    protected void onStart(){
-        // Load all of the moods from the user
-        super.onStart();
-
-        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
-        //adapter.clear();
-        adapter.addAll(moodController.getUserMoods(this.user));
-        moodListView = (ListView) findViewById(R.id.MoodList);
-        moodListView.setAdapter(adapter);
     }
 
     /**
@@ -59,7 +50,6 @@ public class MyMoods extends UsersMoods {
      */
     public void newMood(View v){
 
-        // TODO: Change to correct activity when its made
         Intent intent = new Intent(this, AddMoodActivity.class);
         intent.putExtra("user", user.getUsername());
         startActivity(intent);

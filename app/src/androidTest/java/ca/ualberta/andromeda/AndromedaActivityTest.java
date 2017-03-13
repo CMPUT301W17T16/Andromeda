@@ -251,18 +251,19 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.clickInList(0);
         solo.assertCurrentActivity("wrong Activity", ViewMoodActivity.class);
 
+        view1 = solo.getView(Spinner.class, 0);
         solo.clickOnView(view1);
         solo.scrollToTop();
-        solo.clickOnView(solo.getView(TextView.class, 2));
+        solo.clickOnView(solo.getView(TextView.class, 0));
 
-
+        view2 = solo.getView(Spinner.class, 1);
         solo.clickOnView(view2);
         solo.scrollToTop();
         solo.clickOnView(solo.getView(TextView.class, 11));
 
 
-        solo.enterText((EditText) solo.getView(R.id.TriggerHolder), "Test trigger2");
-        solo.enterText((EditText) solo.getView(R.id.DetailHolder), "Test Detail2");
+        solo.enterText((EditText) solo.getView(R.id.TriggerHolder), "2");
+        solo.enterText((EditText) solo.getView(R.id.DetailHolder), "2");
 
 
         solo.clickOnButton("Save");
@@ -275,7 +276,7 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         mood = (Mood) MoodList.getItemAtPosition(0);
         assertEquals("User", mood.getUser());
 
-        assertEquals("Confusion", mood.getEmotion().getState());
+        assertEquals("Anger", mood.getEmotion().getState());
         assertEquals("Two to several people", mood.getSocialSituation());
         assertEquals("Test trigger2", mood.getTrigger());
         assertEquals("Test Detail2", mood.getDetail());

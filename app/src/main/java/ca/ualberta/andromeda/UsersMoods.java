@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 /**
  * Created by Jeff on 3/11/2017.
+ *
+ * Super class for viewing my moods or friends moods
  */
 
 public abstract class UsersMoods extends AndromedaActivity {
@@ -55,4 +57,7 @@ public abstract class UsersMoods extends AndromedaActivity {
         list.setEmptyView(empty);
     }
 
+    public ListView getMoodListView() {
+        return moodListView;
+    }
 }

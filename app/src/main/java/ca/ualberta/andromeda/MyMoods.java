@@ -15,6 +15,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * The type My moods.
+ *
+ * Activity to view all of my moods
+ */
 public class MyMoods extends UsersMoods {
 
     private ArrayAdapter<Mood> adapter;
@@ -51,7 +56,11 @@ public class MyMoods extends UsersMoods {
 
     }
 
-    // goes to add mood view
+    /**
+     * Goes to add New mood.
+     *
+     * @param v the v
+     */
     public void newMood(View v){
 
         // TODO: Change to correct activity when its made

@@ -9,7 +9,7 @@ import android.view.View;
 /**
  * Created by Jeff on 3/10/2017.
  *
- * Base abstract  Activity
+ *  Super class that implements activities
  */
 public abstract class AndromedaActivity extends AppCompatActivity {
 
@@ -42,7 +42,6 @@ public abstract class AndromedaActivity extends AppCompatActivity {
      *
      * @param v the v
      */
-// goes to filter view
     public void openFilter(View v){
         //Intent intent = new Intent(v.getContext(), Filter.class);
         //startActivity(intent);

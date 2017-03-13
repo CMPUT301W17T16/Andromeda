@@ -17,7 +17,7 @@ import java.util.Date;
 
 /**
  * The type Friends moods.
- *
+ * <p>
  * Activity to view all of friends moods
  */
 public class FriendsMoods extends UsersMoods{

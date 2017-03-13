@@ -24,25 +24,60 @@ import java.util.Date;
 /**
  * Created by livialee on 2017-03-05.
  */
-
 public class ViewMoodActivity extends AndromedaActivity {
 
     private String idNum;
     private Date date;
+    /**
+     * The The mood.
+     */
     protected String theMood;
+    /**
+     * The Username.
+     */
     protected String username;
+    /**
+     * The Social sit.
+     */
     protected String SocialSit;
+    /**
+     * The Details.
+     */
     protected String Details;
+    /**
+     * The Trigger.
+     */
     protected String Trigger;
+    /**
+     * The State.
+     */
     protected Emotion.State state;
     private Integer position;
     private String MyLocation;
 
+    /**
+     * The Username holder.
+     */
     TextView UsernameHolder;
+    /**
+     * The Date holder.
+     */
     TextView DateHolder;
+    /**
+     * The Mood spinner.
+     */
     Spinner MoodSpinner;
+    /**
+     * The Social spinner.
+     */
     Spinner SocialSpinner;
+    /**
+     * The Trigger holder.
+     */
     EditText TriggerHolder;
+    /**
+     * The Detail holder.
+     */
     EditText DetailHolder;
 
 
@@ -161,12 +196,22 @@ public class ViewMoodActivity extends AndromedaActivity {
 
     }
 
+    /**
+     * Delete mood.
+     *
+     * @param v the v
+     */
     public void deleteMood(View v){
         moodController.deleteMood(position);
         finish();
     }
 
-    // Saves the updated mood
+    /**
+     * Save mood.
+     *
+     * @param v the v
+     */
+// Saves the updated mood
     public void saveMood(View v){
         Trigger = TriggerHolder.getText().toString();
         Details = DetailHolder.getText().toString();
@@ -174,6 +219,11 @@ public class ViewMoodActivity extends AndromedaActivity {
         finish();
     }
 
+    /**
+     * Show location.
+     *
+     * @param v the v
+     */
     public void showLocation(View v) {
         Toast.makeText(getApplicationContext(),MyLocation,Toast.LENGTH_SHORT).show();
     }

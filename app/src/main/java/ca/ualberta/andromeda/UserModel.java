@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 /**
  * Created by pensk on 2017/02/27.
- *
+ * <p>
  * The User model handles saving/loading the list of users
  */
 public class UserModel implements Model<User> {
@@ -26,6 +26,9 @@ public class UserModel implements Model<User> {
     private final String FILENAME = "users.json";
 
 
+    /**
+     * Instantiates a new User model.
+     */
     public UserModel(){
         this.gson = new Gson();
         this.loadList();

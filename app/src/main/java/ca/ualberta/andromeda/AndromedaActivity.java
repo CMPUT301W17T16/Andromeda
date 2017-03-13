@@ -8,13 +8,22 @@ import android.view.View;
 
 /**
  * Created by Jeff on 3/10/2017.
- *
- *  Super class that implements activities
+ * <p>
+ * Super class that implements activities
  */
 public abstract class AndromedaActivity extends AppCompatActivity {
 
+    /**
+     * The User.
+     */
     protected User user;
+    /**
+     * The User controller.
+     */
     protected UserController userController;
+    /**
+     * The Mood controller.
+     */
     protected MoodController moodController;
 
     @Override

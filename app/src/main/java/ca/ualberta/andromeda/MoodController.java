@@ -11,16 +11,28 @@ import java.util.UUID;
 /**
  * Created by pensk on 2017/02/27.
  */
-
 public class MoodController {
     private MoodModel moodModel;
     private UserModel userModel;
 
+    /**
+     * Instantiates a new Mood controller.
+     */
     public MoodController(){
         moodModel = ModelManager.getMoodModel();
         userModel = ModelManager.getUserModel();
     }
 
+    /**
+     * Create mood mood.
+     *
+     * @param user            the user
+     * @param socialSituation the social situation
+     * @param state           the state
+     * @param trigger         the trigger
+     * @param detail          the detail
+     * @return the mood
+     */
     public Mood createMood(String user, String socialSituation, Emotion.State state, String trigger, String detail){
         String id = getUniqueId();
         Mood newMood = new Mood(user, socialSituation, new Date(), state, trigger, detail, id);
@@ -28,6 +40,17 @@ public class MoodController {
         return newMood;
     }
 
+    /**
+     * Create mood mood.
+     *
+     * @param user            the user
+     * @param socialSituation the social situation
+     * @param state           the state
+     * @param trigger         the trigger
+     * @param detail          the detail
+     * @param MyLocation      the my location
+     * @return the mood
+     */
     public Mood createMood(String user, String socialSituation, Emotion.State state, String trigger, String detail, String MyLocation){
         String id = getUniqueId();
         Mood newMood = new Mood(user, socialSituation, new Date(), state, trigger, detail, id, MyLocation);
@@ -35,6 +58,12 @@ public class MoodController {
         return newMood;
     }
 
+    /**
+     * Get user moods array list.
+     *
+     * @param user the user
+     * @return the array list
+     */
     public ArrayList<Mood> getUserMoods(User user){
         ArrayList<Mood> moodList = moodModel.getList();
         ArrayList<Mood> userMoods = new ArrayList<Mood>();
@@ -46,27 +75,64 @@ public class MoodController {
         return userMoods;
     }
 
+    /**
+     * Get all moods array list.
+     *
+     * @return the array list
+     */
     public ArrayList<Mood> getAllMoods(){
         return moodModel.getList();
     }
 
+    /**
+     * Get mood mood.
+     *
+     * @param index the index
+     * @return the mood
+     */
     public Mood getMood(int index){
         return moodModel.getItem(index);
     }
 
+    /**
+     * Add mood.
+     *
+     * @param mood the mood
+     */
     public void addMood(Mood mood){
         moodModel.addItem(mood);
     }
 
+    /**
+     * Update mood.
+     *
+     * @param index     the index
+     * @param user      the user
+     * @param situation the situation
+     * @param date      the date
+     * @param state     the state
+     * @param trigger   the trigger
+     * @param detail    the detail
+     */
     public void updateMood(int index, String user, String situation, Date date, Emotion.State state, String trigger, String detail){
         moodModel.getItem(index).edit(user, situation, date, state, trigger, detail);
         moodModel.saveList();
     }
 
+    /**
+     * Delete mood.
+     *
+     * @param index the index
+     */
     public void deleteMood(int index){
         moodModel.deleteItem(index);
     }
 
+    /**
+     * Delete mood.
+     *
+     * @param mood the mood
+     */
     public void deleteMood(Mood mood){
         moodModel.deleteItem(mood);
     }
@@ -75,12 +141,20 @@ public class MoodController {
      * http://stackoverflow.com/questions/1389736/how-do-i-create-a-unique-id-in-java
      * date: March 13, 2017
      * Time: 1:16 PM
+     *
+     * @return the unique id
      */
     public String getUniqueId() {
         String id = UUID.randomUUID().toString();
         return id;
     }
 
+    /**
+     * Gets position.
+     *
+     * @param id the id
+     * @return the position
+     */
     public Integer getPosition(String id) {
         ArrayList<Mood> moodList = moodModel.getList();
         for(int x=0; x<moodList.size(); x++){

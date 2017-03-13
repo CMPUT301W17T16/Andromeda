@@ -17,7 +17,7 @@ import java.util.Date;
 
 /**
  * The type My moods.
- *
+ * <p>
  * Activity to view all of my moods
  */
 public class MyMoods extends UsersMoods {

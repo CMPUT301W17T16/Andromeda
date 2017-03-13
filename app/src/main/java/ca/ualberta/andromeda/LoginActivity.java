@@ -12,7 +12,6 @@ import java.io.Serializable;
 /**
  * Created by livialee on 2017-03-05.
  */
-
 public class LoginActivity extends Activity{
 
     private EditText editTextBox;
@@ -27,6 +26,11 @@ public class LoginActivity extends Activity{
         editTextBox = (EditText) findViewById(R.id.editText);
     }
 
+    /**
+     * Login.
+     *
+     * @param v the v
+     */
     public void login(View v){
         if (userController.hasUser(editTextBox.getText().toString())) {
             this.user = userController.getUserByUsername(editTextBox.getText().toString());

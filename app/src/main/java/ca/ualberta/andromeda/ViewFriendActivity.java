@@ -3,6 +3,9 @@ package ca.ualberta.andromeda;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * The type View friend activity.
+ */
 public class ViewFriendActivity extends AndromedaActivity {
 
     @Override

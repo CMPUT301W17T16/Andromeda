@@ -7,20 +7,62 @@ package ca.ualberta.andromeda;
 /**
  * Created by pensk on 2017/02/27.
  */
-
 public class Emotion {
-    public enum State {  ANGER, CONFUSION, DISGUST, FEAR, HAPPINESS, SADNESS, SHAME, SURPRISE}
+    /**
+     * The enum State.
+     */
+    public enum State {
+        /**
+         * Anger state.
+         */
+        ANGER, /**
+         * Confusion state.
+         */
+        CONFUSION, /**
+         * Disgust state.
+         */
+        DISGUST, /**
+         * Fear state.
+         */
+        FEAR, /**
+         * Happiness state.
+         */
+        HAPPINESS, /**
+         * Sadness state.
+         */
+        SADNESS, /**
+         * Shame state.
+         */
+        SHAME, /**
+         * Surprise state.
+         */
+        SURPRISE}
 
     private State state;
 
+    /**
+     * Instantiates a new Emotion.
+     *
+     * @param emotion the emotion
+     */
     public Emotion(State emotion){
         this.state = emotion;
     }
 
+    /**
+     * Sets emotion.
+     *
+     * @param emotion the emotion
+     */
     public void setEmotion(State emotion) {
         this.state = emotion;
     }
 
+    /**
+     * Gets state.
+     *
+     * @return the state
+     */
     public String getState() {
         if (state == null) {
             return "";
@@ -47,6 +89,11 @@ public class Emotion {
         }
     }
 
+    /**
+     * Gets color.
+     *
+     * @return the color
+     */
     public String getColor() {
         switch(state) {
             case ANGER:

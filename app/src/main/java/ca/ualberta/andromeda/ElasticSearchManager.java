@@ -18,11 +18,13 @@ import io.searchbox.core.SearchResult;
 /**
  * Created by Jeff on 2/27/2017.
  */
-
 public class ElasticSearchManager {
 
     private static JestDroidClient client;
 
+    /**
+     * The type Add user task.
+     */
     public static class AddUserTask extends AsyncTask<User, Void, Void> {
 
         @Override
@@ -49,6 +51,9 @@ public class ElasticSearchManager {
         }
     }
 
+    /**
+     * The type Get user task.
+     */
     public static class GetUserTask extends AsyncTask<String, Void, ArrayList<User>> {
         @Override
         protected ArrayList<User> doInBackground(String... search_parameters) {
@@ -84,7 +89,10 @@ public class ElasticSearchManager {
         }
     }
 
-    // TODO we need a function which add Mood from elastic search
+    /**
+     * The type Add mood task.
+     */
+// TODO we need a function which add Mood from elastic search
     public static class AddMoodTask extends AsyncTask<Mood, Void, Void> {
 
         @Override
@@ -111,7 +119,10 @@ public class ElasticSearchManager {
         }
     }
 
-    // TODO we need a function which gets Mood from elastic search
+    /**
+     * The type Get mood task.
+     */
+// TODO we need a function which gets Mood from elastic search
     public static class GetMoodTask extends AsyncTask<String, Void, ArrayList<Mood>> {
 
         @Override
@@ -148,7 +159,10 @@ public class ElasticSearchManager {
         }
     }
 
-    // TODO we need a function which deletes Mood from elastic search
+    /**
+     * The type Delete mood task.
+     */
+// TODO we need a function which deletes Mood from elastic search
     public static class DeleteMoodTask extends AsyncTask<String, Void, ArrayList<Mood>> {
         @Override
         protected ArrayList<Mood> doInBackground(String... search_parameters) {
@@ -157,6 +171,9 @@ public class ElasticSearchManager {
         }
     }
 
+    /**
+     * Verify settings.
+     */
     public static void verifySettings() {
         if (client == null) {
             DroidClientConfig.Builder builder = new DroidClientConfig.Builder("http://cmput301.softwareprocess.es:8080");

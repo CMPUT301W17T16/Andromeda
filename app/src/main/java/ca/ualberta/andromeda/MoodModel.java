@@ -19,12 +19,14 @@ import java.util.ArrayList;
 /**
  * Created by pensk on 2017/02/27.
  */
-
 public class MoodModel implements Model<Mood> {
     private Gson gson;
     private ArrayList<Mood> moodList;
     private final String FILENAME = "moods.json";
 
+    /**
+     * Instantiates a new Mood model.
+     */
     public MoodModel(){
         this.gson = new Gson();
         this.loadList();
@@ -58,7 +60,7 @@ public class MoodModel implements Model<Mood> {
         this.moodList.add(mood);
         this.saveList();
     }
-    
+
     @Override
     public void loadList() {
         /* load from disk */

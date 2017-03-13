@@ -13,11 +13,17 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * The type Main page.
+ */
 public class MainPage extends AndromedaActivity {
 
 
     private ListView oldMoodList;
     private ArrayList<Mood> moodList = new ArrayList<Mood>();
+    /**
+     * The Mood controller.
+     */
     MoodController moodController;
 
     @Override
@@ -50,12 +56,22 @@ public class MainPage extends AndromedaActivity {
     }
 
 
+    /**
+     * My moods.
+     *
+     * @param v the v
+     */
     public void myMoods(View v){
         Intent intent = new Intent(this, MyMoods.class);
         intent.putExtra("user", user.getUsername());
         startActivity(intent);
     }
 
+    /**
+     * Notification.
+     *
+     * @param v the v
+     */
     public void notification(View v){
 //        Intent intent = new Intent(this, Notifications.class);
 //        intent.putExtra("user", user.getUsername());

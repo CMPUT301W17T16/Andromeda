@@ -7,6 +7,9 @@ package ca.ualberta.andromeda;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * The type Filter activity.
+ */
 public class FilterActivity extends AppCompatActivity {
 
     @Override

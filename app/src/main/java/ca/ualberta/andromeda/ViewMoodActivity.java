@@ -140,7 +140,7 @@ public class ViewMoodActivity extends AndromedaActivity {
         date = mood.getDate();
         DateHolder.setText(date.toString());
 
-        MoodSpinner.setSelection(getIndex(MoodSpinner, mood.getEmotion().getEmotion().toString()));
+        MoodSpinner.setSelection(getIndex(MoodSpinner, mood.getEmotion().getState()));
 
         SocialSpinner.setSelection(getIndex(SocialSpinner, mood.getSocialSituation()));
 

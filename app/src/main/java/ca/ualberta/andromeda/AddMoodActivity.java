@@ -195,7 +195,7 @@ public class AddMoodActivity extends AndromedaActivity {
     public void saveMood(View v){
         Trigger = TriggerHolder.getText().toString();
         Details = DetailHolder.getText().toString();
-        moodController.createMood(username, SocialSit, state);
+        moodController.createMood(username, SocialSit, state, Trigger, Details);
         finish();
     }
   

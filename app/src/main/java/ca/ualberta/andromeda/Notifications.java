@@ -20,6 +20,7 @@ public class Notifications extends AndromedaActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notifications);
     }
+
     public void viewUser(String User) {
 
     }

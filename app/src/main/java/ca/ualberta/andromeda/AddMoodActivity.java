@@ -2,6 +2,7 @@ package ca.ualberta.andromeda;
 
 import android.Manifest;
 import android.content.Intent;
+
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -10,6 +11,10 @@ import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+
+import android.os.UserHandle;
+import android.provider.MediaStore;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,37 +31,44 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
-public class AddMoodActivity extends AndromedaActivity{
-    public String testString;
-    private String theMood;
-    private String SocialSit;
-    private String Details;
-    private String Trigger;
-    public String username;
-    private MoodController moodController;
-    private UserController userController;
-    private Emotion.State state;
-    private LocationManager locationManager;
-    private LocationListener listener;
+
+public class AddMoodActivity extends AndromedaActivity {
+    protected String theMood;
+    protected String username;
+    protected String SocialSit;
+    protected String Details;
+    protected String Trigger;
+    protected Emotion.State state;
+
+    TextView UsernameHolder;
+    TextView DateHolder;
+    Spinner MoodSpinner;
+    Spinner SocialSpinner;
+    EditText TriggerHolder;
+    EditText DetailHolder;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_mood);
+
         moodController = ModelManager.getMoodController();
         userController = ModelManager.getUserController();
-        setContentView(R.layout.activity_add_mood);
-        Button DeleteButton = (Button) findViewById(R.id.DeleteButton);
-        Button SaveButton = (Button) findViewById(R.id.SaveButton);
 
-        TextView UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
-        TextView date = (TextView) findViewById(R.id.DateHolder);
-        Spinner MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
-        Spinner SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
-        EditText TriggerHolder = (EditText) findViewById(R.id.TriggerHolder);
-        EditText DetailHolder = (EditText) findViewById(R.id.DetailHolder);
 
-        //get loction
+        UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
+        DateHolder = (TextView) findViewById(R.id.DateHolder);
+        MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
+        SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
+        TriggerHolder = (EditText) findViewById(R.id.TriggerHolder);
+        DetailHolder = (EditText) findViewById(R.id.DetailHolder);
+        
+      
+       //get loction
         Switch location = (Switch) findViewById(R.id.LocationSwitch);
         location.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
@@ -94,17 +106,7 @@ public class AddMoodActivity extends AndromedaActivity{
                 }
             }
         });
-
-        // Loads the username
-        Intent intent = getIntent();
-        username = intent.getStringExtra("user");
-        UsernameHolder.setText(username);
-
-        // Loads the current date and time, saved as a string
-        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
-        String currentDateandTime = df.format(Calendar.getInstance().getTime());
-        date.setText(currentDateandTime);
-
+      
         // Drop down list for the moods
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,
                 R.array.moods_array, android.R.layout.simple_spinner_item);
@@ -117,11 +119,13 @@ public class AddMoodActivity extends AndromedaActivity{
         socAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SocialSpinner.setAdapter(socAdapter);
 
+
         // Saves the selected social situation as a string in "SocialSit"
         SocialSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 SocialSit = parent.getItemAtPosition(position).toString();
             }
+
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
@@ -161,37 +165,41 @@ public class AddMoodActivity extends AndromedaActivity{
                 }
 
             }
+
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+    }
 
-        // Loads the input from trigger
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Intent intent = getIntent();
+
+        // Set username
+        username = intent.getStringExtra("user");
+        UsernameHolder.setText(username);
+
+        // Load date
+        Date now = new Date();
+        DateHolder.setText(now.toString());
+    }
+
+
+    public void deleteMood(View v){
+        finish();
+    }
+
+    // Saves the updated mood
+    public void saveMood(View v){
         Trigger = TriggerHolder.getText().toString();
-
-        // Loads the inout from details
         Details = DetailHolder.getText().toString();
-
-
-        //Delete Button finishes activity and saves nothing
-        DeleteButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        // Save button save everything in the controller
-
-        SaveButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Pass information to the controllers.
-
-                //user = userController.getUserByUsername(username);
-                moodController.createMood(username, SocialSit, state);
-                finish();
-            }
-        });}
-
-    private void configure_button() {
+        moodController.createMood(username, SocialSit, state);
+        finish();
+    }
+  
+   private void configure_button() {
         // first check for permissions
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
@@ -221,8 +229,4 @@ public class AddMoodActivity extends AndromedaActivity{
                 break;
         }
     }
-
-
-        // Add Image
-
-    }
+}

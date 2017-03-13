@@ -97,7 +97,7 @@ public class ElasticSearchManager {
                 try {
                     DocumentResult result = client.execute(index);
                     if (result.isSucceeded()){
-                        mood.setId(result.getId());
+                        // TODO: fix
                     }else {
                         Log.i("Error","Elasticsearch was not able to add the mood");
                     }

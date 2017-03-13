@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
 
 /**
  * Created by pensk on 2017/02/27.
+ *
+ * Moved into MoodTest.
  */
 
 public class MoodControllerTest {

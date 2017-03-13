@@ -125,7 +125,7 @@ public class MoodController {
      * @param detail    the detail
      */
 
-    public void updateMood(String id, String user, String situation, Date date, Emotion.State state, String trigger, String detail) {
+    public void updateMood(String id, String user, String situation, Date date, Emotion.State state, String trigger, String detail){
         this.getMood(id).edit(user, situation, date, state, trigger, detail);
         moodModel.saveList();
     }
@@ -149,7 +149,7 @@ public class MoodController {
     }
 
     public void deleteMood(String id){
-        moodModel.deleteItem(this.getMood(id));
+        moodModel.deleteItem(this.getPosition(id));
     }
 
     /**

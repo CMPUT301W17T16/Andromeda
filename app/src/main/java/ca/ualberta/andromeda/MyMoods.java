@@ -44,6 +44,11 @@ public class MyMoods extends UsersMoods {
 
     }
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+    }
+
     /**
      * Goes to add New mood.
      *

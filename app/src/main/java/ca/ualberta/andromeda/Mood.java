@@ -40,11 +40,12 @@ public class Mood {
         this.emotion = new Emotion(state);
     }
 
-    public void edit(User user, String mood, String socialSituation, Date date){
+    public void edit(User user, String mood, String socialSituation, Date date, Emotion.State state){
         this.user = user;
         this.mood = mood;
         this.socialSituation = socialSituation;
         this.date = date;
+        this.emotion = new Emotion(state);
     }
 
     public Emotion getEmotion(){ return this.emotion; }
@@ -64,7 +65,7 @@ public class Mood {
     // TODO: Fix this to display in listview correctly
     @Override
     public String toString(){
-        return user.getUsername() + " " + socialSituation;
+        return user.getUsername() + " " + socialSituation + " " + mood + " " + date + " " + emotion;
     }
 
 }

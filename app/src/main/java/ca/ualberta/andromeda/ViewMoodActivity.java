@@ -7,6 +7,7 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,8 +26,10 @@ public class ViewMoodActivity extends AndromedaActivity {
 
     private MoodController moodController;
     private UserController userController;
+    private ArrayAdapter<Mood> adapter;
     private String username;
-    private String date;
+    private String id;
+    private Integer idNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +44,45 @@ public class ViewMoodActivity extends AndromedaActivity {
 
         TextView Username = (TextView) findViewById(R.id.UsernameHolder);
         TextView Date = (TextView) findViewById(R.id.DateHolder);
-        TextView Mood = (TextView) findViewById(R.id.MoodHolder);
-        TextView SocialSit = (TextView) findViewById(R.id.SocialSitHolder);
+        Spinner MoodSpinner = (Spinner) findViewById(R.id.MoodHolder);
+        Spinner SocialSpinner = (Spinner) findViewById(R.id.SocialSitHolder);
         TextView Trigger = (TextView) findViewById(R.id.TriggerHolder);
         TextView Detail = (TextView) findViewById(R.id.DetailHolder);
 
+        adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        adapter.addAll(moodController.getUserMoods(this.user));
+
+        // Loading User
+        Username.setText(user.getUsername());
+
+        // Loading Date
         Intent intent = getIntent();
-        username = intent.getStringExtra("user");
-        Username.setText(username);
+        id = intent.getStringExtra("ID");
+        idNum = Integer.parseInt(id);
 
-        date = intent.getStringExtra("position");
-        Date.setText(date);
+        moodController.getMood(idNum);
+        Date.setText(id);
 
-        moodController.getAllMoods();
+
+
+        // Loading Mood on drop down list
+        ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,
+                R.array.moods_array, android.R.layout.simple_spinner_item);
+        MoodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        MoodSpinner.setAdapter(MoodAdapter);
+
+        // Loading SocialSit on drop down list
+        ArrayAdapter<CharSequence> socAdapter = ArrayAdapter.createFromResource(this,
+                R.array.social_sit_array, android.R.layout.simple_spinner_item);
+        socAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SocialSpinner.setAdapter(socAdapter);
+
+
+        // Loading SocialSit
+
+        // Loading Trigger
+
+        // Loading Detail
 
 
         // TODO Load all the info in the correct textViews
@@ -65,9 +94,8 @@ public class ViewMoodActivity extends AndromedaActivity {
             public void onClick(View v) {
                 setResult(RESULT_OK);
 
-                // TODO Delete the specific entry and go back
+                moodController.deleteMood(idNum);
 
-                // Finish this activity, go back
                 finish();
             }
         });
@@ -78,6 +106,7 @@ public class ViewMoodActivity extends AndromedaActivity {
                 setResult(RESULT_OK);
 
                 // TODO Save the entry or update the entry and then go back
+//                moodController.updateMood(idNum, user, );
 
                 // Finish this activity, go back
                 finish();

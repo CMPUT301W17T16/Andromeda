@@ -30,14 +30,13 @@ public class MyMoods extends UsersMoods {
         moodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 intent.putExtra("user", user.getUsername());
-                intent.putExtra("position", position);
+//                intent.putExtra("ID",  ((Mood) parent.getItemAtPosition(position)).getId());
+                intent.putExtra("ID",  String.valueOf(position));
+
                 startActivity(intent);
             }
         });
-
-
 
     }
     @Override

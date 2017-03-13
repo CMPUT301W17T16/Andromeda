@@ -84,11 +84,29 @@ public class AddMoodActivity extends AndromedaActivity{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 theMood = parent.getItemAtPosition(position).toString();
                 switch (theMood) {
-                    case "Happiness":
-                        state = Emotion.State.HAPPY;
+                    case "Anger":
+                        state = Emotion.State.ANGER;
+                        break;
+                    case "Confusion":
+                        state = Emotion.State.CONFUSION;
+                        break;
+                    case "Disgust":
+                        state = Emotion.State.DISGUST;
+                        break;
+                    case "Fear":
+                        state = Emotion.State.FEAR;
+                        break;
+                    case "Happiess":
+                        state = Emotion.State.HAPPINESS;
                         break;
                     case "Sadness":
-                        state = Emotion.State.SAD;
+                        state = Emotion.State.SADNESS;
+                        break;
+                    case "Shame":
+                        state = Emotion.State.SHAME;
+                        break;
+                    case "Surprise":
+                        state = Emotion.State.SURPRISE;
                         break;
                     default:
                         break;

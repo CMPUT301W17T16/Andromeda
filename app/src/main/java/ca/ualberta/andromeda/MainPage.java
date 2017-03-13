@@ -45,7 +45,7 @@ public class MainPage extends AndromedaActivity {
         moodList = moodController.getAllMoods();
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this,
                 R.layout.mood_listview, moodList);
-        adapter.addAll(moodList);
+//        adapter.addAll(moodList);
         oldMoodList.setAdapter(adapter);
     }
 
@@ -54,9 +54,9 @@ public class MainPage extends AndromedaActivity {
     public void onContentChanged() {
         super.onContentChanged();
 
-        //View empty = findViewById(R.id.empty);
-        //ListView list = (ListView) findViewById(R.id.MoodList);
-        //list.setEmptyView(empty);
+        View empty = findViewById(R.id.empty);
+        ListView list = (ListView) findViewById(R.id.MoodList);
+        list.setEmptyView(empty);
     }
 
 

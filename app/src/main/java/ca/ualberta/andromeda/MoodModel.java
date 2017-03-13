@@ -68,8 +68,11 @@ public class MoodModel implements Model<Mood> {
             FileInputStream fis = ModelManager.getAppInstance().openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             String line = in.readLine();
+            int x = 0;
             while (line != null) {
                 this.moodList.add(gson.fromJson(line, Mood.class));
+                this.moodList.get(x).setId(x);
+                x++;
                 line = in.readLine();
             }
             fis.close();

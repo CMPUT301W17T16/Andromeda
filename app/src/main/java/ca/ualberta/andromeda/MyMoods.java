@@ -36,7 +36,7 @@ public class MyMoods extends UsersMoods {
                 intent.putExtra("user", user.getUsername());
 
                 // TODO: FIX THIS
-                intent.putExtra("ID", String.valueOf(id));
+                intent.putExtra("ID", moodList.get(position).getId());
                 startActivity(intent);
             }
         });

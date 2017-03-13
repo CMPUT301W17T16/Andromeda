@@ -26,7 +26,7 @@ import java.util.Date;
 
 public class ViewMoodActivity extends AndromedaActivity {
 
-    private Integer idNum;
+    private String idNum;
     private Date date;
     protected String theMood;
     protected String username;
@@ -34,6 +34,7 @@ public class ViewMoodActivity extends AndromedaActivity {
     protected String Details;
     protected String Trigger;
     protected Emotion.State state;
+    private Integer position;
 
     TextView UsernameHolder;
     TextView DateHolder;
@@ -133,8 +134,9 @@ public class ViewMoodActivity extends AndromedaActivity {
         UsernameHolder.setText(username);
 
         // Loading Mood
-        idNum = Integer.parseInt(intent.getStringExtra("ID"));
-        Mood mood = moodController.getMood(idNum);
+        idNum = intent.getStringExtra("ID");
+        position = moodController.getPosition(idNum);
+        Mood mood = moodController.getMood(position);
 
         // Loading date
         date = mood.getDate();
@@ -155,7 +157,7 @@ public class ViewMoodActivity extends AndromedaActivity {
     }
 
     public void deleteMood(View v){
-        moodController.deleteMood(idNum);
+        moodController.deleteMood(position);
         finish();
     }
 
@@ -163,7 +165,7 @@ public class ViewMoodActivity extends AndromedaActivity {
     public void saveMood(View v){
         Trigger = TriggerHolder.getText().toString();
         Details = DetailHolder.getText().toString();
-        moodController.updateMood(idNum, username, SocialSit, date, state);
+        moodController.updateMood(position, username, SocialSit, date, state, Trigger, Details);
         finish();
     }
 

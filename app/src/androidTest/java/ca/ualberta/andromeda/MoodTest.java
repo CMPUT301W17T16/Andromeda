@@ -20,6 +20,8 @@ public class MoodTest {
         Date date1 = new Date();
         Date date2 = new Date();
 
+        assertEquals(user1.getUsername(), "1");
+
         //String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id)
         Mood mood1 = new Mood(user1.getUsername(), "Crowd", date1, Emotion.State.HAPPINESS, "", "", "id1");
         Mood mood2 = new Mood(user2.getUsername(), "Alone", date2, Emotion.State.FEAR, "", "", "id2");
@@ -31,10 +33,18 @@ public class MoodTest {
 
         //check we inserted the mood for the user
         assertEquals(moodController.getMood("id1"), mood1);
-        assertEquals(moodController.getUserMoods(user1).size(), 1);
+        assertTrue(moodController.getUserMoods(user1).contains(mood1));
 
         //String id, String user, String situation, Date date, Emotion.State state, String trigger, String detail
-        moodController.updateMood("id1", );
+        moodController.updateMood(user2.getUsername(), "id1", "Two People", date1, Emotion.State.CONFUSION, "", "");
+
+        assertEquals(moodController.getMood("id1").getEmotion(), Emotion.State.CONFUSION);
+        assertEquals(moodController.getMood("id1").getUser(), user2);
+        assertEquals(moodController.getMood("id1").getSocialSituation(), "Two People");
+        assertTrue(moodController.getUserMoods(user2).contains(mood1));
+
+        moodController.deleteMood(mood1);
+        assertTrue(moodController.getMood("id1") == null);
     }
 
 }

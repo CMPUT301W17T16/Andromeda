@@ -83,6 +83,11 @@ public class AddMoodActivity extends AndromedaActivity {
                         @Override
                         public void onLocationChanged(Location location) {
                             Toast.makeText(getApplicationContext(),"\n " + location.getLongitude() + " " + location.getLatitude(), Toast.LENGTH_SHORT).show();
+                            String Long = String.valueOf(location.getLongitude());
+                            String Lat = String.valueOf(location.getLatitude());
+                            String myLoc = Long + Lat;
+
+
                         }
 
                         @Override

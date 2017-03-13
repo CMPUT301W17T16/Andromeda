@@ -54,9 +54,9 @@ public class MainPage extends AndromedaActivity {
     public void onContentChanged() {
         super.onContentChanged();
 
-        //View empty = findViewById(R.id.empty);
-        //ListView list = (ListView) findViewById(R.id.MoodList);
-        //list.setEmptyView(empty);
+        View empty = findViewById(R.id.empty);
+        ListView list = (ListView) findViewById(R.id.MoodList);
+        list.setEmptyView(empty);
     }
 
 

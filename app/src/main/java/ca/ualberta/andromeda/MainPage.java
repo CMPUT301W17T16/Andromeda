@@ -18,34 +18,28 @@ public class MainPage extends AndromedaActivity {
 
     private ListView oldMoodList;
     private ArrayList<Mood> moodList = new ArrayList<Mood>();
-    User user;
-    String username;
+    MoodController moodController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        oldMoodList = (ListView) findViewById(R.id.listView);
+        oldMoodList = (ListView) findViewById(R.id.MoodList);
+        moodController = ModelManager.getMoodController();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
     protected void onStart() {
 
         super.onStart();
-        Intent intent = getIntent();
-        username = intent.getStringExtra("user");
 
 
 
         // TODO:need getMoodList in the moodController 2017/3/5
-        // moodList = MoodController.getModdList();
-        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this,
-                R.layout.mood_listview, moodList);
+        moodList = moodController.getAllMoods();
+        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        adapter.clear();
+        adapter.addAll(moodList);
         oldMoodList.setAdapter(adapter);
     }
 
@@ -55,14 +49,19 @@ public class MainPage extends AndromedaActivity {
         super.onContentChanged();
 
         View empty = findViewById(R.id.empty);
-        ListView list = (ListView) findViewById(R.id.listView);
+        ListView list = (ListView) findViewById(R.id.MoodList);
         list.setEmptyView(empty);
     }
 
     public void myMoods(View v){
         Intent intent = new Intent(this, MyMoods.class);
-        intent.putExtra("user", username);
+        intent.putExtra("user", user.getUsername());
         startActivity(intent);
     }
-
+    
+    public void notification(View v){
+        Intent intent = new Intent(this, Notifications.class);
+        intent.putExtra("user", user.getUsername());
+        startActivity(intent);
+    }
 }

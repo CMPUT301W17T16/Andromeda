@@ -19,6 +19,7 @@ public class ModelManager extends Application {
     private static ModelManager appInstance;
 
     public void onCreate(){
+        super.onCreate();
         appInstance = this;
     }
 

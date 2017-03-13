@@ -14,14 +14,17 @@ import java.util.ArrayList;
  * Created by Jeff on 3/11/2017.
  */
 
-public class UsersMoods extends AndromedaActivity {
+public abstract class UsersMoods extends AndromedaActivity {
 
-    ArrayList<Mood> moodList;
-    ListView moodListView;
+    protected MoodController moodController;
+    protected ArrayList<Mood> moodList;
+    protected ListView moodListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        moodController = ModelManager.getMoodController();
     }
 
     @Override
@@ -37,8 +40,19 @@ public class UsersMoods extends AndromedaActivity {
         // TODO: get all the users moods
 
         // display all the users Moods
-        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview, moodList);
-        moodListView.setAdapter(adapter);
+        //ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview, moodList);
+        //moodListView.setAdapter(adapter);
+    }
+
+
+    //http://stackoverflow.com/questions/5565451/display-no-item-message-in-listview?noredirect=1&lq=1
+    @Override
+    public void onContentChanged() {
+        super.onContentChanged();
+
+        View empty = findViewById(R.id.empty);
+        ListView list = (ListView) findViewById(R.id.MoodList);
+        list.setEmptyView(empty);
     }
 
 }

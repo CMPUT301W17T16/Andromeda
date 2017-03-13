@@ -6,27 +6,39 @@ package ca.ualberta.andromeda;
 
 import java.util.Date;
 
+import io.searchbox.annotations.JestId;
+
 /**
  * Created by pensk on 2017/02/27.
  */
 
 public class Mood {
-    private User user;
+    private String user;
     private String socialSituation;
     private Date date;
     private String location;
     private String detail;
     private String image;
     private Emotion emotion;
+    @JestId
+    private String id;
 
-    public Mood(User user, String socialSituation, Date date, Emotion.State state){
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Mood(String user, String socialSituation, Date date, Emotion.State state){
         this.user = user;
         this.socialSituation = socialSituation;
         this.date = date;
-        this.emotion = new Emotion(Emotion.State.HAPPY);
+        this.emotion = new Emotion(state);
     }
 
-    public void edit(User user, String socialSituation, Date date){
+    public void edit(String user, String socialSituation, Date date){
         this.user = user;
         this.socialSituation = socialSituation;
         this.date = date;
@@ -34,7 +46,7 @@ public class Mood {
 
     public Emotion getEmotion(){ return this.emotion; }
 
-    public User getUser(){
+    public String getUser(){
         return this.user;
     }
 
@@ -49,7 +61,7 @@ public class Mood {
     // TODO: Fix this to display in listview correctly
     @Override
     public String toString(){
-        return user.getUsername() + " " + socialSituation;
+        return user + " " + socialSituation;
     }
 
 }

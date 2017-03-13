@@ -24,6 +24,7 @@ public class Notifications extends AndromedaActivity {
 
     private ArrayList<User> userList;
 
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notifications);

@@ -40,4 +40,5 @@ public class FriendsMoods extends UsersMoods{
         // TODO: check if already following
 
     }
+
 }

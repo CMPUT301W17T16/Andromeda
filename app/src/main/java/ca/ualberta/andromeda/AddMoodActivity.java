@@ -116,9 +116,9 @@ public class AddMoodActivity extends AndromedaActivity{
             public void onClick(View v) {
                 // Pass information to the controllers.
 
-                user = userController.getUserByUsername(username);
-                moodController.createMood(user, SocialSit, state);
-                //finish();
+                //user = userController.getUserByUsername(username);
+                moodController.createMood(username, SocialSit, state);
+                finish();
             }
         });}
 

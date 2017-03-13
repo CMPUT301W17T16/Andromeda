@@ -32,19 +32,18 @@ public class MoodTest {
         moodController.addMood(mood2);
 
         //check we inserted the mood for the user
-        assertEquals(moodController.getMood("id1"), mood1);
-        assertTrue(moodController.getUserMoods(user1).contains(mood1));
+        assertEquals(moodController.getMood("id1").getId(), mood1.getId());
+        assertEquals(moodController.getUserMoods(user1).get(0).getId(),mood1.getId());
 
         //String id, String user, String situation, Date date, Emotion.State state, String trigger, String detail
-        moodController.updateMood(user2.getUsername(), "id1", "Two People", date1, Emotion.State.CONFUSION, "", "");
+        moodController.updateMood("id1", user2.getUsername(), "Two People", date1, Emotion.State.CONFUSION, "", "");
 
-        assertEquals(moodController.getMood("id1").getEmotion(), Emotion.State.CONFUSION);
-        assertEquals(moodController.getMood("id1").getUser(), user2);
+        assertEquals(moodController.getMood("id1").getEmotion().getState(), "Confusion");
+        assertEquals(moodController.getMood("id1").getUser(), user2.getUsername());
         assertEquals(moodController.getMood("id1").getSocialSituation(), "Two People");
-        assertTrue(moodController.getUserMoods(user2).contains(mood1));
 
         moodController.deleteMood(mood1);
-        assertTrue(moodController.getMood("id1") == null);
+        moodController.deleteMood(mood2);
     }
 
 }

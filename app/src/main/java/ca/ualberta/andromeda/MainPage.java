@@ -1,17 +1,22 @@
 package ca.ualberta.andromeda;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+
+/**
+ * This class extends from <code>AndromedaActivity</code>. Show the mood history of user's and friend's. This page will get the moods through <code>MoodController</code>.
+ * The user's name will pass to the <code>UsersMoods</code>. This page link to the <code>Map</code>, <code>Filter</code> ,
+ * <code>UsersMoods</code> and <code>notification</code>. If there is not any mood, it will show "No Mood" on screen.
+ *
+ *
+ * @see     MoodController
+ * @see     AndromedaActivity
+ */
 
 public class MainPage extends AndromedaActivity {
 
@@ -39,10 +44,12 @@ public class MainPage extends AndromedaActivity {
         moodList = moodController.getAllMoods();
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this,
                 R.layout.mood_listview, moodList);
-        adapter.addAll(moodList);
         oldMoodList.setAdapter(adapter);
     }
 
+    /**
+     *
+     */
     //http://stackoverflow.com/questions/5565451/display-no-item-message-in-listview?noredirect=1&lq=1
     @Override
     public void onContentChanged() {
@@ -54,12 +61,20 @@ public class MainPage extends AndromedaActivity {
     }
 
 
+    /**
+     *
+     * @param v
+     */
     public void myMoods(View v){
         Intent intent = new Intent(this, MyMoods.class);
         intent.putExtra("user", user.getUsername());
-        startActivity(intent);
+        startActivity(intent); 
     }
 
+    /**
+     *
+     * @param v
+     */
     public void notification(View v){
         Intent intent = new Intent(this, Notifications.class);
         intent.putExtra("user", user.getUsername());

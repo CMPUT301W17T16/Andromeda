@@ -42,8 +42,8 @@ public class MoodTest {
         assertEquals(moodController.getMood("id1").getUser(), user2.getUsername());
         assertEquals(moodController.getMood("id1").getSocialSituation(), "Two People");
 
-        moodController.deleteMood(mood1);
-        moodController.deleteMood(mood2);
+        moodController.deleteMood(mood1.getId());
+        moodController.deleteMood(mood2.getId());
     }
 
 }

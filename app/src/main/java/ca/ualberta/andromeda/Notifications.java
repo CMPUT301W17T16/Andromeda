@@ -27,6 +27,9 @@ public class Notifications extends AndromedaActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notifications);
+
+        userController = ModelManager.getUserController();
+
         requests = (ListView) findViewById(R.id.notificationsList);
         Button accept = (Button) findViewById(R.id.acceptButton);
         Button decline = (Button) findViewById(R.id.declineButton);
@@ -35,29 +38,32 @@ public class Notifications extends AndromedaActivity {
          * When we accept a follow request, we will add that user to the
          * FollowingList
          */
-        acceptButton.setOnClickListener(new View.OnClickListener() {
+        accept.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setResult(RESULT_OK);
-                tweetList.clear();
-                adapter.notifyDataSetChanged();
+                // Need to get the userid that is beside the button.
+                user = userController.getUser(1);
+                addToFollowingList(user);
                 //saveInFile();
             }
         });
 
-        declineButton.setOnClickListener(new View.OnClickListener() {
+        decline.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setResult(RESULT_OK);
-                tweetList.clear();
-                adapter.notifyDataSetChanged();
+                user = userController.getUser(1);
+                //Need to remove request from requests
+                requests.remove(1);
                 //saveInFile();
             }
         });
     }
-    public void viewUser(String User) {
-        username = super.getUser();
+    public void viewUser(String user) {
+        return userController.getUser();
     }
 
-    public void addToFollowingList() {
+    public void addToFollowingList(String user) {
+
 
     }
 

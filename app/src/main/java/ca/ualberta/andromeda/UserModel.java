@@ -27,8 +27,8 @@ public class UserModel implements Model<User> {
 
 
     public UserModel(){
-        this.loadList();
         this.gson = new Gson();
+        this.loadList();
     }
 
     public ArrayList<User> getList(){
@@ -63,7 +63,7 @@ public class UserModel implements Model<User> {
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             String line = in.readLine();
             while (line != null) {
-                this.userList.add(gson.fromJson(line, User.class));
+                this.userList.add(this.gson.fromJson(line, User.class));
                 line = in.readLine();
             }
             fis.close();
@@ -79,7 +79,7 @@ public class UserModel implements Model<User> {
             FileOutputStream fos = ModelManager.getAppInstance().openFileOutput(FILENAME, Context.MODE_PRIVATE);
             int length = this.userList.size();
             for(int x=0; x<length; x++) {
-                fos.write((gson.toJson(this.userList.get(x))+"\n").getBytes());
+                fos.write((this.gson.toJson(this.userList.get(x))+"\n").getBytes());
             }
             fos.close();
         } catch (Exception e) {

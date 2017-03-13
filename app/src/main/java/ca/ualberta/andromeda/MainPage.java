@@ -62,4 +62,8 @@ public class MainPage extends AndromedaActivity {
 //        startActivity(intent);
     }
 
+    public ListView getMoodListView() {
+        return oldMoodList;
+    }
+
 }

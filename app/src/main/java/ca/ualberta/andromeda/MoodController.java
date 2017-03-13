@@ -41,8 +41,14 @@ public class MoodController {
         return moodModel.getList();
     }
 
-    public Mood getMood(int index){
-        return moodModel.getItem(index);
+    public Mood getMood(int id){
+        for(int x=0; x<moodModel.getList().size(); x++){
+            if(moodModel.getItem(x).getId() == id){
+                return moodModel.getItem(x);
+            }
+        }
+        //TODO -- throw an exception
+        return moodModel.getItem(0);
     }
 
     public void addMood(Mood mood){

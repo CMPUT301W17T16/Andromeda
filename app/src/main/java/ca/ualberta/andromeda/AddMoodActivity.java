@@ -42,7 +42,8 @@ public class AddMoodActivity extends AndromedaActivity {
     protected String Details;
     protected String Trigger;
     protected Emotion.State state;
-
+    private LocationManager locationManager;
+    private LocationListener listener;
     TextView UsernameHolder;
     TextView DateHolder;
     Spinner MoodSpinner;

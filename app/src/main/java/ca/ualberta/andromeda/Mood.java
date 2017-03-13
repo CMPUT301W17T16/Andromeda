@@ -62,7 +62,7 @@ public class Mood {
     // TODO: Fix this to display in listview correctly
     @Override
     public String toString(){
-        return user + " | " + socialSituation + " | " + emotion.getEmotion() + " | " + date;
+        return user + " | " + socialSituation + " | " + emotion.getState() + " | " + date;
     }
 
 }

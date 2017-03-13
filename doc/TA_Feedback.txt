@@ -1,0 +1,10 @@
+Part 2 Feedback
+Include a copy of the User Stories above the Use Case: Done
+Break Use Cases into smaller requirements: Done
+Add Use Case relations: Done
+
+Part 1 Feedback
+Fix the following test files:
+  + testEmotion(): Removed
+  + MoodControllerTest(): Done
+  + NotificationsTest(): Not Used yet

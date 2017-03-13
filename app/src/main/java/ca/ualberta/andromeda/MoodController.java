@@ -94,6 +94,10 @@ public class MoodController {
         return moodModel.getItem(index);
     }
 
+    public Mood getMood(String id){
+        return moodModel.getItem(this.getPosition(id));
+    }
+
     /**
      * Add mood.
      *
@@ -119,6 +123,11 @@ public class MoodController {
         moodModel.saveList();
     }
 
+    public void updateMood(String id, String user, String situation, Date date, Emotion.State state, String trigger, String detail){
+        this.getMood(id).edit(user, situation, date, state, trigger, detail);
+        moodModel.saveList();
+    }
+
     /**
      * Delete mood.
      *
@@ -138,7 +147,7 @@ public class MoodController {
     }
 
     public void deleteMood(String id){
-        moodModel.deleteItem(this.getMood(id));
+        moodModel.deleteItem(this.getPosition(id));
     }
 
     /**

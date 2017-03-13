@@ -29,5 +29,4 @@ public interface Model<M> {
 
     public void saveList();
 
-
 }

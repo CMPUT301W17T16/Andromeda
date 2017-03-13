@@ -65,6 +65,7 @@ public class MoodController {
         moodModel.addItem(mood);
     }
 
+
     public void updateMood(String id, String user, String situation, Date date, Emotion.State state, String trigger, String detail){
         this.getMood(id).edit(user, situation, date, state, trigger, detail);
         moodModel.saveList();

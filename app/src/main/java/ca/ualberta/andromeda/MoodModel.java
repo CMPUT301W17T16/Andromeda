@@ -58,7 +58,7 @@ public class MoodModel implements Model<Mood> {
         this.moodList.add(mood);
         this.saveList();
     }
-
+    
     @Override
     public void loadList() {
         /* load from disk */

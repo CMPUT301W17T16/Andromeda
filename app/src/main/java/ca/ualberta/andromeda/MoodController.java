@@ -21,6 +21,7 @@ public class MoodController {
         userModel = ModelManager.getUserModel();
     }
 
+
     public Mood createMood(String user, String socialSituation, Emotion.State state, String trigger, String detail){
         String id = getUniqueId();
         Mood newMood = new Mood(user, socialSituation, new Date(), state, trigger, detail, id);
@@ -50,16 +51,23 @@ public class MoodController {
         return moodModel.getList();
     }
 
-    public Mood getMood(int index){
-        return moodModel.getItem(index);
+    public Mood getMood(String id){
+        for(int x=0; x<moodModel.getList().size(); x++){
+            if(moodModel.getItem(x).getId().equals(id)){
+                return moodModel.getItem(x);
+            }
+        }
+        //TODO -- throw an exception
+        return moodModel.getItem(0);
     }
 
     public void addMood(Mood mood){
         moodModel.addItem(mood);
     }
 
-    public void updateMood(int index, String user, String situation, Date date, Emotion.State state, String trigger, String detail){
-        moodModel.getItem(index).edit("adfgh", situation, date, state, trigger, detail);
+    public void updateMood(String id, String user, String situation, Date date, Emotion.State state, String trigger, String detail){
+        this.getMood(id).edit(user, situation, date, state, trigger, detail);
+        moodModel.saveList();
     }
 
     public void deleteMood(int index){

@@ -138,7 +138,7 @@ public class ViewMoodActivity extends AndromedaActivity {
         // Loading Mood
         idNum = intent.getStringExtra("ID");
         position = moodController.getPosition(idNum);
-        Mood mood = moodController.getMood(position);
+        Mood mood = moodController.getMood(idNum);
 
         // Loading date
         date = mood.getDate();
@@ -170,7 +170,7 @@ public class ViewMoodActivity extends AndromedaActivity {
     public void saveMood(View v){
         Trigger = TriggerHolder.getText().toString();
         Details = DetailHolder.getText().toString();
-        moodController.updateMood(position, username, SocialSit, date, state, Trigger, Details);
+        moodController.updateMood(idNum, username, SocialSit, date, state, Trigger, Details);
         finish();
     }
 

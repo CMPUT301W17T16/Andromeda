@@ -9,7 +9,7 @@ package ca.ualberta.andromeda;
  */
 
 public class Emotion {
-    public enum State { HAPPY, SAD }
+    public enum State {  ANGER, CONFUSION, DISGUST, FEAR, HAPPINESS, SADNESS, SHAME, SURPRISE}
 
     private State state;
 
@@ -27,9 +27,21 @@ public class Emotion {
 
     public String getColor() {
         switch(state) {
-            case HAPPY:
+            case ANGER:
                 return "green";
-            case SAD:
+            case CONFUSION:
+                return "blue";
+            case DISGUST:
+                return "blue";
+            case FEAR:
+                return "blue";
+            case HAPPINESS:
+                return "blue";
+            case SADNESS:
+                return "blue";
+            case SHAME:
+                return "blue";
+            case SURPRISE:
                 return "blue";
             default:
                 return "white";

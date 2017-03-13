@@ -29,11 +29,10 @@ public class MyMoods extends UsersMoods {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent.putExtra("user", user.getUsername());
+                intent.putExtra("ID", String.valueOf(position));
                 startActivity(intent);
             }
         });
-
-
 
     }
     @Override
@@ -42,12 +41,10 @@ public class MyMoods extends UsersMoods {
         super.onStart();
 
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
-        adapter.clear();
+        //adapter.clear();
         adapter.addAll(moodController.getUserMoods(this.user));
         moodListView = (ListView) findViewById(R.id.MoodList);
         moodListView.setAdapter(adapter);
-
-
     }
 
     // goes to add mood view

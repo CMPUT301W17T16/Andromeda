@@ -40,10 +40,10 @@ public class MyMoods extends UsersMoods {
         // Load all of the moods from the user
         super.onStart();
 
-        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
-        adapter.addAll(moodController.getUserMoods(this.user));
-        moodListView = (ListView) findViewById(R.id.MoodList);
-        moodListView.setAdapter(adapter);
+//        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+//        adapter.addAll(moodController.getUserMoods(this.user));
+//        moodListView = (ListView) findViewById(R.id.MoodList);
+//        moodListView.setAdapter(adapter);
     }
 
     // goes to add mood view

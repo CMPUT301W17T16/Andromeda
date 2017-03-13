@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Date;
+
 /**
  * Created by livialee on 2017-03-05.
  */
@@ -31,7 +33,11 @@ public class ViewMoodActivity extends AndromedaActivity {
     private ArrayAdapter<Mood> adapter;
     private String username;
     private String id;
+    private String detailString;
+    private String triggerString;
+    private Date date;
     private Integer idNum;
+    private Mood EditMood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,23 +54,25 @@ public class ViewMoodActivity extends AndromedaActivity {
         TextView Date = (TextView) findViewById(R.id.DateHolder);
         Spinner MoodSpinner = (Spinner) findViewById(R.id.MoodHolder);
         Spinner SocialSpinner = (Spinner) findViewById(R.id.SocialSitHolder);
-        TextView Trigger = (TextView) findViewById(R.id.TriggerHolder);
-        TextView Detail = (TextView) findViewById(R.id.DetailHolder);
+        EditText Trigger = (EditText) findViewById(R.id.TriggerHolder);
+        EditText Detail = (EditText) findViewById(R.id.DetailHolder);
 
-        adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
-        adapter.addAll(moodController.getUserMoods(this.user));
-
-//         Loading User
-         Username.setText(user.getUsername());
-
-        // Loading Date
         Intent intent = getIntent();
         id = intent.getStringExtra("ID");
         idNum = Integer.parseInt(id);
 
-        moodController.getMood(idNum);
-        Date.setText(id);
+        EditMood = moodController.getMood(idNum);
+        detailString = EditMood.getDetail();
+        triggerString = EditMood.getTrigger();
+        date = EditMood.getDate();
+        SocialSit = EditMood.getSocialSituation();
+        theMood = EditMood.getMood();
 
+        // Loading User
+        Username.setText(user.getUsername());
+
+        // Loading Date
+        Date.setText(EditMood.getDate().toString());
 
         // Loading Mood on drop down list
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,
@@ -87,13 +95,20 @@ public class ViewMoodActivity extends AndromedaActivity {
         socAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SocialSpinner.setAdapter(socAdapter);
 
+        // Saves the selected mood as a string in "Mood"
+        MoodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                theMood = parent.getItemAtPosition(position).toString();
+            }
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
 
-
-        // Loading SocialSit
         // Loading Trigger
-        // Loading Detail
+        Trigger.setText(EditMood.getTrigger());
 
-        // TODO Load all the info in the correct textViews
+        // Loading Detail
+        Detail.setText(EditMood.getDetail());
 
         // TODO Change the color of the background to match the mood
 
@@ -111,9 +126,14 @@ public class ViewMoodActivity extends AndromedaActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setResult(RESULT_OK);
+                EditText Trigger = (EditText) findViewById(R.id.TriggerHolder);
+                EditText Detail = (EditText) findViewById(R.id.DetailHolder);
 
-                // TODO Save the entry or update the entry and then go back
-//                moodController.updateMood(idNum, user.getUsername(), );
+                triggerString = Trigger.getText().toString();
+                detailString = Detail.getText().toString();
+
+                // TODO Update the entry and then go back
+                moodController.updateMood(idNum, user.getUsername(), date , theMood, SocialSit, triggerString, detailString);
 
                 // Finish this activity, go back
                 finish();

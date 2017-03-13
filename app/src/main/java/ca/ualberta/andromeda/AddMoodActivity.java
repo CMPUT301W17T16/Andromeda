@@ -54,10 +54,8 @@ public class AddMoodActivity extends AndromedaActivity{
 
         // Loads the current date and time, saved as a string
         DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
-        newDate = Calendar.getInstance().getTime();
-
-        String currentDateandTime = df.format(Calendar.getInstance().getTime());
-        date.setText(currentDateandTime);
+        newDate = new Date();
+        date.setText(newDate.toString());
 
         // Drop down list for the moods
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,
@@ -134,12 +132,10 @@ public class AddMoodActivity extends AndromedaActivity{
         });
 
         // Save button save everything in the controller
-
         SaveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Pass information to the controllers.
 
-                //user = userController.getUserByUsername(username);
                 moodController.createMood(username, newDate, theMood, SocialSit, Trigger, Details );
                 finish();
             }

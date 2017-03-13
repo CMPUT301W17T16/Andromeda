@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -26,6 +27,18 @@ public class MainPage extends AndromedaActivity {
         setContentView(R.layout.activity_main_page);
         oldMoodList = (ListView) findViewById(R.id.MoodList);
         moodController = ModelManager.getMoodController();
+
+
+        final Intent intent = new Intent(this, ViewMoodActivity.class);
+
+        oldMoodList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                intent.putExtra("user", user.getUsername());
+                intent.putExtra("ID", String.valueOf(position));
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -38,8 +51,6 @@ public class MainPage extends AndromedaActivity {
 
         super.onStart();
         Intent intent = getIntent();
-
-
 
         // TODO:need getMoodList in the moodController 2017/3/5
         moodList = moodController.getAllMoods();

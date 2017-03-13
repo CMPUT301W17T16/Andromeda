@@ -22,6 +22,9 @@ public class Emotion {
     }
 
     public String getState() {
+        if (state == null) {
+            return "";
+        }
         switch(state) {
             case ANGER:
                 return "Anger";

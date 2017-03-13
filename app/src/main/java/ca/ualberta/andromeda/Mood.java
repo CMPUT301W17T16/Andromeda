@@ -21,6 +21,7 @@ public class Mood {
     private String trigger;
     private String image;
     private Emotion emotion;
+    private int id;
 
     public Mood(String user, String socialSituation, Date date, Emotion.State state){
         this.user = user;
@@ -58,6 +59,9 @@ public class Mood {
         return trigger;
     }
 
+    public int getId() { return this.id; }
+
+    public void setId(int id) { this.id = id; }
 
     // TODO: Fix this to display in listview correctly
     @Override

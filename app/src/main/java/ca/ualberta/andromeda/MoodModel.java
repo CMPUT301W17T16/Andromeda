@@ -70,7 +70,6 @@ public class MoodModel implements Model<Mood> {
             String line = in.readLine();
             while (line != null) {
                 this.moodList.add(gson.fromJson(line, Mood.class));
-                System.out.println(gson.fromJson(line, Mood.class));
                 line = in.readLine();
             }
             fis.close();

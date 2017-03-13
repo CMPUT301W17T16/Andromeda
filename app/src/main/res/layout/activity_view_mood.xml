@@ -67,7 +67,7 @@
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <Spinner
-            android:id="@+id/MoodHolder"
+            android:id="@+id/MoodSpinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0"
@@ -91,7 +91,7 @@
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <Spinner
-            android:id="@+id/SocialSitHolder"
+            android:id="@+id/SocialSitSpinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -169,21 +169,21 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/DeleteButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:backgroundTint="?attr/colorPrimaryDark"
             android:text="Delete"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="deleteMood"/>
 
         <Button
-            android:id="@+id/SaveButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:backgroundTint="@android:color/holo_red_light"
             android:text="Save"
+            android:onClick="saveMood"
             android:textSize="18sp" />
 
     </LinearLayout>

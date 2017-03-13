@@ -42,15 +42,9 @@ public class MainPage extends AndromedaActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
     protected void onStart() {
-
         super.onStart();
-        Intent intent = getIntent();
+//        Intent intent = getIntent();
 
         // TODO:need getMoodList in the moodController 2017/3/5
         moodList = moodController.getAllMoods();
@@ -77,5 +71,10 @@ public class MainPage extends AndromedaActivity {
         startActivity(intent);
     }
 
+    public void notification(View v){
+        Intent intent = new Intent(this, Notifications.class);
+        intent.putExtra("user", user.getUsername());
+        startActivity(intent);
+    }
 
 }

@@ -1,6 +1,8 @@
 package ca.ualberta.andromeda;
 
 import android.content.Intent;
+import android.os.UserHandle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,45 +19,37 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class AddMoodActivity extends AndromedaActivity{
 
-    private String theMood;
-    private String SocialSit;
-    private String Details;
-    private String Trigger;
-    public String username;
-    private MoodController moodController;
-    private UserController userController;
-    private Emotion.State state;
-    private Date newDate;
+public class AddMoodActivity extends AndromedaActivity {
+    protected String theMood;
+    protected String username;
+    protected String SocialSit;
+    protected String Details;
+    protected String Trigger;
+    protected Emotion.State state;
+
+    TextView UsernameHolder;
+    TextView DateHolder;
+    Spinner MoodSpinner;
+    Spinner SocialSpinner;
+    EditText TriggerHolder;
+    EditText DetailHolder;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_mood);
+
         moodController = ModelManager.getMoodController();
         userController = ModelManager.getUserController();
 
-        setContentView(R.layout.activity_add_mood);
-        Button DeleteButton = (Button) findViewById(R.id.DeleteButton);
-        Button SaveButton = (Button) findViewById(R.id.SaveButton);
-
-        TextView UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
-        TextView date = (TextView) findViewById(R.id.DateHolder);
-        Spinner MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
-        Spinner SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
-        EditText TriggerHolder = (EditText) findViewById(R.id.TriggerHolder);
-        EditText DetailHolder = (EditText) findViewById(R.id.DetailHolder);
-
-        // Loads the username
-        Intent intent = getIntent();
-        username = intent.getStringExtra("user");
-        UsernameHolder.setText(username);
-
-        // Loads the current date and time, saved as a string
-        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
-        newDate = new Date();
-        date.setText(newDate.toString());
+        UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
+        DateHolder = (TextView) findViewById(R.id.DateHolder);
+        MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
+        SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
+        TriggerHolder = (EditText) findViewById(R.id.TriggerHolder);
+        DetailHolder = (EditText) findViewById(R.id.DetailHolder);
 
         // Drop down list for the moods
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,
@@ -69,11 +63,13 @@ public class AddMoodActivity extends AndromedaActivity{
         socAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SocialSpinner.setAdapter(socAdapter);
 
+
         // Saves the selected social situation as a string in "SocialSit"
         SocialSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 SocialSit = parent.getItemAtPosition(position).toString();
             }
+
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
@@ -113,36 +109,39 @@ public class AddMoodActivity extends AndromedaActivity{
                 }
 
             }
+
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
-
-        // Loads the input from trigger
-        Trigger = TriggerHolder.getText().toString();
-
-        // Loads the inout from details
-        Details = DetailHolder.getText().toString();
-
-
-        //Delete Button finishes activity and saves nothing
-        DeleteButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        // Save button save everything in the controller
-        SaveButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Pass information to the controllers.
-
-                moodController.createMood(username, newDate, theMood, SocialSit, Trigger, Details );
-                finish();
-            }
-        });}
-
-        // Add location
-
-        // Add Image
-
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Intent intent = getIntent();
+
+        // Set username
+        username = intent.getStringExtra("user");
+        UsernameHolder.setText(username);
+
+        // Load date
+        Date now = new Date();
+        DateHolder.setText(now.toString());
+    }
+
+
+    public void deleteMood(View v){
+        finish();
+    }
+
+    // Saves the updated mood
+    public void saveMood(View v){
+        Trigger = TriggerHolder.getText().toString();
+        Details = DetailHolder.getText().toString();
+        Date now = new Date();
+        moodController.createMood(username, now, theMood, SocialSit, Trigger, Details );
+//        moodController.createMood(username, SocialSit, state);
+        finish();
+    }
+}

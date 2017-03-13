@@ -15,6 +15,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * The type Friends moods.
+ *
+ * Activity to view all of friends moods
+ */
 public class FriendsMoods extends UsersMoods{
 
     @Override
@@ -35,7 +40,11 @@ public class FriendsMoods extends UsersMoods{
     }
 
 
-    // follows or unfollow the user
+    /**
+     * Follow user.
+     *
+     * @param v the v
+     */
     public void followUser(View v){
         // TODO: check if already following
 

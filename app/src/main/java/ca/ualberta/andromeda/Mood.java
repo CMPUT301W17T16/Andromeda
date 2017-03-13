@@ -16,13 +16,14 @@ public class Mood {
     private String user;
     private String socialSituation;
     private Date date;
-    private String mood;
     private String location;
     private String detail;
     private String image;
     private String trigger;
-    private String emotion;
-//    private Emotion emotion;
+//    private String emotion;
+    private Emotion emotion;
+    private String mood;
+
     @JestId
     private String id;
 
@@ -43,10 +44,10 @@ public class Mood {
         this.detail = detail;
     }
 
-    public void edit(String user, Date date, String mood, String socialSituation, String trigger, String detail){
+    public void edit(String user, String mood, String socialSituation, String trigger, String detail){
         this.user = user;
-        this.date = date;
         this.mood = mood;
+
         this.socialSituation = socialSituation;
         this.trigger = trigger;
         this.detail = detail;
@@ -64,16 +65,8 @@ public class Mood {
         return detail;
     }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
-    }
-
     public String getTrigger() {
         return trigger;
-    }
-
-    public void setTrigger(String trigger) {
-        this.trigger = trigger;
     }
 
     public Date getDate(){
@@ -83,13 +76,16 @@ public class Mood {
     public String getMood() {
         return this.mood;
     }
-
+    public Emotion getEmotion() {
+        return this.emotion;
+    }
 
 
     // TODO: Fix this to display in listview correctly
     @Override
     public String toString(){
-        return user + " " + socialSituation + " " + mood + " " + date + " " + trigger;
+
+        return user + " | " + socialSituation + " | " + emotion.getEmotion() + " | " + date;
     }
 
 }

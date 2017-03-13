@@ -28,6 +28,13 @@ public class MoodController {
         return newMood;
     }
 
+    public Mood createMood(String user, String socialSituation, Emotion.State state, String trigger, String detail, String MyLocation){
+        String id = getUniqueId();
+        Mood newMood = new Mood(user, socialSituation, new Date(), state, trigger, detail, id, MyLocation);
+        this.addMood(newMood);
+        return newMood;
+    }
+
     public ArrayList<Mood> getUserMoods(User user){
         ArrayList<Mood> moodList = moodModel.getList();
         ArrayList<Mood> userMoods = new ArrayList<Mood>();

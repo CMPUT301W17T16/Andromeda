@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -35,6 +36,7 @@ public class ViewMoodActivity extends AndromedaActivity {
     protected String Trigger;
     protected Emotion.State state;
     private Integer position;
+    private String MyLocation;
 
     TextView UsernameHolder;
     TextView DateHolder;
@@ -152,6 +154,9 @@ public class ViewMoodActivity extends AndromedaActivity {
         // Loading Detail
         DetailHolder.setText(mood.getDetail());
 
+        // Load Location
+        MyLocation = mood.getMyLocation();
+
         // TODO Change the color of the background to match the mood
 
     }
@@ -167,6 +172,10 @@ public class ViewMoodActivity extends AndromedaActivity {
         Details = DetailHolder.getText().toString();
         moodController.updateMood(position, username, SocialSit, date, state, Trigger, Details);
         finish();
+    }
+
+    public void showLocation(View v) {
+        Toast.makeText(getApplicationContext(),MyLocation,Toast.LENGTH_SHORT).show();
     }
 
     //https://stackoverflow.com/questions/8769368/how-to-set-position-in-spinner

@@ -166,7 +166,8 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:text="Location"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="showLocation"/>
 
         <Button
             android:layout_width="match_parent"

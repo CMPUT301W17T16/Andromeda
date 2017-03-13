@@ -16,12 +16,12 @@ public class Mood {
     private String user;
     private String socialSituation;
     private Date date;
-    private String location;
     private String detail;
     private String trigger;
     private String image;
     private Emotion emotion;
     private String id;
+    private String MyLocation;
 
     public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id){
         this.user = user;
@@ -31,6 +31,17 @@ public class Mood {
         this.trigger = trigger;
         this.detail = detail;
         this.id = id;
+    }
+
+    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id, String MyLocation){
+        this.user = user;
+        this.socialSituation = socialSituation;
+        this.date = date;
+        this.emotion = new Emotion(state);
+        this.trigger = trigger;
+        this.detail = detail;
+        this.id = id;
+        this.MyLocation = MyLocation;
     }
 
     public void edit(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail){
@@ -65,6 +76,8 @@ public class Mood {
     }
 
     public String getId() { return id; }
+
+    public String getMyLocation() { return MyLocation; }
 
     // TODO: Fix this to display in listview correctly
     @Override

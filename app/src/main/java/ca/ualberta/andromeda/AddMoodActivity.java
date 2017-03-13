@@ -44,6 +44,8 @@ public class AddMoodActivity extends AndromedaActivity {
     protected Emotion.State state;
     private LocationManager locationManager;
     private LocationListener listener;
+    private String MyLocation;
+    private boolean hasLocation;
     TextView UsernameHolder;
     TextView DateHolder;
     Spinner MoodSpinner;
@@ -56,7 +58,6 @@ public class AddMoodActivity extends AndromedaActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_mood);
-
         moodController = ModelManager.getMoodController();
         userController = ModelManager.getUserController();
 
@@ -77,12 +78,14 @@ public class AddMoodActivity extends AndromedaActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if (isChecked){
+                    hasLocation = true;
                     Toast.makeText(getApplicationContext(),"save Location", Toast.LENGTH_SHORT).show();
                     locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
                     listener = new LocationListener() {
                         @Override
                         public void onLocationChanged(Location location) {
                             Toast.makeText(getApplicationContext(),"\n " + location.getLongitude() + " " + location.getLatitude(), Toast.LENGTH_SHORT).show();
+                            MyLocation = String.valueOf(location.getLongitude()) + " " + String.valueOf(location.getLatitude());
                         }
 
                         @Override
@@ -176,6 +179,7 @@ public class AddMoodActivity extends AndromedaActivity {
     protected void onStart() {
         super.onStart();
 
+        hasLocation = false;
         Intent intent = getIntent();
 
         // Set username
@@ -196,7 +200,12 @@ public class AddMoodActivity extends AndromedaActivity {
     public void saveMood(View v){
         Trigger = TriggerHolder.getText().toString();
         Details = DetailHolder.getText().toString();
-        moodController.createMood(username, SocialSit, state, Trigger, Details);
+
+        if(hasLocation){
+            moodController.createMood(username, SocialSit, state, Trigger, Details, MyLocation);
+        }else{
+            moodController.createMood(username, SocialSit, state, Trigger, Details);
+        }
         finish();
     }
   

@@ -12,27 +12,36 @@ import static org.junit.Assert.*;
 public class MoodTest {
     /*
     @Test
-    public void testGetters(){
-        Date now = new Date();
-        User user = new User("user");
-        Mood mood = new Mood(user, "school", now);
+    public void testAddMood(){
 
-        assertEquals(user,mood.getUser());
+        Date now = new Date();
+        Mood mood = new Mood("user", "school", now);
+
+        assertEquals("user",mood.getUser());
         assertEquals("school", mood.getSocialSituation());
         assertEquals(now, mood.getDate());
     }
 
     @Test
-    public void testEdit(){
+    public void testEditMood(){
         Date now = new Date();
-        User test = new User("user");
-        Mood mood = new Mood(new User("user"), "school", new Date());
+        Mood mood = new Mood("user", "school", now);
 
-        mood.edit(test, "cafe", now);
-
-        assertEquals(test,mood.getUser());
-        assertEquals("cafe", mood.getSocialSituation());
+        assertEquals("user",mood.getUser());
+        assertEquals("school", mood.getSocialSituation());
         assertEquals(now, mood.getDate());
+    }
+
+    @Test
+    public void testDeleteMood(){
+        Date now = new Date();
+        Mood mood = new Mood("user", "school", now);
+
+        assertEquals("user",mood.getUser());
+        assertEquals("school", mood.getSocialSituation());
+        assertEquals(now, mood.getDate());
+
+
     }
     */
 }

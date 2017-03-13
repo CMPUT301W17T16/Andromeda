@@ -137,6 +137,10 @@ public class MoodController {
         moodModel.deleteItem(mood);
     }
 
+    public void deleteMood(String id){
+        moodModel.deleteItem(this.getMood(id));
+    }
+
     /**
      * http://stackoverflow.com/questions/1389736/how-do-i-create-a-unique-id-in-java
      * date: March 13, 2017

@@ -17,12 +17,31 @@ public class Emotion {
         this.state = emotion;
     }
 
-    public State getEmotion() {
-        return state;
-    }
-
     public void setEmotion(State emotion) {
         this.state = emotion;
+    }
+
+    public String getState() {
+        switch(state) {
+            case ANGER:
+                return "Anger";
+            case CONFUSION:
+                return "Confusion";
+            case DISGUST:
+                return "Disgust";
+            case FEAR:
+                return "Fear";
+            case HAPPINESS:
+                return "Happiness";
+            case SADNESS:
+                return "Sadness";
+            case SHAME:
+                return "Shame";
+            case SURPRISE:
+                return "Surprise";
+            default:
+                return "";
+        }
     }
 
     public String getColor() {

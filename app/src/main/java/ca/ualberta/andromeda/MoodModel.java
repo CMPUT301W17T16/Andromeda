@@ -57,7 +57,7 @@ public class MoodModel implements Model<Mood> {
 
     @Override
     public void addItem(Mood mood) {
-        this.moodList.add(mood);
+        this.moodList.add(0,mood);
         this.saveList();
     }
 

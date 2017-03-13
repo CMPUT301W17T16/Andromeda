@@ -68,4 +68,6 @@ public abstract class UsersMoods extends AndromedaActivity {
     public ListView getMoodListView() {
         return moodListView;
     }
+
+    public ArrayList<Mood> getMoodList(){return  moodList;}
 }

@@ -28,14 +28,10 @@ public class MainPage extends AndromedaActivity {
         moodController = ModelManager.getMoodController();
     }
 
-
+    @Override
     protected void onStart() {
-
         super.onStart();
 
-
-
-        // TODO:need getMoodList in the moodController 2017/3/5
         moodList = moodController.getAllMoods();
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.clear();

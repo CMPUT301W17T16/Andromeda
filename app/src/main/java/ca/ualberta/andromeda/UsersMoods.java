@@ -12,19 +12,20 @@ import java.util.ArrayList;
 
 /**
  * Created by Jeff on 3/11/2017.
+ *
+ * Super class for viewing my moods or friends moods
  */
 
 public abstract class UsersMoods extends AndromedaActivity {
 
-    protected MoodController moodController;
     protected ArrayList<Mood> moodList;
     protected ListView moodListView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         moodController = ModelManager.getMoodController();
+        moodListView = (ListView) findViewById(R.id.MoodList);
     }
 
     @Override
@@ -36,12 +37,11 @@ public abstract class UsersMoods extends AndromedaActivity {
         TextView textView = (TextView) findViewById(R.id.nameTextView);
         textView.setText(Message);
 
-
-        // TODO: get all the users moods
-
-        // display all the users Moods
-        //ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview, moodList);
-        //moodListView.setAdapter(adapter);
+        // Load all of the moods from the user
+        moodList = moodController.getUserMoods(this.user);
+        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        adapter.addAll(moodList);
+        moodListView.setAdapter(adapter);
     }
 
 
@@ -55,4 +55,7 @@ public abstract class UsersMoods extends AndromedaActivity {
         list.setEmptyView(empty);
     }
 
+    public ListView getMoodListView() {
+        return moodListView;
+    }
 }

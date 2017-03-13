@@ -57,9 +57,9 @@ public class MainPage extends AndromedaActivity {
     }
 
     public void notification(View v){
-        Intent intent = new Intent(this, Notifications.class);
-        intent.putExtra("user", user.getUsername());
-        startActivity(intent);
+//        Intent intent = new Intent(this, Notifications.class);
+//        intent.putExtra("user", user.getUsername());
+//        startActivity(intent);
     }
 
 }

@@ -20,7 +20,9 @@ public class Mood {
     private String location;
     private String detail;
     private String image;
-    private Emotion emotion;
+    private String trigger;
+    private String emotion;
+//    private Emotion emotion;
     @JestId
     private String id;
 
@@ -32,22 +34,39 @@ public class Mood {
         this.id = id;
     }
 
-    public Mood(String user, String socialSituation, Date date, Emotion.State state){
+//    public Mood(String user, String socialSituation, Date date, Emotion.State state){
+//        this.user = user;
+//        this.socialSituation = socialSituation;
+//        this.date = date;
+//        this.emotion = new Emotion(state);
+//    }
+    public Mood(String user, Date date, String mood, String socialSituation, String trigger, String detail){
         this.user = user;
-        this.socialSituation = socialSituation;
         this.date = date;
-        this.emotion = new Emotion(state);
-    }
-
-    public void edit(String user, String mood, String socialSituation, Date date, Emotion.State state){
-        this.user = user;
         this.mood = mood;
         this.socialSituation = socialSituation;
-        this.date = date;
-        this.emotion = new Emotion(state);
+        this.trigger = trigger;
+        this.detail = detail;
     }
 
-    public Emotion getEmotion(){ return this.emotion; }
+    public void edit(String user, Date date, String mood, String socialSituation, String trigger, String detail){
+        this.user = user;
+        this.date = date;
+        this.mood = mood;
+        this.socialSituation = socialSituation;
+        this.trigger = trigger;
+        this.detail = detail;
+    }
+
+//    public void edit(String user, String mood, String socialSituation, Date date, Emotion.State state){
+//        this.user = user;
+//        this.mood = mood;
+//        this.socialSituation = socialSituation;
+//        this.date = date;
+//        this.emotion = new Emotion(state);
+//    }
+
+//    public Emotion getEmotion(){ return this.emotion; }
 
     public String getUser(){
         return this.user;
@@ -57,9 +76,27 @@ public class Mood {
         return this.socialSituation;
     }
 
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public String getTrigger() {
+        return trigger;
+    }
+
+    public void setTrigger(String trigger) {
+        this.trigger = trigger;
+    }
+
     public Date getDate(){
         return this.date;
     }
+
+
 
     // TODO: Fix this to display in listview correctly
     @Override

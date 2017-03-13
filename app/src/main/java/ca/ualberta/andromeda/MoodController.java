@@ -57,6 +57,7 @@ public class MoodController {
 
     public void updateMood(int id, String user, String situation, Date date, Emotion.State state){
         moodModel.getItem(id).edit(user, situation, date, state);
+        moodModel.saveList();
     }
 
     public void deleteMood(int index){

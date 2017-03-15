@@ -11,16 +11,17 @@ import java.util.UUID;
 /**
  * Created by pensk on 2017/02/27.
  */
+//Refactor - Class structure/Field can be local/MoodController.java
+
 public class MoodController {
     private MoodModel moodModel;
-    private UserModel userModel;
 
     /**
      * Instantiates a new Mood controller.
      */
     public MoodController(){
         moodModel = ModelManager.getMoodModel();
-        userModel = ModelManager.getUserModel();
+        UserModel userModel = ModelManager.getUserModel();
     }
 
     /**

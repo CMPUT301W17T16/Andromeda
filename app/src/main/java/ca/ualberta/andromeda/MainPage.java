@@ -16,11 +16,12 @@ import java.util.ArrayList;
 /**
  * The type Main page.
  */
+//Refactor - Class structure/Field can be local/MainPage.java
+
 public class MainPage extends AndromedaActivity {
 
 
     private ListView oldMoodList;
-    private ArrayList<Mood> moodList = new ArrayList<Mood>();
     /**
      * The Mood controller.
      */
@@ -38,7 +39,7 @@ public class MainPage extends AndromedaActivity {
     protected void onStart() {
         super.onStart();
 
-        moodList = moodController.getAllMoods();
+        ArrayList<Mood> moodList = moodController.getAllMoods();
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.clear();
         adapter.addAll(moodList);

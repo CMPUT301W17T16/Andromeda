@@ -12,11 +12,12 @@ import java.io.Serializable;
 /**
  * Created by livialee on 2017-03-05.
  */
+//Refactor - Class structure/Field can be local/LoginActivity.java
+
 public class LoginActivity extends Activity{
 
     private EditText editTextBox;
     private UserController userController;
-    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +33,15 @@ public class LoginActivity extends Activity{
      * @param v the v
      */
     public void login(View v){
+        User user;
         if (userController.hasUser(editTextBox.getText().toString())) {
-            this.user = userController.getUserByUsername(editTextBox.getText().toString());
+            user = userController.getUserByUsername(editTextBox.getText().toString());
         }
         else {
-            this.user = userController.createUser(editTextBox.getText().toString());
+            user = userController.createUser(editTextBox.getText().toString());
         }
         Intent intent = new Intent(this, MainPage.class);
-        intent.putExtra("user", this.user.getUsername());
+        intent.putExtra("user", user.getUsername());
         startActivity(intent);
         finish();
     }

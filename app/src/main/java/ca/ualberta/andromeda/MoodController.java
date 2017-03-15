@@ -159,9 +159,9 @@ public class MoodController {
      *
      * @return the unique id
      */
+    // Refactor -- Remove redundant ID
     public String getUniqueId() {
-        String id = UUID.randomUUID().toString();
-        return id;
+        return UUID.randomUUID().toString();
     }
 
     /**

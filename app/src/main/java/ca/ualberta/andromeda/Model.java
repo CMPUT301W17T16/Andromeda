@@ -14,6 +14,8 @@ import java.util.ArrayList;
  *
  * @param <M> the type parameter
  */
+
+// Refactor -- Remove redundant public modifier for interface methods
 public interface Model<M> {
 
     /**
@@ -21,7 +23,7 @@ public interface Model<M> {
      *
      * @return the list
      */
-    public ArrayList<M> getList();
+    ArrayList<M> getList();
 
     /**
      * Gets item.
@@ -29,37 +31,37 @@ public interface Model<M> {
      * @param index the index
      * @return the item
      */
-    public M getItem(int index);
+    M getItem(int index);
 
     /**
      * Delete item.
      *
      * @param index the index
      */
-    public void deleteItem(int index);
+    void deleteItem(int index);
 
     /**
      * Delete item.
      *
      * @param item the item
      */
-    public void deleteItem(M item);
+    void deleteItem(M item);
 
     /**
      * Add item.
      *
      * @param item the item
      */
-    public void addItem(M item);
+    void addItem(M item);
 
     /**
      * Load list.
      */
-    public void loadList();
+    void loadList();
 
     /**
      * Save list.
      */
-    public void saveList();
+    void saveList();
 
 }

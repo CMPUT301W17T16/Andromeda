@@ -99,8 +99,10 @@ public class UserController {
      *
      * @param username the username
      */
+    // Refactor -- this never actually deleted the user.
     public void deleteUserByUsername(String username){
         User user = this.getUserByUsername(username);
+        this.userModel.deleteItem(user);
     }
 
     /**
@@ -128,10 +130,10 @@ public class UserController {
      * @param user the user
      * @return the array list
      */
+    // Refactor -- Use the code in the other controller for the same functionality.
     public ArrayList<Mood> getMoodList(User user){
-        ArrayList<Mood> myList = new ArrayList<Mood>();
-        ArrayList<Mood> moodList = moodModel.getList();
-        return moodList;
+        MoodController mc = ModelManager.getMoodController();
+        return mc.getUserMoods(user);
     }
 }
 

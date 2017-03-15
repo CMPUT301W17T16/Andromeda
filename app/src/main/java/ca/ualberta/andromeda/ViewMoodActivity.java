@@ -1,83 +1,77 @@
 package ca.ualberta.andromeda;
 
-import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.Date;
+
+// Deleted all the unnecessary imports
 
 /**
  * Created by livialee on 2017-03-05.
  */
 public class ViewMoodActivity extends AndromedaActivity {
 
+    // Made all of the fields private instead of protected.
     private String idNum;
     private Date date;
     /**
      * The The mood.
      */
-    protected String theMood;
+    private String theMood;
     /**
      * The Username.
      */
-    protected String username;
+    private String username;
     /**
      * The Social sit.
      */
-    protected String SocialSit;
+    private String SocialSit;
     /**
      * The Details.
      */
-    protected String Details;
+    private String Details;
     /**
      * The Trigger.
      */
-    protected String Trigger;
+    private String Trigger;
     /**
      * The State.
      */
-    protected Emotion.State state;
+    private Emotion.State state;
     private String MyLocation;
 
     /**
      * The Username holder.
      */
-    TextView UsernameHolder;
+    private TextView UsernameHolder;
     /**
      * The Date holder.
      */
-    TextView DateHolder;
+    private TextView DateHolder;
     /**
      * The Mood spinner.
      */
-    Spinner MoodSpinner;
+    private Spinner MoodSpinner;
     /**
      * The Social spinner.
      */
-    Spinner SocialSpinner;
+    private Spinner SocialSpinner;
     /**
      * The Trigger holder.
      */
-    EditText TriggerHolder;
+    private EditText TriggerHolder;
     /**
      * The Detail holder.
      */
-    EditText DetailHolder;
+    private EditText DetailHolder;
 
 
     @Override

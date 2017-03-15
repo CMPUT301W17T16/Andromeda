@@ -64,13 +64,14 @@ public class MoodModel implements Model<Mood> {
     @Override
     public void loadList() {
         /* load from disk */
-        this.moodList = new ArrayList<Mood>();
+        // Replaced the argument with <> as it is implicit
+        this.moodList = new ArrayList<>();
 
         try {
             FileInputStream fis = ModelManager.getAppInstance().openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             String line = in.readLine();
-            int x = 0;
+//            int x = 0;
             while (line != null) {
                 this.moodList.add(gson.fromJson(line, Mood.class));
                 //this.moodList.get(x).setId(x);

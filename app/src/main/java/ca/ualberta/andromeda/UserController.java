@@ -8,9 +8,10 @@ package ca.ualberta.andromeda;
  * Created by pensk on 2017/02/27.
  */
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Date;
+
+// Deleted all the unnecessary imports
+
 
 /**
  * Created by pensk on 2017/02/27.
@@ -129,7 +130,8 @@ public class UserController {
      * @return the array list
      */
     public ArrayList<Mood> getMoodList(User user){
-        ArrayList<Mood> myList = new ArrayList<Mood>();
+        // Replaced the argument with <> as it is implicit
+        ArrayList<Mood> myList = new ArrayList<>();
         ArrayList<Mood> moodList = moodModel.getList();
         return moodList;
     }

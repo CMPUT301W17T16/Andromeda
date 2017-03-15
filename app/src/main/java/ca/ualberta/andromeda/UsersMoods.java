@@ -1,9 +1,7 @@
 package ca.ualberta.andromeda;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -44,7 +42,8 @@ public abstract class UsersMoods extends AndromedaActivity {
 
         // Load all of the moods from the user
         moodList = moodController.getUserMoods(this.user);
-        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        // Replaced the argument with <> as it is implicit
+        ArrayAdapter<Mood> adapter = new ArrayAdapter<>(this, R.layout.mood_listview);
         adapter.addAll(moodList);
         moodListView.setAdapter(adapter);
     }

@@ -4,8 +4,6 @@
 
 package ca.ualberta.andromeda;
 
-import java.util.ArrayList;
-
 import io.searchbox.annotations.JestId;
 
 /**

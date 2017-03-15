@@ -12,15 +12,10 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
-import android.os.UserHandle;
-import android.provider.MediaStore;
-
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -28,11 +23,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
+// Deleted all the unnecessary imports
 
 /**
  * The type Add mood activity.
@@ -108,7 +101,7 @@ public class AddMoodActivity extends AndromedaActivity {
         DetailHolder = (EditText) findViewById(R.id.DetailHolder);
         
       
-       //get loction
+       //get location
         Switch location = (Switch) findViewById(R.id.LocationSwitch);
         location.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 

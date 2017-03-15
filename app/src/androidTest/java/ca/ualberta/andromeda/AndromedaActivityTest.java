@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.robotium.solo.Solo;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Jeff on 3/11/2017.
@@ -129,8 +128,8 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         //check main
         solo.goBack();
         solo.waitForActivity("MainPage");
-        MainPage mainActvity = (MainPage) solo.getCurrentActivity();
-        final ListView MoodListView = mainActvity.getMoodListView();
+        MainPage mainActivity = (MainPage) solo.getCurrentActivity();
+        final ListView MoodListView = mainActivity.getMoodListView();
         mood = (Mood) MoodListView.getItemAtPosition(0);
         assertEquals("User", mood.getUser());
 

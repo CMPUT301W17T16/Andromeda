@@ -59,7 +59,8 @@ public class UserModel implements Model<User> {
 
     public void loadList(){
         /* load from disk */
-        this.userList = new ArrayList<User>();
+        // Replaced the argument with <> as it is implicit
+        this.userList = new ArrayList<>();
 
         try {
             FileInputStream fis = ModelManager.getAppInstance().openFileInput(FILENAME);

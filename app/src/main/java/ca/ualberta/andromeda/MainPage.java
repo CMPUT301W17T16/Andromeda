@@ -1,17 +1,15 @@
 package ca.ualberta.andromeda;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+
+// Deleted all the unnecessary imports
+
 
 /**
  * The type Main page.
@@ -20,7 +18,8 @@ public class MainPage extends AndromedaActivity {
 
 
     private ListView oldMoodList;
-    private ArrayList<Mood> moodList = new ArrayList<Mood>();
+    // Replaced the argument with <> as it is implicit
+    private ArrayList<Mood> moodList = new ArrayList<>();
     /**
      * The Mood controller.
      */
@@ -39,7 +38,7 @@ public class MainPage extends AndromedaActivity {
         super.onStart();
 
         moodList = moodController.getAllMoods();
-        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        ArrayAdapter<Mood> adapter = new ArrayAdapter<>(this, R.layout.mood_listview);
         adapter.clear();
         adapter.addAll(moodList);
         oldMoodList.setAdapter(adapter);

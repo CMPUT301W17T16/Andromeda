@@ -59,7 +59,8 @@ public class ElasticSearchManager {
         protected ArrayList<User> doInBackground(String... search_parameters) {
             verifySettings();
 
-            ArrayList<User> users = new ArrayList<User>();
+            // Replaced the argument with <> as it is implicit
+            ArrayList<User> users = new ArrayList<>();
 
             String query = "{\n" +
                     "    \"query\" : {\n" +
@@ -129,7 +130,8 @@ public class ElasticSearchManager {
         protected ArrayList<Mood> doInBackground(String... search_parameters) {
             verifySettings();
 
-            ArrayList<Mood> moods = new ArrayList<Mood>();
+            // Replaced the argument with <> as it is implicit
+            ArrayList<Mood> moods = new ArrayList<>();
 
             String query = "{\n" +
                     "    \"query\" : {\n" +

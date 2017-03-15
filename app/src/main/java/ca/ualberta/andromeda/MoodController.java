@@ -66,7 +66,8 @@ public class MoodController {
      */
     public ArrayList<Mood> getUserMoods(User user){
         ArrayList<Mood> moodList = moodModel.getList();
-        ArrayList<Mood> userMoods = new ArrayList<Mood>();
+        // Replaced the argument with <> as it is implicit
+        ArrayList<Mood> userMoods = new ArrayList<>();
         for(int x=0; x<moodList.size(); x++){
             if(moodList.get(x).getUser().equals(user.getUsername())){
                 userMoods.add(moodList.get(x));

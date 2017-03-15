@@ -6,8 +6,6 @@ package ca.ualberta.andromeda;
 
 import java.util.Date;
 
-import io.searchbox.annotations.JestId;
-
 /**
  * Created by pensk on 2017/02/27.
  */

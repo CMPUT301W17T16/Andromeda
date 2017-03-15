@@ -1,10 +1,11 @@
 package ca.ualberta.andromeda;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+// Deleted all the unnecessary imports
+
 
 /**
  * Created by Jeff on 3/10/2017.

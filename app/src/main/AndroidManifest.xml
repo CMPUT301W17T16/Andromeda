@@ -27,6 +27,7 @@
         <activity android:name=".MyMoods" />
         <activity android:name=".AddMoodActivity" />
         <activity android:name=".FilterActivity" />
+        <activity android:name=".commentsActivity" />
     </application>
 
 </manifest>

@@ -5,6 +5,8 @@
     <string name="map">Map</string>
     <string name="add_mood">Add Mood</string>
     <string name="my_moods">MY MOODS</string>
+    <string name="enter">Enter</string>
+    <string name="type_a_comment">Type a comment!</string>
 
     <string-array name="moods_array">
         <item>Anger</item>

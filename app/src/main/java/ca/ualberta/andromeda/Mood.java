@@ -4,6 +4,7 @@
 
 package ca.ualberta.andromeda;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import io.searchbox.annotations.JestId;
@@ -21,6 +22,7 @@ public class Mood {
     private Emotion emotion;
     private String id;
     private String MyLocation;
+    private ArrayList<Comment> comments;
 
     /**
      * Instantiates a new Mood.
@@ -85,6 +87,11 @@ public class Mood {
         this.detail = detail;
     }
 
+    public void addComment(String comment, String user){
+        Comment newcomment = new Comment(comment, user);
+        comments.add(newcomment);
+    }
+
     /**
      * Get emotion emotion.
      *
@@ -144,11 +151,15 @@ public class Mood {
      */
     public String getId() { return id; }
 
+    public ArrayList<Comment> getComments() { return comments; }
+
     /**
      * Gets my location.
      *
      * @return the my location
      */
+
+
     public String getMyLocation() { return MyLocation; }
 
     // TODO: Fix this to display in listview correctly

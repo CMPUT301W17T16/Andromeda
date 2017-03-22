@@ -130,6 +130,18 @@ public class MoodController {
         moodModel.saveList();
     }
 
+
+    /**
+     * Update mood with new comment
+     *
+     * @param id    the index
+     * @param comment   new comment
+     */
+    public void updateMood(String id, Comment comment){
+        this.getMood(id).addComment(comment);
+        moodModel.saveList();
+    }
+
     /**
      * Delete mood.
      *

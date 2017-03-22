@@ -9,9 +9,6 @@ import java.util.Date;
 
 import io.searchbox.annotations.JestId;
 
-/**
- * Created by pensk on 2017/02/27.
- */
 public class Mood {
     private String user;
     private String socialSituation;
@@ -24,17 +21,6 @@ public class Mood {
     private String MyLocation;
     private ArrayList<Comment> comments;
 
-    /**
-     * Instantiates a new Mood.
-     *
-     * @param user            the user
-     * @param socialSituation the social situation
-     * @param date            the date
-     * @param state           the state
-     * @param trigger         the trigger
-     * @param detail          the detail
-     * @param id              the id
-     */
     public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id){
         this.user = user;
         this.socialSituation = socialSituation;
@@ -43,20 +29,9 @@ public class Mood {
         this.trigger = trigger;
         this.detail = detail;
         this.id = id;
+        this.comments = new ArrayList<Comment>();
     }
 
-    /**
-     * Instantiates a new Mood.
-     *
-     * @param user            the user
-     * @param socialSituation the social situation
-     * @param date            the date
-     * @param state           the state
-     * @param trigger         the trigger
-     * @param detail          the detail
-     * @param id              the id
-     * @param MyLocation      the my location
-     */
     public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id, String MyLocation){
         this.user = user;
         this.socialSituation = socialSituation;
@@ -66,18 +41,9 @@ public class Mood {
         this.detail = detail;
         this.id = id;
         this.MyLocation = MyLocation;
+        this.comments = new ArrayList<Comment>();
     }
 
-    /**
-     * Edit.
-     *
-     * @param user            the user
-     * @param socialSituation the social situation
-     * @param date            the date
-     * @param state           the state
-     * @param trigger         the trigger
-     * @param detail          the detail
-     */
     public void edit(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail){
         this.user = user;
         this.socialSituation = socialSituation;
@@ -87,77 +53,35 @@ public class Mood {
         this.detail = detail;
     }
 
-    public void addComment(String comment, String user){
-        Comment newcomment = new Comment(comment, user);
-        comments.add(newcomment);
+    public void addComment(Comment comment){
+        comments.add(comment);
     }
 
-    /**
-     * Get emotion emotion.
-     *
-     * @return the emotion
-     */
     public Emotion getEmotion(){ return this.emotion; }
 
-    /**
-     * Get user string.
-     *
-     * @return the string
-     */
     public String getUser(){
         return this.user;
     }
 
-    /**
-     * Get social situation string.
-     *
-     * @return the string
-     */
     public String getSocialSituation(){
         return this.socialSituation;
     }
 
-    /**
-     * Get date date.
-     *
-     * @return the date
-     */
     public Date getDate(){
         return this.date;
     }
 
-    /**
-     * Gets detail.
-     *
-     * @return the detail
-     */
     public String getDetail() {
         return detail;
     }
 
-    /**
-     * Gets trigger.
-     *
-     * @return the trigger
-     */
     public String getTrigger() {
         return trigger;
     }
 
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
     public String getId() { return id; }
 
     public ArrayList<Comment> getComments() { return comments; }
-
-    /**
-     * Gets my location.
-     *
-     * @return the my location
-     */
 
 
     public String getMyLocation() { return MyLocation; }

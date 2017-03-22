@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,13 +18,13 @@ public class commentsActivity extends AndromedaActivity {
 
     private String username;
     private String idNum;
-    private ArrayList<String> commentList;
+    private ArrayList<Comment> commentList;
 
     private EditText commentHolder;
     private TextView usernameHolder;
     private TextView moodHolder;
     private ListView commentListView;
-    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<Comment> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class commentsActivity extends AndromedaActivity {
         usernameHolder = (TextView) findViewById(R.id.usernameHolder);
         moodHolder = (TextView) findViewById(R.id.moodHolder);
 
-        commentList = new ArrayList<String>();
+        commentList = new ArrayList<Comment>();
         commentListView = (ListView) findViewById(R.id.commentListView);
 
         Button saveButton = (Button) findViewById(R.id.save);
@@ -46,10 +47,36 @@ public class commentsActivity extends AndromedaActivity {
 
             public void onClick(View v) {
                 setResult(RESULT_OK);
-                String comment = commentHolder.getText().toString();
+
+                // get comment
+                String text = commentHolder.getText().toString();
+                Comment comment = new Comment(text, username);
+
+                // add to the intent list
                 commentList.add(comment);
+
+                // add to mood controller and data set
+                moodController.updateMood(idNum, comment);
+
+                // update listview
                 adapter.notifyDataSetChanged();
+
+                // scroll to bottom
                 commentListView.setSelection(commentListView.getCount() - 1);
+            }
+        });
+
+        // go to commenters profile
+        final Intent intent = new Intent(this, ProfileFriendActivity.class);
+        commentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Only if user clicks on other uses name
+                if (!username.equals(commentList.get(position).getUser())) {
+                    intent.putExtra("user", user.getUsername());
+                    intent.putExtra("friend", commentList.get(position).getUser());
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -60,19 +87,22 @@ public class commentsActivity extends AndromedaActivity {
 
         Intent intent = getIntent();
 
-        // Set username
-        username = intent.getStringExtra("user");
-        usernameHolder.setText(username);
+        // Get commenting users name
+        username = user.getUsername();
 
         // Set Mood
         idNum = intent.getStringExtra("ID");
         Mood mood = moodController.getMood(idNum);
         moodHolder.setText(mood.toString());
 
-        // TODO: Get All previous comments
+        // Set username of the mood
+        usernameHolder.setText(mood.getUser());
+
+        // Load all previous comments
+        commentList = mood.getComments();
 
         // Set Comments
-        adapter = new ArrayAdapter<String>(this, R.layout.mood_listview, commentList);
+        adapter = new ArrayAdapter<Comment>(this, R.layout.mood_listview, commentList);
         commentListView.setAdapter(adapter);
     }
 

@@ -13,4 +13,10 @@ public class Comment {
         this.user = user;
     }
 
+    @Override
+    public String toString(){
+        return this.user + ": " + this.comment;
+    }
+
+    public String getUser() { return user; }
 }

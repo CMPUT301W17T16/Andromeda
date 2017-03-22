@@ -66,7 +66,7 @@
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <TextView
-            android:id="@+id/MoodHoler"
+            android:id="@+id/MoodHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0"
@@ -175,5 +175,12 @@
             android:textSize="18sp" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/commentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toComments"
+        android:text="Comments (#)" />
 
 </LinearLayout>

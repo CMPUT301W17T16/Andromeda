@@ -22,6 +22,9 @@ import java.util.Date;
  */
 public class ProfileFriendActivity extends ProfileActivity{
 
+    private String friendname;
+    private User friend;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +37,34 @@ public class ProfileFriendActivity extends ProfileActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent.putExtra("user", user.getUsername());
+                Mood mood = (Mood)parent.getItemAtPosition(position);
+                intent.putExtra("ID", String.valueOf(mood.getId()));
                 startActivity(intent);
             }
         });
     }
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        Intent intent = getIntent();
+
+        // Get username of friend
+        friendname = intent.getStringExtra("friend");
+        friend = userController.getUserByUsername(friendname);
+
+        // Display the user name at the top
+        String Message = friend.getUsername() + "'s Moods";
+        TextView textView = (TextView) findViewById(R.id.nameTextView);
+        textView.setText(Message);
+
+        // Load all of the moods from the user
+        moodList = moodController.getUserMoods(this.friend);
+        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        adapter.addAll(moodList);
+        moodListView.setAdapter(adapter);
+    }
 
     /**
      * Follow user.

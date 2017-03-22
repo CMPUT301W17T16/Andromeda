@@ -45,6 +45,11 @@ public class ProfileUserActivity extends ProfileActivity {
     @Override
     protected void onStart(){
         super.onStart();
+
+        // Display username
+        String Message = user.getUsername() + "'s Moods";
+        TextView textView = (TextView) findViewById(R.id.nameTextView);
+        textView.setText(Message);
     }
 
     /**

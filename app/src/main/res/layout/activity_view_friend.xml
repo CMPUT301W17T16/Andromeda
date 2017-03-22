@@ -172,7 +172,8 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:text="User"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="toUser"/>
 
     </LinearLayout>
 

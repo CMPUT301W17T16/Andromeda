@@ -51,4 +51,10 @@ public class ViewFriendActivity extends ViewMoodActivity {
 
     }
 
+   public void toUser(View v) {
+       Intent intent = new Intent(this, ProfileFriendActivity.class);
+       intent.putExtra("user", user.getUsername());
+       intent.putExtra("friend", mood.getUser());
+       startActivity(intent);
+   }
 }

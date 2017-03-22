@@ -20,15 +20,15 @@ import java.util.Date;
  * <p>
  * Activity to view all of my moods
  */
-public class MyMoods extends UsersMoods {
+public class ProfileUserActivity extends ProfileActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_users_moods);
+        setContentView(R.layout.activity_profile_user);
         moodListView = (ListView) findViewById(R.id.MoodList);
 
-        final Intent intent = new Intent(this, ViewMoodActivity.class);
+        final Intent intent = new Intent(this, ViewUserActivity.class);
 
         moodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

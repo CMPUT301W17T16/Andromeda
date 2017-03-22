@@ -38,7 +38,7 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.enterText((EditText) solo.getView(R.id.editText), "User");
         solo.clickOnButton("Enter");
 
-        solo.assertCurrentActivity("Wrong Activity", MainPage.class);
+        solo.assertCurrentActivity("Wrong Activity", MainPageActivity.class);
     }
 
     public void testMainActivity(){
@@ -46,14 +46,14 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.enterText((EditText) solo.getView(R.id.editText), "User");
         solo.clickOnButton("Enter");
 
-        solo.assertCurrentActivity("Wrong Activity", MainPage.class);
+        solo.assertCurrentActivity("Wrong Activity", MainPageActivity.class);
 
         // To myMoods
         solo.clickOnImageButton(1);
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         solo.goBack();
-        solo.assertCurrentActivity("Wrong Activity", MainPage.class);
+        solo.assertCurrentActivity("Wrong Activity", MainPageActivity.class);
 
         // TODO: ADD to map and to filter test
     }
@@ -63,18 +63,18 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.enterText((EditText) solo.getView(R.id.editText), "User");
         solo.clickOnButton("Enter");
 
-        solo.assertCurrentActivity("Wrong Activity", MainPage.class);
+        solo.assertCurrentActivity("Wrong Activity", MainPageActivity.class);
 
         // To myMoods
         solo.clickOnImageButton(1);
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         // To Add Moon
         solo.clickOnImageButton(1);
         solo.assertCurrentActivity("Wrong Activity", AddMoodActivity.class);
 
         solo.goBack();
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         // TODO: ADD to map and to filter test
     }
@@ -84,11 +84,11 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.enterText((EditText) solo.getView(R.id.editText), "User");
         solo.clickOnButton("Enter");
 
-        solo.assertCurrentActivity("Wrong Activity", MainPage.class);
+        solo.assertCurrentActivity("Wrong Activity", MainPageActivity.class);
 
         // To myMoods
         solo.clickOnImageButton(1);
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         // To Add Mood
         solo.clickOnImageButton(1);
@@ -112,11 +112,11 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
 
 
         solo.clickOnButton("Save");
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         // check it got added    solo.waitForActivity("Activity3");
-        solo.waitForActivity("MyMoods");
-        MyMoods activity = (MyMoods) solo.getCurrentActivity();
+        solo.waitForActivity("ProfileUserActivity");
+        ProfileUserActivity activity = (ProfileUserActivity) solo.getCurrentActivity();
         final ListView MoodList = activity.getMoodListView();
         Mood mood = (Mood) MoodList.getItemAtPosition(0);
         assertEquals("User", mood.getUser());
@@ -128,8 +128,8 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
 
         //check main
         solo.goBack();
-        solo.waitForActivity("MainPage");
-        MainPage mainActvity = (MainPage) solo.getCurrentActivity();
+        solo.waitForActivity("MainPageActivity");
+        MainPageActivity mainActvity = (MainPageActivity) solo.getCurrentActivity();
         final ListView MoodListView = mainActvity.getMoodListView();
         mood = (Mood) MoodListView.getItemAtPosition(0);
         assertEquals("User", mood.getUser());
@@ -146,11 +146,11 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.enterText((EditText) solo.getView(R.id.editText), "User");
         solo.clickOnButton("Enter");
 
-        solo.assertCurrentActivity("Wrong Activity", MainPage.class);
+        solo.assertCurrentActivity("Wrong Activity", MainPageActivity.class);
 
         // To myMoods
         solo.clickOnImageButton(1);
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         // To Add Mood
         solo.clickOnImageButton(1);
@@ -174,11 +174,11 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
 
         solo.clickOnButton("Save");
 //        Date date = new Date();
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         // check it got added    solo.waitForActivity("Activity3");
-        solo.waitForActivity("MyMoods");
-        MyMoods activity = (MyMoods) solo.getCurrentActivity();
+        solo.waitForActivity("ProfileUserActivity");
+        ProfileUserActivity activity = (ProfileUserActivity) solo.getCurrentActivity();
         final ListView MoodListV = activity.getMoodListView();
         Mood mood = (Mood) MoodListV.getItemAtPosition(0);
         assertEquals("User", mood.getUser());
@@ -192,10 +192,10 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.assertCurrentActivity("wrong Activity", ViewMoodActivity.class);
         solo.clickOnButton("Delete");
 //        Date date = new Date();
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         // check it got added    solo.waitForActivity("Activity3");
-        solo.waitForActivity("MyMoods");
+        solo.waitForActivity("ProfileUserActivity");
         final ArrayList<Mood> MoodList = activity.getMoodList();
         assertFalse(MoodList.contains(mood));
     }
@@ -205,11 +205,11 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.enterText((EditText) solo.getView(R.id.editText), "User");
         solo.clickOnButton("Enter");
 
-        solo.assertCurrentActivity("Wrong Activity", MainPage.class);
+        solo.assertCurrentActivity("Wrong Activity", MainPageActivity.class);
 
         // To myMoods
         solo.clickOnImageButton(1);
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         // To Add Mood
         solo.clickOnImageButton(1);
@@ -233,11 +233,11 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
 
 
         solo.clickOnButton("Save");
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         // check it got added    solo.waitForActivity("Activity3");
-        solo.waitForActivity("MyMoods");
-        MyMoods activity = (MyMoods) solo.getCurrentActivity();
+        solo.waitForActivity("ProfileUserActivity");
+        ProfileUserActivity activity = (ProfileUserActivity) solo.getCurrentActivity();
         final ListView MoodList = activity.getMoodListView();
         Mood mood = (Mood) MoodList.getItemAtPosition(0);
         assertEquals("User", mood.getUser());
@@ -267,11 +267,11 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
 
 
         solo.clickOnButton("Save");
-        solo.assertCurrentActivity("Wrong Activity", MyMoods.class);
+        solo.assertCurrentActivity("Wrong Activity", ProfileUserActivity.class);
 
         // check it got added    solo.waitForActivity("Activity3");
-        solo.waitForActivity("MyMoods");
-        activity = (MyMoods) solo.getCurrentActivity();
+        solo.waitForActivity("ProfileUserActivity");
+        activity = (ProfileUserActivity) solo.getCurrentActivity();
         final ListView MoodList1 = activity.getMoodListView();
         mood = (Mood) MoodList.getItemAtPosition(0);
         assertEquals("User", mood.getUser());
@@ -281,6 +281,9 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         assertEquals("Test trigger2", mood.getTrigger());
         assertEquals("Test Detail2", mood.getDetail());
     }
+
+
+    //TODO: ADD comment test
 
     @Override
     public void tearDown() throws Exception{

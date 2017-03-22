@@ -20,12 +20,12 @@ import java.util.Date;
  * <p>
  * Activity to view all of friends moods
  */
-public class FriendsMoods extends UsersMoods{
+public class ProfileFriendActivity extends ProfileActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends_moods);
+        setContentView(R.layout.activity_profile_friend);
         moodListView = (ListView) findViewById(R.id.MoodList);
         moodList = new ArrayList<Mood>();
         final Intent intent = new Intent(this, ViewFriendActivity.class);

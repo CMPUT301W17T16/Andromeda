@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * The type Main page.
  */
-public class MainPage extends AndromedaActivity {
+public class MainPageActivity extends AndromedaActivity {
 
 
     private ListView oldMoodList;
@@ -62,7 +62,7 @@ public class MainPage extends AndromedaActivity {
      * @param v the v
      */
     public void myMoods(View v){
-        Intent intent = new Intent(this, MyMoods.class);
+        Intent intent = new Intent(this, ProfileUserActivity.class);
         intent.putExtra("user", user.getUsername());
         startActivity(intent);
     }

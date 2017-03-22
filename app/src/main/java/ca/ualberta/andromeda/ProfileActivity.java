@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * <p>
  * Super class for viewing my moods or friends moods
  */
-public abstract class UsersMoods extends AndromedaActivity {
+public abstract class ProfileActivity extends AndromedaActivity {
 
     /**
      * The Mood list.

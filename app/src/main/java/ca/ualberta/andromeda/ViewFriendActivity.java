@@ -2,18 +2,27 @@ package ca.ualberta.andromeda;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 /**
  * The type View friend activity.
  */
-public class ViewFriendActivity extends AndromedaActivity {
+public class ViewFriendActivity extends ViewMoodActivity {
+
+    TextView TriggerHolder;
+    TextView DetailHolder;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_friend);
+    protected void onStart() {
+        super.onStart();
 
+        // Loading Trigger
+        TriggerHolder.setText(mood.getTrigger());
 
-        // TODO DO FRIEND MOODS LATER
+        // Loading Detail
+        DetailHolder.setText(mood.getDetail());
     }
+
 }

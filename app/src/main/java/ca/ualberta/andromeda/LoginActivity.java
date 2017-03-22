@@ -38,7 +38,7 @@ public class LoginActivity extends Activity{
         else {
             this.user = userController.createUser(editTextBox.getText().toString());
         }
-        Intent intent = new Intent(this, MainPage.class);
+        Intent intent = new Intent(this, MainPageActivity.class);
         intent.putExtra("user", this.user.getUsername());
         startActivity(intent);
         finish();

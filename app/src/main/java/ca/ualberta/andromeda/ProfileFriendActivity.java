@@ -16,46 +16,38 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * The type My moods.
+ * The type Friends moods.
  * <p>
- * Activity to view all of my moods
+ * Activity to view all of friends moods
  */
-public class MyMoods extends UsersMoods {
+public class ProfileFriendActivity extends ProfileActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_users_moods);
+        setContentView(R.layout.activity_profile_friend);
         moodListView = (ListView) findViewById(R.id.MoodList);
-
-        final Intent intent = new Intent(this, ViewMoodActivity.class);
+        moodList = new ArrayList<Mood>();
+        final Intent intent = new Intent(this, ViewFriendActivity.class);
 
         moodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent.putExtra("user", user.getUsername());
-                Mood mood = (Mood)parent.getItemAtPosition(position);
-                intent.putExtra("ID", String.valueOf(mood.getId()));
                 startActivity(intent);
             }
         });
-
     }
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-    }
 
     /**
-     * Goes to add New mood.
+     * Follow user.
      *
      * @param v the v
      */
-    public void newMood(View v){
+    public void followUser(View v){
+        // TODO: check if already following
 
-        Intent intent = new Intent(this, AddMoodActivity.class);
-        intent.putExtra("user", user.getUsername());
-        startActivity(intent);
     }
+
 }

@@ -28,6 +28,13 @@ public class ViewUserActivity extends ViewMoodActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_user);
 
+        moodController = ModelManager.getMoodController();
+        userController = ModelManager.getUserController();
+
+        UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
+        DateHolder = (TextView) findViewById(R.id.DateHolder);
+        MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
+        SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
         TriggerHolder = (EditText) findViewById(R.id.TriggerHolder);
         DetailHolder = (EditText) findViewById(R.id.DetailHolder);
 

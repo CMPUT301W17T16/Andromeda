@@ -40,20 +40,6 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
     Spinner SocialSpinner;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_friend);
-
-        moodController = ModelManager.getMoodController();
-        userController = ModelManager.getUserController();
-
-        UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
-        DateHolder = (TextView) findViewById(R.id.DateHolder);
-        MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
-        SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
-    }
-
-    @Override
     protected void onStart(){
         super.onStart();
 

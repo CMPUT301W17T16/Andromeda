@@ -4,65 +4,27 @@
 
 package ca.ualberta.andromeda;
 
-/**
- * Created by pensk on 2017/02/27.
- */
 public class Emotion {
-    /**
-     * The enum State.
-     */
     public enum State {
-        /**
-         * Anger state.
-         */
-        ANGER, /**
-         * Confusion state.
-         */
-        CONFUSION, /**
-         * Disgust state.
-         */
-        DISGUST, /**
-         * Fear state.
-         */
-        FEAR, /**
-         * Happiness state.
-         */
-        HAPPINESS, /**
-         * Sadness state.
-         */
-        SADNESS, /**
-         * Shame state.
-         */
-        SHAME, /**
-         * Surprise state.
-         */
+        ANGER,
+        CONFUSION,
+        DISGUST,
+        FEAR,
+        HAPPINESS,
+        SADNESS,
+        SHAME,
         SURPRISE}
 
     private State state;
 
-    /**
-     * Instantiates a new Emotion.
-     *
-     * @param emotion the emotion
-     */
     public Emotion(State emotion){
         this.state = emotion;
     }
 
-    /**
-     * Sets emotion.
-     *
-     * @param emotion the emotion
-     */
     public void setEmotion(State emotion) {
         this.state = emotion;
     }
 
-    /**
-     * Gets state.
-     *
-     * @return the state
-     */
     public String getState() {
         if (state == null) {
             return "";
@@ -89,31 +51,26 @@ public class Emotion {
         }
     }
 
-    /**
-     * Gets color.
-     *
-     * @return the color
-     */
-    public String getColor() {
+    public int getColor() {
         switch(state) {
             case ANGER:
-                return "RED";
+                return 0xffff4d4d;
             case CONFUSION:
-                return "LIGHT GREEN";
+                return 0xff794dff;
             case DISGUST:
-                return "DARK GREEN";
+                return 0xffA47B37;
             case FEAR:
-                return "PURPLE";
+                return 0xff4EDAC5;
             case HAPPINESS:
-                return "YELLOW";
+                return 0xffffff4d;
             case SADNESS:
-                return "BLUE";
+                return 0xff4da6ff;
             case SHAME:
-                return "ORANGE";
+                return 0xffffa64d;
             case SURPRISE:
-                return "PINK";
+                return 0xffff4dff;
             default:
-                return "WHITE";
+                return 0xffffff;
         }
     }
 }

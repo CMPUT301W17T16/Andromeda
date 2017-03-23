@@ -1,12 +1,16 @@
 package ca.ualberta.andromeda;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,14 +37,16 @@ public class ViewUserActivity extends ViewMoodActivity {
 
         moodController = ModelManager.getMoodController();
         userController = ModelManager.getUserController();
-
+        BackgroundColor = (LinearLayout) findViewById(R.id.ViewUserMood);
         CommentButton = (Button) findViewById(R.id.commentButton);
+
         UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
         DateHolder = (TextView) findViewById(R.id.DateHolder);
         MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
         SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
         TriggerHolder = (EditText) findViewById(R.id.TriggerHolder);
         DetailHolder = (EditText) findViewById(R.id.DetailHolder);
+        PictureHolder = (ImageView) findViewById(R.id.PictureHolder);
 
         // Drop down list for the moods
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,

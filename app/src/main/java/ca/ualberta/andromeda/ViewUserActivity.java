@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -41,6 +42,7 @@ public class ViewUserActivity extends ViewMoodActivity {
         SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
         TriggerHolder = (EditText) findViewById(R.id.TriggerHolder);
         DetailHolder = (EditText) findViewById(R.id.DetailHolder);
+        PictureHolder = (ImageView) findViewById(R.id.PictureHolder);
 
         // Drop down list for the moods
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,

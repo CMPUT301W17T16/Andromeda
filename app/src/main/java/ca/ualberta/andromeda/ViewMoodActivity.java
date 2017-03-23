@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
     Spinner MoodSpinner;
     Spinner SocialSpinner;
     LinearLayout BackgroundColor;
+    ImageView PictureHolder;
 
     @Override
     protected void onStart(){
@@ -66,9 +68,9 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
 
         SocialSpinner.setSelection(getIndex(SocialSpinner, mood.getSocialSituation()));
 
-        // TODO Change the color of the background to match the mood
-
         BackgroundColor.setBackgroundColor(mood.getEmotion().getColor());
+
+
     }
 
     public void showLocation(View v) {

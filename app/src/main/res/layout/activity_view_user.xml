@@ -191,4 +191,11 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/commentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toComments"
+        android:text="Comments (#)" />
+
 </LinearLayout>

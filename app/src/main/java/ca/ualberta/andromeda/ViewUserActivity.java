@@ -1,11 +1,14 @@
 package ca.ualberta.andromeda;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +34,7 @@ public class ViewUserActivity extends ViewMoodActivity {
         moodController = ModelManager.getMoodController();
         userController = ModelManager.getUserController();
 
+        BackgroundColor = (LinearLayout) findViewById(R.id.ViewUserMood);
         UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
         DateHolder = (TextView) findViewById(R.id.DateHolder);
         MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);

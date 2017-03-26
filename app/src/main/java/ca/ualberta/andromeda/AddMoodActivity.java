@@ -34,61 +34,22 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-/**
- * The type Add mood activity.
- */
 public class AddMoodActivity extends AndromedaActivity {
-    /**
-     * The The mood.
-     */
-    protected String theMood;
-    /**
-     * The Username.
-     */
-    protected String username;
-    /**
-     * The Social sit.
-     */
-    protected String SocialSit;
-    /**
-     * The Details.
-     */
-    protected String Details;
-    /**
-     * The Trigger.
-     */
-    protected String Trigger;
-    /**
-     * The State.
-     */
-    protected Emotion.State state;
+    private String theMood;
+    private String username;
+    private String SocialSit;
+    private String Details;
+    private String Trigger;
+    private Emotion.State state;
     private LocationManager locationManager;
     private LocationListener listener;
     private String MyLocation;
     private boolean hasLocation;
-    /**
-     * The Username holder.
-     */
     TextView UsernameHolder;
-    /**
-     * The Date holder.
-     */
     TextView DateHolder;
-    /**
-     * The Mood spinner.
-     */
     Spinner MoodSpinner;
-    /**
-     * The Social spinner.
-     */
     Spinner SocialSpinner;
-    /**
-     * The Trigger holder.
-     */
     EditText TriggerHolder;
-    /**
-     * The Detail holder.
-     */
     EditText DetailHolder;
 
 
@@ -230,21 +191,11 @@ public class AddMoodActivity extends AndromedaActivity {
     }
 
 
-    /**
-     * Delete mood.
-     *
-     * @param v the v
-     */
     public void deleteMood(View v){
         finish();
     }
 
-    /**
-     * Save mood.
-     *
-     * @param v the v
-     */
-// Saves the updated mood
+    // Saves the updated mood
     public void saveMood(View v){
         Trigger = TriggerHolder.getText().toString();
         Details = DetailHolder.getText().toString();

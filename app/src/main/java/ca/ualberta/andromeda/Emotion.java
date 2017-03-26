@@ -116,4 +116,8 @@ public class Emotion {
                 return "WHITE";
         }
     }
+
+    public State returnState(){
+        return this.state;
+    }
 }

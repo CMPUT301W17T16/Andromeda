@@ -1,7 +1,5 @@
 package ca.ualberta.andromeda;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,12 +7,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.Date;
 
 /**
  * Created by Jeff on 3/21/2017.
@@ -103,6 +97,7 @@ public class ViewUserActivity extends ViewMoodActivity {
 
             }
 
+
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
@@ -117,6 +112,9 @@ public class ViewUserActivity extends ViewMoodActivity {
 
         // Loading Detail
         DetailHolder.setText(mood.getDetail());
+
+        // Load Picture
+        PictureHolder.setImageURI(mood.getImage());
     }
 
     public void deleteMood(View v) {

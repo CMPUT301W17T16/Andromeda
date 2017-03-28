@@ -4,8 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -15,27 +14,19 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
-import android.os.UserHandle;
-import android.provider.MediaStore;
-
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 
@@ -45,11 +36,13 @@ public class AddMoodActivity extends AndromedaActivity {
     protected String SocialSit;
     protected String Details;
     protected String Trigger;
+    protected Uri selectedImage;
     protected Emotion.State state;
     private LocationManager locationManager;
     private LocationListener listener;
     private String MyLocation;
     private boolean hasLocation;
+    private boolean hasImage;
 
     static final int IMAGE_PICK = 1;
     TextView UsernameHolder;
@@ -59,15 +52,20 @@ public class AddMoodActivity extends AndromedaActivity {
     EditText TriggerHolder;
     EditText DetailHolder;
     ImageView PictureHolder;
+    LinearLayout Background;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hasLocation = false;
+        hasImage = false;
         setContentView(R.layout.activity_add_mood);
         moodController = ModelManager.getMoodController();
         userController = ModelManager.getUserController();
 
+
+        Background = (LinearLayout) findViewById(R.id.Background);
         UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
         DateHolder = (TextView) findViewById(R.id.DateHolder);
         MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
@@ -180,14 +178,16 @@ public class AddMoodActivity extends AndromedaActivity {
             }
         });
 
-        // Adding image
-        PictureHolder.setOnClickListener(new View.OnClickListener(){
-            public void onClick (View v) {
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setType("image/*");
-                startActivityForResult(photoPickerIntent, IMAGE_PICK);
-//            }
-        }});
+    }
+
+    // Adding Image
+    public void PictureHolder(View v){
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        photoPickerIntent.setType("image/*");
+        startActivityForResult(photoPickerIntent, IMAGE_PICK);
+        hasImage = true;
+        PictureHolder.setImageURI(selectedImage);
+        System.out.println("fdskjflskdj");
     }
 
     @Override
@@ -197,8 +197,11 @@ public class AddMoodActivity extends AndromedaActivity {
         switch(requestCode) {
             case IMAGE_PICK:
                 if(resultCode == RESULT_OK){
-                    Uri selectedImage = imageReturnedIntent.getData();
+                    selectedImage = imageReturnedIntent.getData();
+                    hasImage = true;
                     PictureHolder.setImageURI(selectedImage);
+                    Background.setBackgroundColor(Color.DKGRAY);
+                    System.out.println("Skjfslkdjflsdjkf");
                 }
         }
     }
@@ -207,7 +210,8 @@ public class AddMoodActivity extends AndromedaActivity {
     protected void onStart() {
         super.onStart();
 
-        hasLocation = false;
+//        hasLocation = false;
+//        hasImage = false;
         Intent intent = getIntent();
 
         // Set username
@@ -229,12 +233,24 @@ public class AddMoodActivity extends AndromedaActivity {
         Trigger = TriggerHolder.getText().toString();
         Details = DetailHolder.getText().toString();
 
-        if(hasLocation){
-            moodController.createMood(username, SocialSit, state, Trigger, Details, MyLocation);
-        }else{
+
+        if(hasLocation && !hasImage){
+            moodController.createMood(username, SocialSit, state, Trigger, Details,  MyLocation);
+            Background.setBackgroundColor(Color.BLUE);
+        }else if (!hasLocation && !hasImage){
             moodController.createMood(username, SocialSit, state, Trigger, Details);
+            Background.setBackgroundColor(Color.RED);
+
+            // TODO Figure out why I never reach these conditions.
+            // The next two conditions are never met.
+        }else if (hasLocation && hasImage){
+            moodController.createMood(username, SocialSit, state, Trigger, Details, selectedImage, MyLocation);
+            Background.setBackgroundColor(Color.GREEN);
+        }else if (!hasLocation && hasImage){
+            moodController.createMood(username, SocialSit, state, Trigger, Details,  selectedImage);
+            Background.setBackgroundColor(Color.YELLOW);
         }
-        finish();
+//        finish();
     }
   
    private void configure_button() {

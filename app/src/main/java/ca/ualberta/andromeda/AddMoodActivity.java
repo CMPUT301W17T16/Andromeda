@@ -1,9 +1,12 @@
 package ca.ualberta.andromeda;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
@@ -27,6 +30,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
 import java.util.Date;
 
 
@@ -182,12 +186,13 @@ public class AddMoodActivity extends AndromedaActivity {
 
     // Adding Image
     public void PictureHolder(View v){
+        imageConfigureButton();
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, IMAGE_PICK);
         hasImage = true;
+//        int permissionCheck = AndromedaActivity.checkSelfPermission(AddMoodActivity, Manifest.permission.WRITE_CALENDAR);
         PictureHolder.setImageURI(selectedImage);
-        System.out.println("fdskjflskdj");
     }
 
     @Override
@@ -200,8 +205,6 @@ public class AddMoodActivity extends AndromedaActivity {
                     selectedImage = imageReturnedIntent.getData();
                     hasImage = true;
                     PictureHolder.setImageURI(selectedImage);
-                    Background.setBackgroundColor(Color.DKGRAY);
-                    System.out.println("Skjfslkdjflsdjkf");
                 }
         }
     }
@@ -210,8 +213,6 @@ public class AddMoodActivity extends AndromedaActivity {
     protected void onStart() {
         super.onStart();
 
-//        hasLocation = false;
-//        hasImage = false;
         Intent intent = getIntent();
 
         // Set username
@@ -234,23 +235,15 @@ public class AddMoodActivity extends AndromedaActivity {
         Details = DetailHolder.getText().toString();
 
 
-        if(hasLocation && !hasImage){
+        if(hasLocation){
             moodController.createMood(username, SocialSit, state, Trigger, Details,  MyLocation);
-            Background.setBackgroundColor(Color.BLUE);
-        }else if (!hasLocation && !hasImage){
+        }else {
             moodController.createMood(username, SocialSit, state, Trigger, Details);
-            Background.setBackgroundColor(Color.RED);
-
-            // TODO Figure out why I never reach these conditions.
-            // The next two conditions are never met.
-        }else if (hasLocation && hasImage){
-            moodController.createMood(username, SocialSit, state, Trigger, Details, selectedImage, MyLocation);
-            Background.setBackgroundColor(Color.GREEN);
-        }else if (!hasLocation && hasImage){
-            moodController.createMood(username, SocialSit, state, Trigger, Details,  selectedImage);
-            Background.setBackgroundColor(Color.YELLOW);
         }
-//        finish();
+        if (hasImage){
+            moodController.addImage(selectedImage);
+        }
+        finish();
     }
   
    private void configure_button() {
@@ -265,10 +258,21 @@ public class AddMoodActivity extends AndromedaActivity {
             }
             return;
         }
+
         // this code won'textView execute IF permissions are not allowed, because in the line above there is return statement.
 
         locationManager.requestLocationUpdates("gps", 5000, 0, listener);
 
+    }
+
+    private void imageConfigureButton(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, 11);
+            }
+        }
     }
 
     //get permission to use location for this app
@@ -279,6 +283,8 @@ public class AddMoodActivity extends AndromedaActivity {
             case 10:
                 configure_button();
                 break;
+            case 11:
+                imageConfigureButton();
             default:
                 break;
         }

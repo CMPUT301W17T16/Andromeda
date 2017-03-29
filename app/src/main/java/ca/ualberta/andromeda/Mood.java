@@ -42,30 +42,8 @@ public class Mood {
         this.id = id;
         this.MyLocation = MyLocation;
     }
-
-    // Has image but not location
-    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, Uri image, String id){
-        this.user = user;
-        this.socialSituation = socialSituation;
-        this.date = date;
-        this.emotion = new Emotion(state);
-        this.trigger = trigger;
-        this.detail = detail;
+    public void addImage(Uri image){
         this.image = image;
-        this.id = id;
-    }
-
-    // Has image and location
-    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, Uri image,  String id, String MyLocation){
-        this.user = user;
-        this.socialSituation = socialSituation;
-        this.date = date;
-        this.emotion = new Emotion(state);
-        this.trigger = trigger;
-        this.detail = detail;
-        this.image = image;
-        this.id = id;
-        this.MyLocation = MyLocation;
     }
 
     public void edit(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail){
@@ -74,7 +52,6 @@ public class Mood {
         this.date = date;
         this.emotion = new Emotion(state);
         this.trigger = trigger;
-        this.image = image;
         this.detail = detail;
     }
 

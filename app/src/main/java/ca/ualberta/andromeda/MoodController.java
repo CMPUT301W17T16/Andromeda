@@ -33,21 +33,13 @@ public class MoodController {
         return newMood;
     }
 
-    // Has image and no location
-    public Mood createMood(String user, String socialSituation, Emotion.State state, String trigger, String detail, Uri image){
-        String id = getUniqueId();
-        Mood newMood = new Mood(user, socialSituation, new Date(), state, trigger, detail, image, id);
-        this.addMood(newMood);
-        return newMood;
+    public void addImage(Uri image){
+//        Mood tempMood = this.getMood(moodModel.getList().size()-1);
+//        tempMood.addImage(image);
+        moodModel.getItem(0).addImage(image);
+        moodModel.saveList();
     }
 
-    // Has image and location
-    public Mood createMood(String user, String socialSituation, Emotion.State state, String trigger, String detail, Uri image, String MyLocation){
-        String id = getUniqueId();
-        Mood newMood = new Mood(user, socialSituation, new Date(), state, trigger, detail, image,  id, MyLocation);
-        this.addMood(newMood);
-        return newMood;
-    }
 
     public ArrayList<Mood> getUserMoods(User user){
         ArrayList<Mood> moodList = moodModel.getList();

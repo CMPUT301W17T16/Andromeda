@@ -4,6 +4,9 @@
 
 package ca.ualberta.andromeda;
 
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+
 /**
  * Created by livialee on 2017-02-27.
  */
@@ -29,4 +32,6 @@ public class Photo {
     public void setLocation(String location) {
         Location = location;
     }
+
+
 }

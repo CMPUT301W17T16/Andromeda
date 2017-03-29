@@ -106,4 +106,10 @@ public class commentsActivity extends AndromedaActivity {
         commentListView.setAdapter(adapter);
     }
 
+    public ListView getListView() {
+        return commentListView;
+    }
+
+    public ArrayList<Comment> getCommentList(){return commentList;}
+
 }

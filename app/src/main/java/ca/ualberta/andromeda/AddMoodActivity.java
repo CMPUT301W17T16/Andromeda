@@ -40,18 +40,18 @@ import java.util.Date;
 
 
 public class AddMoodActivity extends AndromedaActivity {
-    protected String theMood;
-    protected String username;
-    protected String SocialSit;
-    protected String Details;
-    protected String Trigger;
-    protected Emotion.State state;
+    private String theMood;
+    private String username;
+    private String SocialSit;
+    private String Details;
+    private String Trigger;
+    private Emotion.State state;
     private LocationManager locationManager;
     private LocationListener listener;
     private String MyLocation;
     private boolean hasLocation;
-
     static final int IMAGE_PICK = 1;
+
     TextView UsernameHolder;
     TextView DateHolder;
     Spinner MoodSpinner;

@@ -19,4 +19,6 @@ public class Comment {
     }
 
     public String getUser() { return user; }
+
+    public String getComment() { return comment; }
 }

@@ -73,4 +73,8 @@ public class Emotion {
                 return 0xffffff;
         }
     }
+
+    public State returnState(){
+        return this.state;
+    }
 }

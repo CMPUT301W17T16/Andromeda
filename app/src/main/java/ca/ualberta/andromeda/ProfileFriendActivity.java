@@ -61,6 +61,13 @@ public class ProfileFriendActivity extends ProfileActivity{
 
         // Load all of the moods from the user
         moodList = moodController.getUserMoods(this.friend);
+
+        // filter the moods
+        if (filter != null){
+            moodList = filter.filterMoods(moodList);
+        }
+
+        // display the moods
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.addAll(moodList);
         moodListView.setAdapter(adapter);

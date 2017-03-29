@@ -137,6 +137,7 @@
             android:fontFamily="none"
             android:inputType="text"
             android:padding="10dp"
+            android:textAlignment="textEnd"
             android:textAppearance="@android:style/TextAppearance.Large" />
 
     </LinearLayout>
@@ -166,6 +167,7 @@
             android:fontFamily="none"
             android:inputType="text"
             android:padding="10dp"
+            android:textAlignment="textEnd"
             android:textAppearance="@android:style/TextAppearance.Large" />
 
     </LinearLayout>

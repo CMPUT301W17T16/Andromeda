@@ -25,12 +25,14 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
     protected String idNum;
     protected Mood mood;
 
+
     TextView UsernameHolder;
     TextView DateHolder;
     Spinner MoodSpinner;
     Spinner SocialSpinner;
     LinearLayout BackgroundColor;
     ImageView PictureHolder;
+    ImageView EmoticonHolder;
 
     @Override
     protected void onStart(){
@@ -56,10 +58,17 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
 
         SocialSpinner.setSelection(getIndex(SocialSpinner, mood.getSocialSituation()));
 
-        http://stackoverflow.com/questions/2217753/changing-background-color-of-listview-items-on-android
+//        http://stackoverflow.com/questions/2217753/changing-background-color-of-listview-items-on-android
         BackgroundColor.setBackgroundColor(mood.getEmotion().getColor());
 
+        String EmoticonString = mood.getEmotion().getEmoticon();
+        int drawableResourceId = this.getResources().getIdentifier(EmoticonString, "drawable", this.getPackageName());
+
+        EmoticonHolder.setImageResource(drawableResourceId);
+
         PictureHolder.setImageURI(mood.getImage());
+
+
 
 
     }

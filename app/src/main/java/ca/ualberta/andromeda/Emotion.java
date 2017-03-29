@@ -4,6 +4,10 @@
 
 package ca.ualberta.andromeda;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+
 public class Emotion {
     public enum State {
         ANGER,
@@ -25,6 +29,7 @@ public class Emotion {
         this.state = emotion;
     }
 
+    //    http://www.android-examples.com/add-show-smiley-emoticons-inside-edittext-in-android/
     public String getState() {
         if (state == null) {
             return "";
@@ -81,4 +86,29 @@ public class Emotion {
                 return 0xffffff;
         }
     }
+//    http://www.android-examples.com/add-show-smiley-emoticons-inside-edittext-in-android/
+
+    public String getEmoticon() {
+        switch(state) {
+            case ANGER:
+                return "anger";
+            case CONFUSION:
+                return "confusion";
+            case DISGUST:
+                return "disgust";
+            case FEAR:
+                return "fear";
+            case HAPPINESS:
+                return "happiness";
+            case SADNESS:
+                return "sadness";
+            case SHAME:
+                return "shame";
+            case SURPRISE:
+                return "surprise";
+            default:
+                return "";
+        }
+    }
+
 }

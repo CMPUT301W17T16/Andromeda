@@ -4,9 +4,12 @@ import android.Manifest;
 import android.content.Intent;
 
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -23,11 +26,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -45,12 +50,15 @@ public class AddMoodActivity extends AndromedaActivity {
     private LocationListener listener;
     private String MyLocation;
     private boolean hasLocation;
+    static final int IMAGE_PICK = 1;
+
     TextView UsernameHolder;
     TextView DateHolder;
     Spinner MoodSpinner;
     Spinner SocialSpinner;
     EditText TriggerHolder;
     EditText DetailHolder;
+    ImageView PictureHolder;
 
 
     @Override
@@ -60,16 +68,15 @@ public class AddMoodActivity extends AndromedaActivity {
         moodController = ModelManager.getMoodController();
         userController = ModelManager.getUserController();
 
-
         UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
         DateHolder = (TextView) findViewById(R.id.DateHolder);
         MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
         SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
         TriggerHolder = (EditText) findViewById(R.id.TriggerHolder);
         DetailHolder = (EditText) findViewById(R.id.DetailHolder);
-        
-      
-       //get loction
+        PictureHolder = (ImageView) findViewById(R.id.PictureHolder);
+
+       //get location
         Switch location = (Switch) findViewById(R.id.LocationSwitch);
         location.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
@@ -172,6 +179,28 @@ public class AddMoodActivity extends AndromedaActivity {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        // Adding image
+        PictureHolder.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v) {
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, IMAGE_PICK);
+//            }
+        }});
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+
+        switch(requestCode) {
+            case IMAGE_PICK:
+                if(resultCode == RESULT_OK){
+                    Uri selectedImage = imageReturnedIntent.getData();
+                    PictureHolder.setImageURI(selectedImage);
+                }
+        }
     }
 
     @Override

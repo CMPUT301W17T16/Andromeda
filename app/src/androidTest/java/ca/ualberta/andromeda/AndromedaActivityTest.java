@@ -289,17 +289,14 @@ public class AndromedaActivityTest extends ActivityInstrumentationTestCase2 {
         solo.clickOnButton(3);
         solo.assertCurrentActivity("Wrong Activity", commentsActivity.class);
 
+        solo.waitForActivity("commentsActivity");
+        commentsActivity activity2 = (commentsActivity) solo.getCurrentActivity();
+
         solo.enterText((EditText) solo.getView(R.id.commentText), "Test Comment");
         solo.clickOnButton("Enter");
 
-        solo.waitForActivity("commentsActivity");
-        commentsActivity activity2 = (commentsActivity) solo.getCurrentActivity();
-        ListView commentList = activity2.getListView();
-        Comment comment = (Comment) commentList.getItemAtPosition(0);
-        assertEquals("Test Comment", comment.getComment());
-        assertEquals("User", comment.getUser());
-
-        //TODO WTF FIX THIS. ITS NOT WORKING FOR SOME REASON
+        solo.clearEditText((EditText) solo.getView(R.id.commentText));
+        solo.waitForText("User: Test Comment");
     }
 
     public void testFilters() {

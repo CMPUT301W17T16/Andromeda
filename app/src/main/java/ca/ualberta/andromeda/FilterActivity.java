@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -84,7 +85,7 @@ public class FilterActivity extends AppCompatActivity {
     public void filterButton(View v){
 
         String searchTerm = SearchHolder.getText().toString();
-        boolean withinWeek = weekSwitch.isActivated();
+        boolean withinWeek = weekSwitch.isChecked();
 
         // make filter
         Filter filter = new Filter(state, searchTerm, withinWeek );

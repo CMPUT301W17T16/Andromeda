@@ -4,8 +4,13 @@
 
 package ca.ualberta.andromeda;
 
+import android.widget.Toast;
+
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -35,10 +40,24 @@ public class Filter implements Serializable {
                 if (!moodList.get(x).getEmotion().returnState().equals(State)){ add = false; }
             }
             if(Search != null){
-                // TODO tokenize this and filter
+
+                // https://stackoverflow.com/questions/17134773/to-check-if-string-contains-particular-word
+                // march 28, 2017
+                if (moodList.get(x).getDetail().toLowerCase().indexOf(Search.toLowerCase()) == -1 ){
+                    add = false;
+                }
             }
             if(WithinWeek){
-                // TODO do the dates
+
+                // https://stackoverflow.com/questions/11882926/how-to-subtract-x-day-from-a-date-object-in-java
+                // march 28, 2017
+                Date lastWeek = DateUtils.addDays(new Date(),-7);
+
+                // https://www.mkyong.com/java/how-to-compare-dates-in-java/
+                // march 28, 2017
+                if (moodList.get(x).getDate().compareTo(lastWeek) < 0){
+                    add = false;
+                }
             }
 
             if(add){

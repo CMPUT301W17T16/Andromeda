@@ -56,6 +56,7 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
 
         SocialSpinner.setSelection(getIndex(SocialSpinner, mood.getSocialSituation()));
 
+        http://stackoverflow.com/questions/2217753/changing-background-color-of-listview-items-on-android
         BackgroundColor.setBackgroundColor(mood.getEmotion().getColor());
 
         PictureHolder.setImageURI(mood.getImage());

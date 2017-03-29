@@ -54,21 +54,29 @@ public class Emotion {
     public int getColor() {
         switch(state) {
             case ANGER:
-                return 0xffff4d4d;
+                //Dark Red
+                return 0xffC23B22;
             case CONFUSION:
-                return 0xff794dff;
+                //Violet
+                return 0xffCB99C9;
             case DISGUST:
-                return 0xffA47B37;
+                //Green
+                return 0xff77DD77;
             case FEAR:
-                return 0xff4EDAC5;
+                //Dark blue
+                return 0xff779ECB;
             case HAPPINESS:
-                return 0xffffff4d;
+                //Yellow
+                return 0xffFDFD96;
             case SADNESS:
-                return 0xff4da6ff;
+                //Dark Blue
+                return 0xff779ECb;
             case SHAME:
-                return 0xffffa64d;
+                //Magenta
+                return 0xffF49AC2;
             case SURPRISE:
-                return 0xffff4dff;
+                //Orange
+                return 0xffFFB347;
             default:
                 return 0xffffff;
         }

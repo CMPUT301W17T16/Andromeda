@@ -17,16 +17,20 @@
             android:id="@+id/textView4"
             android:layout_width="127dp"
             android:layout_height="match_parent"
+            android:padding="10dp"
             android:text="Username:"
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/UsernameHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="none"
+            android:padding="10dp"
             android:text="UsernameHolder"
-            android:textAlignment="viewEnd"
-            android:textSize="18sp" />
+            android:textAlignment="textEnd"
+            android:textAppearance="@android:style/TextAppearance.Large" />
     </LinearLayout>
 
     <LinearLayout
@@ -39,17 +43,21 @@
             android:layout_width="125dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
+            android:padding="10dp"
             android:text="Date: "
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/DateHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0"
+            android:fontFamily="none"
+            android:padding="10dp"
             android:text="DateHolder"
             android:textAlignment="textEnd"
-            android:textSize="18sp" />
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
     </LinearLayout>
 
@@ -63,17 +71,21 @@
             android:layout_width="125dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
+            android:padding="10dp"
             android:text="Mood: "
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/MoodHoler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0"
+            android:fontFamily="none"
+            android:padding="10dp"
             android:text="MoodHolder"
             android:textAlignment="textEnd"
-            android:textSize="18sp" />
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
     </LinearLayout>
 
@@ -87,17 +99,21 @@
             android:id="@+id/SocialSit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:padding="10dp"
             android:text="Social Situation:"
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/SocialSitHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:fontFamily="none"
+            android:padding="10dp"
             android:text="SitHolder"
             android:textAlignment="textEnd"
-            android:textSize="18sp" />
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
     </LinearLayout>
 
@@ -111,17 +127,23 @@
             android:id="@+id/Trigger"
             android:layout_width="127dp"
             android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
             android:text="Trigger: "
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/TriggerHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:fontFamily="none"
+            android:padding="10dp"
             android:text="TriggerHolder"
             android:textAlignment="textEnd"
-            android:textSize="18sp" />
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
     </LinearLayout>
 
@@ -134,17 +156,21 @@
             android:id="@+id/Details"
             android:layout_width="129dp"
             android:layout_height="match_parent"
+            android:padding="10dp"
             android:text="Details: "
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/DetailHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.02"
+            android:fontFamily="none"
+            android:padding="10dp"
             android:text="DetailHolder"
             android:textAlignment="textEnd"
-            android:textSize="18sp" />
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
     </LinearLayout>
 

@@ -185,6 +185,7 @@ public class AddMoodActivity extends AndromedaActivity {
     }
 
     // Adding Image
+//    http://stackoverflow.com/questions/2507898/how-to-pick-an-image-from-gallery-sd-card-for-my-app
     public void PictureHolder(View v){
         imageConfigureButton();
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);

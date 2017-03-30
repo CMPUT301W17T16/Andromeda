@@ -24,6 +24,10 @@ public class ProfileFriendActivity extends ProfileActivity{
 
     private String friendname;
     private User friend;
+    private boolean following;
+    private boolean requestSent;
+
+    Button followButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +35,9 @@ public class ProfileFriendActivity extends ProfileActivity{
         setContentView(R.layout.activity_profile_friend);
         moodListView = (ListView) findViewById(R.id.MoodList);
         moodList = new ArrayList<Mood>();
-        final Intent intent = new Intent(this, ViewFriendActivity.class);
+        followButton = (Button) findViewById(R.id.follow);
 
+        final Intent intent = new Intent(this, ViewFriendActivity.class);
         moodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -42,6 +47,20 @@ public class ProfileFriendActivity extends ProfileActivity{
                 startActivity(intent);
             }
         });
+
+        followButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                if (!following && !requestSent){
+                    userController.sendFollowRequest(username, friend);
+                    followButton.setText("Request Sent");
+                }else if (following){
+                    userController.unfollow(user, friendname);
+                    followButton.setText("Follow");
+                }
+            }
+        });
+
     }
 
     @Override
@@ -71,15 +90,18 @@ public class ProfileFriendActivity extends ProfileActivity{
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.addAll(moodList);
         moodListView.setAdapter(adapter);
-    }
 
-    /**
-     * Follow user.
-     *
-     * @param v the v
-     */
-    public void followUser(View v){
-        // TODO: check if already following
+        // check if user is following
+        following = user.getFollower().contains(friendname);
+        if (following){
+            followButton.setText("Unfollow");
+        }
+
+        // check if request Sent
+        requestSent = friend.getFollowerRequest().contains(username);
+        if (requestSent){
+            followButton.setText("Request Sent");
+        }
 
     }
 

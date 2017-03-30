@@ -36,6 +36,7 @@ public class User {
         this.username = username;
         this.following = new ArrayList<String>();
         this.followerRequest = new ArrayList<String>();
+        this.following.add(username);
     }
 
     /**

@@ -69,7 +69,7 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
 
         EmoticonHolder.setImageResource(drawableResourceId);
 
-        PictureHolder.setImageURI(mood.getImage());
+        PictureHolder.setImageBitmap(mood.getImage());
 
     }
 

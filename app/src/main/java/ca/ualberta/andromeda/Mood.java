@@ -4,6 +4,7 @@
 
 package ca.ualberta.andromeda;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 import java.net.URI;
@@ -17,7 +18,7 @@ public class Mood {
     private Date date;
     private String detail;
     private String trigger;
-    private Uri image;
+    private Bitmap image;
     private Emotion emotion;
     private String id;
     private String MyLocation;
@@ -42,7 +43,7 @@ public class Mood {
         this.id = id;
         this.MyLocation = MyLocation;
     }
-    public void addImage(Uri image){
+    public void addImage(Bitmap image){
         this.image = image;
     }
 
@@ -79,7 +80,7 @@ public class Mood {
 
     public String getId() { return id; }
 
-    public Uri getImage() { return image;}
+    public Bitmap getImage() { return image;}
 
     public String getMyLocation() { return MyLocation; }
 

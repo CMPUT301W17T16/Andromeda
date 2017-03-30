@@ -4,6 +4,7 @@
 
 package ca.ualberta.andromeda;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 import java.util.ArrayList;
@@ -33,9 +34,7 @@ public class MoodController {
         return newMood;
     }
 
-    public void addImage(Uri image){
-//        Mood tempMood = this.getMood(moodModel.getList().size()-1);
-//        tempMood.addImage(image);
+    public void addImage(Bitmap image){
         moodModel.getItem(0).addImage(image);
         moodModel.saveList();
     }

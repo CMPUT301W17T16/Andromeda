@@ -116,7 +116,7 @@ public class ViewUserActivity extends ViewMoodActivity {
         DetailHolder.setText(mood.getDetail());
 
         // Load Picture
-        PictureHolder.setImageURI(mood.getImage());
+        PictureHolder.setImageBitmap(mood.getImage());
     }
 
     public void deleteMood(View v) {

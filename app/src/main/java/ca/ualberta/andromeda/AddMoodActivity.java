@@ -1,13 +1,10 @@
 package ca.ualberta.andromeda;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -23,7 +20,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
@@ -36,7 +32,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 
@@ -47,7 +42,7 @@ public class AddMoodActivity extends AndromedaActivity {
     protected String SocialSit;
     protected String Details;
     protected String Trigger;
-    protected Uri selectedImage;
+    protected Uri selectedImageFromGallery;
     protected Emotion.State state;
     private LocationManager locationManager;
     private LocationListener listener;
@@ -56,6 +51,7 @@ public class AddMoodActivity extends AndromedaActivity {
     private boolean hasImage;
     private LayoutInflater layoutInflater;
     private PopupWindow popupWindow;
+    private Bitmap retrievedImage;
 
     static final int IMAGE_PICK = 1;
     TextView UsernameHolder;
@@ -211,13 +207,13 @@ public class AddMoodActivity extends AndromedaActivity {
             case IMAGE_PICK:
                 if(resultCode == RESULT_OK){
                     try {
-                        selectedImage = imageReturnedIntent.getData();
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                        selectedImageFromGallery = imageReturnedIntent.getData();
+                        retrievedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageFromGallery);
 
                         //http://stackoverflow.com/questions/2305966/why-do-i-get-the-unhandled-exception-type-ioexception
                         //https://www.youtube.com/watch?v=wxqgtEewdfo
                         // Needs to be under 65536 bytes
-                        if (bitmap.getByteCount()/4 > 65536){
+                        if (retrievedImage.getByteCount()/4 > 65536){
                             layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                             View message = layoutInflater.inflate(R.layout.image, null);
 
@@ -234,7 +230,7 @@ public class AddMoodActivity extends AndromedaActivity {
 
                         }else {
                             hasImage = true;
-                            PictureHolder.setImageBitmap(bitmap);
+                            PictureHolder.setImageBitmap(retrievedImage);
                         }
 
                     } catch (IOException ie){
@@ -278,7 +274,7 @@ public class AddMoodActivity extends AndromedaActivity {
             moodController.createMood(username, SocialSit, state, Trigger, Details);
         }
         if (hasImage){
-            moodController.addImage(selectedImage);
+            moodController.addImage(retrievedImage);
         }
         finish();
     }

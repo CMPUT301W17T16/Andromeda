@@ -83,7 +83,8 @@ public class ProfileFriendActivity extends ProfileActivity{
 
         // filter the moods
         if (filter != null){
-            moodList = filter.filterMoods(moodList);
+            filter.searchAllUsers();
+            moodList = filter.filterMoods(moodList, user);
         }
 
         // display the moods

@@ -25,6 +25,7 @@ public class FilterActivity extends AppCompatActivity {
     Spinner MoodSpinner;
     EditText SearchHolder;
     Switch weekSwitch;
+    Switch allUserSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class FilterActivity extends AppCompatActivity {
         MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
         SearchHolder = (EditText) findViewById(R.id.SearchTermHolder);
         weekSwitch = (Switch) findViewById(R.id.switch1);
+        allUserSwitch = (Switch) findViewById(R.id.switch2);
+
 
         // Drop down list for the moods
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,
@@ -89,9 +92,10 @@ public class FilterActivity extends AppCompatActivity {
 
         String searchTerm = SearchHolder.getText().toString();
         boolean withinWeek = weekSwitch.isChecked();
+        boolean alluser = allUserSwitch.isChecked();
 
         // make filter
-        Filter filter = new Filter(state, searchTerm, withinWeek );
+        Filter filter = new Filter(state, searchTerm, withinWeek, alluser );
 
         // pass filter to previous
         Intent intent = new Intent();

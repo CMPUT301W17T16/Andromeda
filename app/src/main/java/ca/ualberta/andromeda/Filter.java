@@ -20,11 +20,13 @@ public class Filter implements Serializable {
     private Emotion.State State;
     private String Search;
     private Boolean WithinWeek;
+    private Boolean allUsers;
 
-    public Filter(Emotion.State state, String search, boolean WithinWeek){
+    public Filter(Emotion.State state, String search, boolean WithinWeek, boolean allUsers){
         this.State = state;
         this.Search = search;
         this.WithinWeek = WithinWeek;
+        this.allUsers = allUsers;
     }
 
     public boolean filterList(){
@@ -32,7 +34,7 @@ public class Filter implements Serializable {
 
     }
 
-    public ArrayList<Mood> filterMoods(ArrayList<Mood> moodList){
+    public ArrayList<Mood> filterMoods(ArrayList<Mood> moodList, User user){
         ArrayList<Mood> filteredMood = new ArrayList<Mood>();
         for(int x=0; x<moodList.size(); x++){
             boolean add = true;
@@ -59,11 +61,19 @@ public class Filter implements Serializable {
                     add = false;
                 }
             }
-
+            if(!allUsers){
+                if (!user.getFollower().contains(moodList.get(x).getUser())){
+                    add = false;
+                }
+            }
             if(add){
                 filteredMood.add(moodList.get(x));
             }
         }
         return filteredMood;
+    }
+
+    public void searchAllUsers(){
+        this.allUsers = true;
     }
 }

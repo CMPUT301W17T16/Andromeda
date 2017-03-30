@@ -13,25 +13,16 @@ import io.searchbox.annotations.JestId;
  */
 public class User {
     private String username;
-    //private ArrayList<String> following;
-    //private ArrayList<String> followerRequest;
+    private ArrayList<String> following;
+    private ArrayList<String> followerRequest;
     @JestId
     private String id;
 
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
+
     public String getId() {
         return id;
     }
 
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
     public void setId(String id) {
         this.id = id;
     }
@@ -43,6 +34,9 @@ public class User {
      */
     public User(String username){
         this.username = username;
+        this.following = new ArrayList<String>();
+        this.followerRequest = new ArrayList<String>();
+        this.following.add(username);
     }
 
     /**
@@ -61,6 +55,30 @@ public class User {
      */
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public ArrayList<String> getFollower() {
+        return following;
+    }
+
+    public ArrayList<String> getFollowerRequest() {
+        return followerRequest;
+    }
+
+    public void addFollower(String following) {
+        this.following.add(following);
+    }
+
+    public void addFollowerRequest(String requester) {
+        this.followerRequest.add(requester);
+    }
+
+    public void deleteFollowerRequest(String requester){
+        this.followerRequest.remove(requester);
+    }
+
+    public void unfollow(String unfollow){
+        this.following.remove(unfollow);
     }
 
 }

@@ -26,4 +26,16 @@
         <item>Crowd</item>
     </string-array>
 
+    <string-array name="moods_array2">
+        <item></item>
+        <item>Anger</item>
+        <item>Confusion</item>
+        <item>Disgust</item>
+        <item>Fear</item>
+        <item>Happiness</item>
+        <item>Sadness</item>
+        <item>Shame</item>
+        <item>Surprise</item>
+    </string-array>
+
 </resources>

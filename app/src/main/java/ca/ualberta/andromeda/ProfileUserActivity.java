@@ -56,7 +56,7 @@ public class ProfileUserActivity extends ProfileActivity {
 
         // filter the moods
         if (filter != null){
-            moodList = filter.filterMoods(moodList);
+            moodList = filter.filterMoods(moodList, user);
         }
 
         // display the moods

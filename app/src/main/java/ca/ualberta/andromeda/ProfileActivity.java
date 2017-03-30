@@ -45,6 +45,7 @@ public abstract class ProfileActivity extends AndromedaActivity {
         // Load all of the moods from the user
         moodList = moodController.getUserMoods(this.user);
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+//        ColorAdapter adapter = new ColorAdapter(this, R.layout.mood_listview);
         adapter.addAll(moodList);
         moodListView.setAdapter(adapter);
     }

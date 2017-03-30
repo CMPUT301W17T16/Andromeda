@@ -74,8 +74,8 @@ public class Emotion {
                 //Yellow
                 return 0xffFDFD96;
             case SADNESS:
-                //Dark Blue
-                return 0xff779ECb;
+                //Blue
+                return 0xffAEC6CF;
             case SHAME:
                 //Magenta
                 return 0xffF49AC2;

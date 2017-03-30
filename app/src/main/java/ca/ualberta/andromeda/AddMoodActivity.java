@@ -13,24 +13,31 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
 
 
@@ -47,6 +54,8 @@ public class AddMoodActivity extends AndromedaActivity {
     private String MyLocation;
     private boolean hasLocation;
     private boolean hasImage;
+    private LayoutInflater layoutInflater;
+    private PopupWindow popupWindow;
 
     static final int IMAGE_PICK = 1;
     TextView UsernameHolder;
@@ -191,9 +200,7 @@ public class AddMoodActivity extends AndromedaActivity {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, IMAGE_PICK);
-        hasImage = true;
-//        int permissionCheck = AndromedaActivity.checkSelfPermission(AddMoodActivity, Manifest.permission.WRITE_CALENDAR);
-        PictureHolder.setImageURI(selectedImage);
+
     }
 
     @Override
@@ -203,9 +210,38 @@ public class AddMoodActivity extends AndromedaActivity {
         switch(requestCode) {
             case IMAGE_PICK:
                 if(resultCode == RESULT_OK){
-                    selectedImage = imageReturnedIntent.getData();
-                    hasImage = true;
-                    PictureHolder.setImageURI(selectedImage);
+                    try {
+                        selectedImage = imageReturnedIntent.getData();
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+
+                        //http://stackoverflow.com/questions/2305966/why-do-i-get-the-unhandled-exception-type-ioexception
+                        //https://www.youtube.com/watch?v=wxqgtEewdfo
+                        // Needs to be under 65536 bytes
+                        if (bitmap.getByteCount()/4 > 65536){
+                            layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                            View message = layoutInflater.inflate(R.layout.image, null);
+
+                            popupWindow = new PopupWindow(message, 700, 700, true);
+                            popupWindow.showAtLocation(Background, Gravity.NO_GRAVITY, 200, 3000);
+
+                            message.setOnTouchListener(new View.OnTouchListener(){
+                                @Override
+                                public boolean onTouch (View view, MotionEvent motionEvent) {
+                                    popupWindow.dismiss();
+                                    return true;
+                                }
+                            });
+
+                        }else {
+                            hasImage = true;
+                            PictureHolder.setImageBitmap(bitmap);
+                        }
+
+                    } catch (IOException ie){
+                        ie.printStackTrace();
+
+                    }
+
                 }
         }
     }

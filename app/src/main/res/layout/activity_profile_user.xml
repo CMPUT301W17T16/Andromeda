@@ -110,13 +110,4 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/empty"
-        android:text="NO MOOD."
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
 </RelativeLayout>

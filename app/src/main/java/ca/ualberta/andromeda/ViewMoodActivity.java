@@ -58,18 +58,18 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
 
         SocialSpinner.setSelection(getIndex(SocialSpinner, mood.getSocialSituation()));
 
-//        http://stackoverflow.com/questions/2217753/changing-background-color-of-listview-items-on-android
+//      http://stackoverflow.com/questions/2217753/changing-background-color-of-listview-items-on-android
         BackgroundColor.setBackgroundColor(mood.getEmotion().getColor());
 
+        // Load Emoticon
+//      http://stackoverflow.com/questions/29047902/how-to-add-an-image-to-the-drawable-folder-in-android-studio
+//      http://stackoverflow.com/questions/8642823/using-setimagedrawable-dynamically-to-set-image-in-an-imageview
         String EmoticonString = mood.getEmotion().getEmoticon();
         int drawableResourceId = this.getResources().getIdentifier(EmoticonString, "drawable", this.getPackageName());
 
         EmoticonHolder.setImageResource(drawableResourceId);
 
         PictureHolder.setImageURI(mood.getImage());
-
-
-
 
     }
 

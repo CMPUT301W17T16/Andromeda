@@ -20,7 +20,6 @@ public class ViewUserActivity extends ViewMoodActivity {
 
     EditText TriggerHolder;
     EditText DetailHolder;
-    int drawableResourceId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,16 +102,6 @@ public class ViewUserActivity extends ViewMoodActivity {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
-
-        // Load Emoticon
-//      http://stackoverflow.com/questions/29047902/how-to-add-an-image-to-the-drawable-folder-in-android-studio
-//        http://stackoverflow.com/questions/8642823/using-setimagedrawable-dynamically-to-set-image-in-an-imageview
-
-
-//        drawableResourceId = this.getResources().getIdentifier("confusion", "drawable", this.getPackageName());
-//
-//        int drawableResourceId2 = this.getResources().getIdentifier();
-//        EmoticonHolder.setImageResource(drawableResourceId);
 
     }
 

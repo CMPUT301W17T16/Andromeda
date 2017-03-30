@@ -37,7 +37,7 @@ public class FilterActivity extends AppCompatActivity {
 
         // Drop down list for the moods
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,
-                R.array.moods_array, android.R.layout.simple_spinner_item);
+                R.array.moods_array2, android.R.layout.simple_spinner_item);
         MoodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         MoodSpinner.setAdapter(MoodAdapter);
 
@@ -46,6 +46,9 @@ public class FilterActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String theMood = parent.getItemAtPosition(position).toString();
                 switch (theMood) {
+                    case "":
+                        state = null;
+                        break;
                     case "Anger":
                         state = Emotion.State.ANGER;
                         break;

@@ -61,6 +61,7 @@ public class User {
         return following;
     }
 
+    // TODO: Brett user this to get the follow Requests to display in notification
     public ArrayList<String> getFollowerRequest() {
         return followerRequest;
     }

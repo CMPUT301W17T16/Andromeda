@@ -50,7 +50,15 @@ public class MainPageActivity extends AndromedaActivity {
     protected void onStart() {
         super.onStart();
 
+        // get all the moods
         moodList = moodController.getAllMoods();
+
+        // filter the moods
+        if (filter == null) {
+            filter = new Filter(null, null, false, false);
+        }
+        moodList = filter.filterMoods(moodList, user);
+
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.clear();
         adapter.addAll(moodList);

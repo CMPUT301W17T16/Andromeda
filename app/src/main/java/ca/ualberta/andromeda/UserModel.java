@@ -57,6 +57,12 @@ public class UserModel implements Model<User> {
         this.saveList();
     }
 
+    public void updateItem( User user, int index){
+        this.userList.set(index, user);
+        this.saveList();
+    }
+
+
     public void loadList(){
         /* load from disk */
         this.userList = new ArrayList<User>();

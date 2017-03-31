@@ -1,6 +1,10 @@
 package ca.ualberta.andromeda;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +14,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Date;
+import java.util.UUID;
 
 public abstract class ViewMoodActivity extends AndromedaActivity {
 
@@ -70,11 +80,20 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
 //      http://stackoverflow.com/questions/8642823/using-setimagedrawable-dynamically-to-set-image-in-an-imageview
         String EmoticonString = mood.getEmotion().getEmoticon();
         int drawableResourceId = this.getResources().getIdentifier(EmoticonString, "drawable", this.getPackageName());
-
         EmoticonHolder.setImageResource(drawableResourceId);
 
-        PictureHolder.setImageBitmap(mood.getImage());
+        if (mood.getImage() != null) {
+            // check if image in our resource folder
+            ContextWrapper cw = new ContextWrapper(getApplicationContext());
+            File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+            String imageName = mood.getId() + ".jpg";
+            File mypath=new File(directory,imageName);
 
+            if(!mypath.exists())
+                saveToInternalStorage(directory, mypath);
+            loadImageFromStorage(mypath);
+
+        }
     }
 
     public void showLocation(View v) {
@@ -86,5 +105,41 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
         intent.putExtra("user", username);
         intent.putExtra("ID", idNum);
         startActivity(intent);
+    }
+
+    private String saveToInternalStorage(File directory, File mypath){
+
+        // picture bitmap
+        Bitmap bitmapImage = mood.getImage();
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
+    }
+
+    private void loadImageFromStorage(File mypath)
+    {
+
+        try {
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(mypath));
+            ImageView img=(ImageView)findViewById(R.id.PictureHolder);
+            img.setImageBitmap(b);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -34,7 +34,7 @@ public class MoodController {
         return newMood;
     }
 
-    public void addImage(Bitmap image){
+    public void addImage(Photo image){
         moodModel.getItem(0).addImage(image);
         moodModel.saveList();
     }

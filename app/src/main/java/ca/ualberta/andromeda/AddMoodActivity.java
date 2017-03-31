@@ -1,6 +1,8 @@
 package ca.ualberta.andromeda;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 
 import android.content.pm.PackageManager;
@@ -33,8 +35,11 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
+import java.util.UUID;
 
 
 public class AddMoodActivity extends AndromedaActivity {
@@ -254,7 +259,7 @@ public class AddMoodActivity extends AndromedaActivity {
             moodController.createMood(username, SocialSit, state, Trigger, Details);
         }
         if (hasImage){
-            moodController.addImage(retrievedImage.getBitmap());
+            moodController.addImage(retrievedImage);
         }
         finish();
     }

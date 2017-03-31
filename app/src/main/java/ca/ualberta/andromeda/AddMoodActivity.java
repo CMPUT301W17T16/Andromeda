@@ -303,7 +303,10 @@ public class AddMoodActivity extends AndromedaActivity {
         @Override
     protected void onDestroy() {
             super.onDestroy();
-            gps.stopUsingGPS();
-    }
+            if(hasLocation) {
+                gps.stopUsingGPS();
+            }
+
+        }
 }
 

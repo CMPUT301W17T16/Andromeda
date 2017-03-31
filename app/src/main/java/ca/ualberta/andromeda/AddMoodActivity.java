@@ -49,9 +49,7 @@ public class AddMoodActivity extends AndromedaActivity {
     private String MyLocation;
     private boolean hasLocation;
     private boolean hasImage;
-    private LayoutInflater layoutInflater;
-    private PopupWindow popupWindow;
-    private Bitmap retrievedImage;
+    private Photo retrievedImage;
 
     static final int IMAGE_PICK = 1;
     TextView UsernameHolder;
@@ -208,34 +206,14 @@ public class AddMoodActivity extends AndromedaActivity {
                 if(resultCode == RESULT_OK){
                     try {
                         selectedImageFromGallery = imageReturnedIntent.getData();
-                        retrievedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageFromGallery);
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageFromGallery);
+                        retrievedImage = new Photo(bitmap);
 
-                        //http://stackoverflow.com/questions/2305966/why-do-i-get-the-unhandled-exception-type-ioexception
-                        //https://www.youtube.com/watch?v=wxqgtEewdfo
-                        // Needs to be under 65536 bytes
-                        if (retrievedImage.getByteCount()/4 > 65536){
-                            layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-                            View message = layoutInflater.inflate(R.layout.image, null);
-
-                            popupWindow = new PopupWindow(message, 700, 700, true);
-                            popupWindow.showAtLocation(Background, Gravity.NO_GRAVITY, 200, 3000);
-
-                            message.setOnTouchListener(new View.OnTouchListener(){
-                                @Override
-                                public boolean onTouch (View view, MotionEvent motionEvent) {
-                                    popupWindow.dismiss();
-                                    return true;
-                                }
-                            });
-
-                        }else {
-                            hasImage = true;
-                            PictureHolder.setImageBitmap(retrievedImage);
-                        }
+                        hasImage = true;
+                        PictureHolder.setImageBitmap(retrievedImage.getBitmap());
 
                     } catch (IOException ie){
-                        ie.printStackTrace();
-
+                        Background.setBackgroundColor(0x3311FF);
                     }
 
                 }
@@ -274,7 +252,7 @@ public class AddMoodActivity extends AndromedaActivity {
             moodController.createMood(username, SocialSit, state, Trigger, Details);
         }
         if (hasImage){
-            moodController.addImage(retrievedImage);
+            moodController.addImage(retrievedImage.getBitmap());
         }
         finish();
     }

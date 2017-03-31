@@ -83,7 +83,12 @@ public class Mood {
 
     public String getId() { return id; }
 
-    public Bitmap getImage() { return image.getBitmap();}
+    public Bitmap getImage() {
+        if (image == null){
+            return null;
+        }
+        return image.getBitmap();
+    }
 
     public ArrayList<Comment> getComments() { return comments; }
 

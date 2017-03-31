@@ -92,7 +92,6 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
             if(!mypath.exists())
                 saveToInternalStorage(directory, mypath);
             loadImageFromStorage(mypath);
-
         }
     }
 

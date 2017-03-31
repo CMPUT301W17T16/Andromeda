@@ -27,7 +27,8 @@
         <activity android:name=".commentsActivity" />
         <activity android:name=".ViewUserActivity" />
         <activity android:name=".ProfileFriendActivity" />
-        <activity android:name=".ProfileUserActivity"/>
+        <activity android:name=".ProfileUserActivity" />
+        <activity android:name=".Map"></activity>
     </application>
 
 </manifest>

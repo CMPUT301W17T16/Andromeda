@@ -46,11 +46,16 @@ public class AddMoodActivity extends AndromedaActivity {
     private String Details;
     private String Trigger;
     private Emotion.State state;
-    private LocationManager locationManager;
-    private LocationListener listener;
+//    private LocationManager locationManager;
+//    private LocationListener listener;
     private String MyLocation;
     private boolean hasLocation;
     static final int IMAGE_PICK = 1;
+
+    private TrackGPS gps;
+    double longitude;
+    double latitude;
+
 
     TextView UsernameHolder;
     TextView DateHolder;
@@ -76,47 +81,65 @@ public class AddMoodActivity extends AndromedaActivity {
         DetailHolder = (EditText) findViewById(R.id.DetailHolder);
         PictureHolder = (ImageView) findViewById(R.id.PictureHolder);
 
-       //get location
+        //get location
+
         Switch location = (Switch) findViewById(R.id.LocationSwitch);
-        location.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        location.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                if (isChecked){
+                if (isChecked) {
                     hasLocation = true;
-                    Toast.makeText(getApplicationContext(),"save Location", Toast.LENGTH_SHORT).show();
-                    locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-                    listener = new LocationListener() {
-                        @Override
-                        public void onLocationChanged(Location location) {
-                            Toast.makeText(getApplicationContext(),"\n " + location.getLongitude() + " " + location.getLatitude(), Toast.LENGTH_SHORT).show();
-                            MyLocation = String.valueOf(location.getLongitude()) + " " + String.valueOf(location.getLatitude());
-                        }
-
-                        @Override
-                        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-                        }
-
-                        @Override
-                        public void onProviderEnabled(String provider) {
-
-                        }
-
-                        @Override
-                        public void onProviderDisabled(String provider) {
-                            Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                            startActivity(i);
-                        }
-                    };
                     configure_button();
-                }else {
-                    Toast.makeText(getApplicationContext(),"Don't save Location", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
-      
+
+
+
+
+//        //get location
+//        Switch location = (Switch) findViewById(R.id.LocationSwitch);
+//        location.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+//
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//
+//                if (isChecked){
+//                    hasLocation = true;
+//                    Toast.makeText(getApplicationContext(),"save Location", Toast.LENGTH_SHORT).show();
+//                    locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+//                    listener = new LocationListener() {
+//                        @Override
+//                        public void onLocationChanged(Location location) {
+//                            Toast.makeText(getApplicationContext(),"\n " + location.getLongitude() + " " + location.getLatitude(), Toast.LENGTH_SHORT).show();
+//                            MyLocation = String.valueOf(location.getLongitude()) + " " + String.valueOf(location.getLatitude());
+//                        }
+//
+//                        @Override
+//                        public void onStatusChanged(String provider, int status, Bundle extras) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onProviderEnabled(String provider) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onProviderDisabled(String provider) {
+//                            Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//                            startActivity(i);
+//                        }
+//                    };
+//                    configure_button();
+//                }else {
+//                    Toast.makeText(getApplicationContext(),"Don't save Location", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//
         // Drop down list for the moods
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,
                 R.array.moods_array, android.R.layout.simple_spinner_item);
@@ -250,12 +273,22 @@ public class AddMoodActivity extends AndromedaActivity {
             return;
         }
         // this code won'textView execute IF permissions are not allowed, because in the line above there is return statement.
+       gps = new TrackGPS(AddMoodActivity.this);
+       if (gps.canGetLocation()) {
 
-        locationManager.requestLocationUpdates("gps", 5000, 0, listener);
+
+           longitude = gps.getLongitude();
+           latitude = gps.getLatitude();
+           MyLocation = String.valueOf(longitude) + " " + String.valueOf(latitude);
+           Toast.makeText(getApplicationContext(), "Longitude:" + Double.toString(longitude) + "\nLatitude:" + Double.toString(latitude), Toast.LENGTH_SHORT).show();
+       } else {
+           gps.showSettingsAlert();
+       }
+
 
     }
 
-    //get permission to use location for this app
+//    //get permission to use location for this app
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -267,4 +300,10 @@ public class AddMoodActivity extends AndromedaActivity {
                 break;
         }
     }
+        @Override
+    protected void onDestroy() {
+            super.onDestroy();
+            gps.stopUsingGPS();
+    }
 }
+

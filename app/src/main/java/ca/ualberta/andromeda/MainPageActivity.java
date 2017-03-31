@@ -87,6 +87,12 @@ public class MainPageActivity extends AndromedaActivity {
         startActivity(intent);
     }
 
+    public void openMap(View v){
+        Intent intent = new Intent(this, Map.class);
+        //intent.putExtra("user", user.getUsername());
+        startActivity(intent);
+    }
+
     /**
      * Notification.
      *

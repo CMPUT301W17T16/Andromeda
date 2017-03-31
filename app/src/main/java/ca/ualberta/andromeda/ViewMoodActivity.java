@@ -49,8 +49,6 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
     protected void onStart(){
         super.onStart();
 
-        BackgroundColor = (LinearLayout) findViewById(R.id.ViewUserMood);
-
         Intent intent = getIntent();
 
         // Get login username
@@ -71,7 +69,8 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
         String text = "Comments (" + String.valueOf(mood.getComments().size()) + ")";
         CommentButton.setText(text);
 
-
+        // Load Colour
+        BackgroundColor = (LinearLayout) findViewById(R.id.ViewUserMood);
         BackgroundColor.setBackgroundColor(mood.getEmotion().getColor());
 
 

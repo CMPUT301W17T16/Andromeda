@@ -22,18 +22,4 @@
         android:layout_height="wrap_content"
         android:id="@+id/requestList" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="26dp"
-        android:text="Accept"
-        android:id="@+id/acceptButton"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="26dp"
-        android:text="Reject"
-        android:id="@+id/rejectButton"/>
-
 </LinearLayout>

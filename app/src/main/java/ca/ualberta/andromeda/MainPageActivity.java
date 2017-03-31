@@ -93,9 +93,9 @@ public class MainPageActivity extends AndromedaActivity {
      * @param v the v
      */
     public void notification(View v){
-//        Intent intent = new Intent(this, Notifications.class);
-//        intent.putExtra("user", user.getUsername());
-//        startActivity(intent);
+        Intent intent = new Intent(this, Notifications.class);
+        intent.putExtra("user", user.getUsername());
+        startActivity(intent);
     }
 
     public ListView getMoodListView() {

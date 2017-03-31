@@ -140,7 +140,6 @@ public class UserController {
         userModel.updateItem(user, index);
     }
 
-    // TODO: Brett use this method to accept requests
     public void acceptFollowRequest(User requester, String user){
         requester.addFollower(user);
         int index = this.getPosition(requester.getUsername());

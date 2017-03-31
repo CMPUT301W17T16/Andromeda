@@ -52,7 +52,7 @@ public class ProfileFriendActivity extends ProfileActivity{
 
             public void onClick(View v) {
                 if (!following && !requestSent){
-                    userController.sendFollowRequest(username, friend);
+                    userController.sendFollowRequest(user.getUsername(), friend);
                     followButton.setText("Request Sent");
                 }else if (following){
                     userController.unfollow(user, friendname);

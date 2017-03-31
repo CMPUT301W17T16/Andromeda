@@ -28,6 +28,7 @@
         <activity android:name=".ViewUserActivity" />
         <activity android:name=".ProfileFriendActivity" />
         <activity android:name=".ProfileUserActivity"/>
+        <activity android:name=".Notifications"/>
     </application>
 
 </manifest>

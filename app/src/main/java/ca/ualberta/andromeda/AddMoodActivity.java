@@ -27,6 +27,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -60,7 +61,7 @@ public class AddMoodActivity extends AndromedaActivity {
     EditText TriggerHolder;
     EditText DetailHolder;
     ImageView PictureHolder;
-    LinearLayout Background;
+    RelativeLayout Background;
 
 
     @Override
@@ -73,7 +74,7 @@ public class AddMoodActivity extends AndromedaActivity {
         userController = ModelManager.getUserController();
 
 
-        Background = (LinearLayout) findViewById(R.id.Background);
+        Background = (RelativeLayout) findViewById(R.id.Background);
         UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
         DateHolder = (TextView) findViewById(R.id.DateHolder);
         MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);

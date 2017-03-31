@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/Background"
@@ -9,8 +9,9 @@
     android:weightSum="1">
 
     <LinearLayout
+        android:id="@+id/linearLayout13"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -38,13 +39,16 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout14"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout13"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/Date"
-            android:layout_width="125dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0"
             android:padding="10dp"
@@ -66,8 +70,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout12"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout14"
         android:orientation="horizontal">
 
         <TextView
@@ -84,15 +91,18 @@
             android:id="@+id/MoodSpinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="30dp"
             android:layout_weight="0"
-            android:textAlignment="textEnd" />
+            android:textAlignment="textEnd"
+            android:textSize="30dp" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout11"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout12"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -115,8 +125,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout10"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout11"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -146,8 +159,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout9"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout10"
         android:orientation="horizontal">
 
         <TextView
@@ -178,7 +194,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout8"
+        android:layout_below="@+id/linearLayout9"
+        android:layout_alignParentStart="true">
 
         <Switch
             android:id="@+id/LocationSwitch"
@@ -201,15 +220,21 @@
     <ImageView
         android:id="@+id/PictureHolder"
         android:layout_width="match_parent"
-        android:layout_height="137dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout7"
+        android:layout_alignParentStart="true"
         android:layout_weight="1.05"
         android:onClick="PictureHolder"
-        app:srcCompat="@android:color/transparent" />
+        app:srcCompat="@android:color/transparent"
+        android:layout_below="@+id/linearLayout8" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout7">
 
         <Button
             android:layout_width="wrap_content"
@@ -231,4 +256,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

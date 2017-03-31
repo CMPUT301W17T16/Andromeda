@@ -1,26 +1,13 @@
 package ca.ualberta.andromeda;
 
-import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Intent;
-import android.graphics.Color;
-import android.icu.util.Calendar;
-import android.os.Bundle;
+import android.net.Uri;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.Date;
 
@@ -32,10 +19,12 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
     protected String SocialSit;
     protected String Details;
     protected String Trigger;
+    protected Uri Image;
     protected Emotion.State state;
     protected String MyLocation;
     protected String idNum;
     protected Mood mood;
+
 
     TextView UsernameHolder;
     TextView DateHolder;
@@ -43,6 +32,7 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
     Spinner SocialSpinner;
     LinearLayout BackgroundColor;
     ImageView PictureHolder;
+    ImageView EmoticonHolder;
     Button CommentButton;
 
     @Override
@@ -69,10 +59,20 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
         String text = "Comments (" + String.valueOf(mood.getComments().size()) + ")";
         CommentButton.setText(text);
 
+//      http://stackoverflow.com/questions/2217753/changing-background-color-of-listview-items-on-android
         // Load Colour
         BackgroundColor = (LinearLayout) findViewById(R.id.ViewUserMood);
         BackgroundColor.setBackgroundColor(mood.getEmotion().getColor());
 
+        // Load Emoticon
+//      http://stackoverflow.com/questions/29047902/how-to-add-an-image-to-the-drawable-folder-in-android-studio
+//      http://stackoverflow.com/questions/8642823/using-setimagedrawable-dynamically-to-set-image-in-an-imageview
+        String EmoticonString = mood.getEmotion().getEmoticon();
+        int drawableResourceId = this.getResources().getIdentifier(EmoticonString, "drawable", this.getPackageName());
+
+        EmoticonHolder.setImageResource(drawableResourceId);
+
+        PictureHolder.setImageBitmap(mood.getImage());
 
     }
 

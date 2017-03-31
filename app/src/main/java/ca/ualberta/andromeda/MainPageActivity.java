@@ -62,6 +62,8 @@ public class MainPageActivity extends AndromedaActivity {
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.clear();
         adapter.addAll(moodList);
+
+        // TODO IT ERRORS OUT HERE
         oldMoodList.setAdapter(adapter);
     }
 

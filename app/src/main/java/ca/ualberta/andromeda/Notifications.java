@@ -29,6 +29,7 @@ public class Notifications extends AndromedaActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Only if user clicks on other uses name
+                //TODO:
 
 
             }

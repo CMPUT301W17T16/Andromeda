@@ -36,6 +36,24 @@ public class ProfileUserActivity extends ProfileActivity {
     @Override
     protected void onStart(){
         super.onStart();
+
+        // Display username
+        String Message = user.getUsername() + "'s Moods";
+        TextView textView = (TextView) findViewById(R.id.nameTextView);
+        textView.setText(Message);
+
+        // Load all of the moods from the user
+        moodList = moodController.getUserMoods(user);
+
+        // filter the moods
+        if (filter != null){
+            moodList = filter.filterMoods(moodList, user);
+        }
+
+        // display the moods
+        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
+        adapter.addAll(moodList);
+        moodListView.setAdapter(adapter);
     }
 
     /**

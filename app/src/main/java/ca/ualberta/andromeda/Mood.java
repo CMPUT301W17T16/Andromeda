@@ -5,12 +5,8 @@
 package ca.ualberta.andromeda;
 
 import android.graphics.Bitmap;
-import android.net.Uri;
-
-import java.net.URI;
+import java.util.ArrayList;
 import java.util.Date;
-
-import io.searchbox.annotations.JestId;
 
 public class Mood {
     private String user;
@@ -22,6 +18,7 @@ public class Mood {
     private Emotion emotion;
     private String id;
     private String MyLocation;
+    private ArrayList<Comment> comments;
 
     public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id){
         this.user = user;
@@ -31,6 +28,7 @@ public class Mood {
         this.trigger = trigger;
         this.detail = detail;
         this.id = id;
+        this.comments = new ArrayList<Comment>();
     }
 
     public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id, String MyLocation){
@@ -42,6 +40,7 @@ public class Mood {
         this.detail = detail;
         this.id = id;
         this.MyLocation = MyLocation;
+        this.comments = new ArrayList<Comment>();
     }
     public void addImage(Bitmap image){
         this.image = image;
@@ -54,6 +53,10 @@ public class Mood {
         this.emotion = new Emotion(state);
         this.trigger = trigger;
         this.detail = detail;
+    }
+
+    public void addComment(Comment comment){
+        comments.add(comment);
     }
 
     public Emotion getEmotion(){ return this.emotion; }
@@ -81,6 +84,8 @@ public class Mood {
     public String getId() { return id; }
 
     public Bitmap getImage() { return image;}
+
+    public ArrayList<Comment> getComments() { return comments; }
 
     public String getMyLocation() { return MyLocation; }
 

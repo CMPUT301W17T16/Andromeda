@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,12 +19,9 @@ import java.util.ArrayList;
  */
 public class MainPageActivity extends AndromedaActivity {
 
-
     private ListView oldMoodList;
     private ArrayList<Mood> moodList = new ArrayList<Mood>();
-    /**
-     * The Mood controller.
-     */
+
     MoodController moodController;
 
     @Override
@@ -32,13 +30,35 @@ public class MainPageActivity extends AndromedaActivity {
         setContentView(R.layout.activity_main_page);
         oldMoodList = (ListView) findViewById(R.id.MoodList);
         moodController = ModelManager.getMoodController();
+
+        final Intent intent = new Intent(this, ViewFriendActivity.class);
+        oldMoodList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Only if user clicks on other uses name
+                if (!user.getUsername().equals(moodList.get(position).getUser())) {
+                    intent.putExtra("user", user.getUsername());
+                    Mood mood = (Mood)parent.getItemAtPosition(position);
+                    intent.putExtra("ID", String.valueOf(mood.getId()));
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
+        // get all the moods
         moodList = moodController.getAllMoods();
+
+        // filter the moods
+        if (filter == null) {
+            filter = new Filter(null, null, false, false);
+        }
+        moodList = filter.filterMoods(moodList, user);
+
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.clear();
         adapter.addAll(moodList);

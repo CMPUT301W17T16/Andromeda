@@ -78,6 +78,11 @@ public class MoodController {
         moodModel.saveList();
     }
 
+    public void updateMood(String id, Comment comment){
+        this.getMood(id).addComment(comment);
+        moodModel.saveList();
+    }
+
     public void deleteMood(int index){
         moodModel.deleteItem(index);
     }

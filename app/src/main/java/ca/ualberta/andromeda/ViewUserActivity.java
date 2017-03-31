@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +21,8 @@ public class ViewUserActivity extends ViewMoodActivity {
 
     EditText TriggerHolder;
     EditText DetailHolder;
+    Spinner MoodSpinner;
+    Spinner SocialSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +31,9 @@ public class ViewUserActivity extends ViewMoodActivity {
 
         moodController = ModelManager.getMoodController();
         userController = ModelManager.getUserController();
-
         BackgroundColor = (LinearLayout) findViewById(R.id.ViewUserMood);
+        CommentButton = (Button) findViewById(R.id.commentButton);
+
         UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
         DateHolder = (TextView) findViewById(R.id.DateHolder);
         MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
@@ -117,6 +121,24 @@ public class ViewUserActivity extends ViewMoodActivity {
 
         // Load Picture
         PictureHolder.setImageBitmap(mood.getImage());
+
+        // Load spinner values
+        MoodSpinner.setSelection(getIndex(MoodSpinner, mood.getEmotion().getState()));
+        SocialSpinner.setSelection(getIndex(SocialSpinner, mood.getSocialSituation()));
+
+    }
+
+    //https://stackoverflow.com/questions/8769368/how-to-set-position-in-spinner
+    private int getIndex(Spinner spinner, String myString){
+
+        int index = 0;
+
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                index = i;
+            }
+        }
+        return index;
     }
 
     public void deleteMood(View v) {

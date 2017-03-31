@@ -26,4 +26,29 @@ public class UserControllerTest {
 
     }
 
+    @Test
+    public void testFollowUser() {
+        UserController controller = new UserController();
+        User user = new User("user");
+        controller.addUser(user);
+        User user2 = new User("user2");
+        controller.addUser(user2);
+        controller.sendFollowRequest("user2", user);
+        controller.acceptFollowRequest(user2, "user");
+        assertTrue(user2.getFollower().contains("user"));
+    }
+
+
+    @Test
+    public void testUnfollowUser() {
+        UserController controller = new UserController();
+        User user = new User("user");
+        controller.addUser(user);
+        User user2 = new User("user2");
+        controller.addUser(user2);
+        controller.sendFollowRequest("user2", user);
+        controller.acceptFollowRequest(user2, "user");
+        controller.unfollow(user2, "user");
+        assertFalse(user2.getFollower().contains("user"));
+    }
 }

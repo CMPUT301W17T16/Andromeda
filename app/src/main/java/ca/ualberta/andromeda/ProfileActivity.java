@@ -10,20 +10,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by Jeff on 3/11/2017.
- * <p>
- * Super class for viewing my moods or friends moods
- */
 public abstract class ProfileActivity extends AndromedaActivity {
 
-    /**
-     * The Mood list.
-     */
+    protected String username;
     protected ArrayList<Mood> moodList;
-    /**
-     * The Mood list view.
-     */
     protected ListView moodListView;
 
     @Override
@@ -32,24 +22,6 @@ public abstract class ProfileActivity extends AndromedaActivity {
         moodController = ModelManager.getMoodController();
         moodListView = (ListView) findViewById(R.id.MoodList);
     }
-
-    @Override
-    protected void onStart(){
-        super.onStart();
-
-        // Display the user name at the top
-        String Message = user.getUsername() + "'s Moods";
-        TextView textView = (TextView) findViewById(R.id.nameTextView);
-        textView.setText(Message);
-
-        // Load all of the moods from the user
-        moodList = moodController.getUserMoods(this.user);
-        ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
-//        ColorAdapter adapter = new ColorAdapter(this, R.layout.mood_listview);
-        adapter.addAll(moodList);
-        moodListView.setAdapter(adapter);
-    }
-
 
     //http://stackoverflow.com/questions/5565451/display-no-item-message-in-listview?noredirect=1&lq=1
 //    @Override
@@ -61,11 +33,6 @@ public abstract class ProfileActivity extends AndromedaActivity {
 //        list.setEmptyView(empty);
 //    }
 
-    /**
-     * Gets mood list view.
-     *
-     * @return the mood list view
-     */
     public ListView getMoodListView() {
         return moodListView;
     }

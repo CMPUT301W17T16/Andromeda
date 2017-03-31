@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/ViewUserMood"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -83,7 +84,7 @@
             app:srcCompat="@drawable/anger" />
 
         <TextView
-            android:id="@+id/MoodHoler"
+            android:id="@+id/MoodHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="none"
@@ -205,8 +206,16 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:text="User"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="toUser"/>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/commentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toComments"
+        android:text="Comments (#)" />
 
 </LinearLayout>

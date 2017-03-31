@@ -1,8 +1,14 @@
 package ca.ualberta.andromeda;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -13,6 +19,8 @@ public class ViewFriendActivity extends ViewMoodActivity {
 
     TextView TriggerHolder;
     TextView DetailHolder;
+    TextView MoodHolder;
+    TextView SocialHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,21 +30,32 @@ public class ViewFriendActivity extends ViewMoodActivity {
         moodController = ModelManager.getMoodController();
         userController = ModelManager.getUserController();
 
+        CommentButton = (Button) findViewById(R.id.commentButton);
         UsernameHolder = (TextView) findViewById(R.id.UsernameHolder);
         DateHolder = (TextView) findViewById(R.id.DateHolder);
-        MoodSpinner = (Spinner) findViewById(R.id.MoodSpinner);
-        SocialSpinner = (Spinner) findViewById(R.id.SocialSitSpinner);
+
+        MoodHolder = (TextView) findViewById(R.id.MoodHolder);
+        SocialHolder = (TextView) findViewById(R.id.SocialSitHolder);
+        TriggerHolder = (TextView) findViewById(R.id.TriggerHolder);
+        DetailHolder = (TextView) findViewById(R.id.DetailHolder);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        // Loading Trigger
+        // Load info
         TriggerHolder.setText(mood.getTrigger());
-
-        // Loading Detail
         DetailHolder.setText(mood.getDetail());
+        MoodHolder.setText(mood.getEmotion().getState());
+        SocialHolder.setText(mood.getSocialSituation());
+
     }
 
+   public void toUser(View v) {
+       Intent intent = new Intent(this, ProfileFriendActivity.class);
+       intent.putExtra("user", user.getUsername());
+       intent.putExtra("friend", mood.getUser());
+       startActivity(intent);
+   }
 }

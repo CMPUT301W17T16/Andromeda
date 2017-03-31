@@ -33,32 +33,35 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
     LinearLayout BackgroundColor;
     ImageView PictureHolder;
     ImageView EmoticonHolder;
+    Button CommentButton;
 
     @Override
     protected void onStart(){
         super.onStart();
 
-        BackgroundColor = (LinearLayout) findViewById(R.id.ViewUserMood);
-
         Intent intent = getIntent();
 
-        // Set username
-        username = intent.getStringExtra("user");
-        UsernameHolder.setText(username);
+        // Get login username
+        username = user.getUsername();
 
         // Loading Mood
         idNum = intent.getStringExtra("ID");
         mood = moodController.getMood(idNum);
 
+        // Set username
+        UsernameHolder.setText(mood.getUser());
+
         // Loading date
         date = mood.getDate();
         DateHolder.setText(date.toString());
 
-        MoodSpinner.setSelection(getIndex(MoodSpinner, mood.getEmotion().getState()));
-
-        SocialSpinner.setSelection(getIndex(SocialSpinner, mood.getSocialSituation()));
+        // Load number of comments
+        String text = "Comments (" + String.valueOf(mood.getComments().size()) + ")";
+        CommentButton.setText(text);
 
 //      http://stackoverflow.com/questions/2217753/changing-background-color-of-listview-items-on-android
+        // Load Colour
+        BackgroundColor = (LinearLayout) findViewById(R.id.ViewUserMood);
         BackgroundColor.setBackgroundColor(mood.getEmotion().getColor());
 
         // Load Emoticon
@@ -77,16 +80,10 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
         Toast.makeText(getApplicationContext(),MyLocation,Toast.LENGTH_SHORT).show();
     }
 
-    //https://stackoverflow.com/questions/8769368/how-to-set-position-in-spinner
-    private int getIndex(Spinner spinner, String myString){
-
-        int index = 0;
-
-        for (int i=0;i<spinner.getCount();i++){
-            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
-                index = i;
-            }
-        }
-        return index;
+    public void toComments(View v){
+        Intent intent = new Intent(this, commentsActivity.class);
+        intent.putExtra("user", username);
+        intent.putExtra("ID", idNum);
+        startActivity(intent);
     }
 }

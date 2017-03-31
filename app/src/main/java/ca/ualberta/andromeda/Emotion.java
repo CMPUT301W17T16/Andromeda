@@ -111,4 +111,7 @@ public class Emotion {
         }
     }
 
+    public State returnState(){
+        return this.state;
+    }
 }

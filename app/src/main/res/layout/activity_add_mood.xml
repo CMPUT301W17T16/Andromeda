@@ -223,10 +223,10 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/linearLayout7"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout8"
         android:layout_weight="1.05"
         android:onClick="PictureHolder"
-        app:srcCompat="@android:color/transparent"
-        android:layout_below="@+id/linearLayout8" />
+        app:srcCompat="@drawable/select" />
 
     <LinearLayout
         android:layout_width="match_parent"

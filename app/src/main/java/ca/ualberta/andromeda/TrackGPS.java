@@ -2,6 +2,7 @@ package ca.ualberta.andromeda;
 
 /**
  * Created by brian on 2017/3/30.
+ * http://clover.studio/2016/08/09/getting-current-location-in-android-using-location-manager/
  */
 
 import android.Manifest;
@@ -23,10 +24,6 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
-
-/**
- * Created by ANQ on 8/8/2016.
- */
 
 public class TrackGPS extends Service implements LocationListener {
 

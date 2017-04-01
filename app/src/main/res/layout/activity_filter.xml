@@ -12,21 +12,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/Mood"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:padding="10dp"
             android:text="Mood: "
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <Spinner
             android:id="@+id/MoodSpinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textAlignment="center" />
 
     </LinearLayout>
@@ -41,17 +41,18 @@
 
         <TextView
             android:id="@+id/Details"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:padding="10dp"
             android:text="Search Term:"
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <EditText
             android:id="@+id/SearchTermHolder"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:inputType="text"
             tools:ignore="LabelFor" />
 
@@ -70,16 +71,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:padding="10dp"
             android:text="Within Week"
             android:textAppearance="@android:style/TextAppearance.Large" />
 
         <Switch
             android:id="@+id/switch1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -98,6 +95,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:padding="10dp"
             android:text="Search All Users"
             android:textAppearance="@android:style/TextAppearance.Large" />
 
@@ -107,20 +105,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
     </LinearLayout>
 
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_search_category_default"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:onClick="filterButton" />
+        android:background="@color/Filter"
+        android:onClick="filterButton"
+        app:srcCompat="@android:drawable/ic_search_category_default" />
 
 </RelativeLayout>

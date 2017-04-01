@@ -22,10 +22,11 @@
             android:id="@+id/nameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textStyle="normal|bold"
-            tools:text="My Moods"
-            android:textAlignment="center" />
+            tools:text="My Moods" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -51,32 +52,35 @@
         android:id="@+id/linearLayout2">
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.03"
-            app:srcCompat="@android:drawable/ic_dialog_map"
             android:id="@+id/mapButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1.03"
             android:background="@color/Map"
+            android:contentDescription=""
             android:onClick="openMap"
-            android:contentDescription="" />
+            app:srcCompat="@android:drawable/ic_dialog_map" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_input_add"
             android:id="@+id/addMood"
-            android:background="@color/AddMood"
-            android:layout_weight="1"
-            android:onClick="newMood"/>
-
-        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_search"
-            android:id="@+id/filterButton"
-            android:background="@color/Filter"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:onClick="openFilter"/>
+            android:background="@color/AddMood"
+            android:onClick="newMood"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageButton
+            android:id="@+id/filterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@color/Filter"
+            android:onClick="openFilter"
+            app:srcCompat="@android:drawable/ic_menu_search" />
 
     </LinearLayout>
 

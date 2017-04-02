@@ -4,10 +4,7 @@
 
 package ca.ualberta.andromeda;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -23,18 +20,6 @@ public class Notifications extends AndromedaActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notifications);
         followRequestList = (ListView) findViewById(R.id.requestList);
-
-
-        final Intent intent = new Intent(this, ViewFriendActivity.class);
-        followRequestList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Only if user clicks on other uses name
-                //TODO: allow the user to go the the requester's main page.
-
-
-            }
-        });
     }
 
     @Override

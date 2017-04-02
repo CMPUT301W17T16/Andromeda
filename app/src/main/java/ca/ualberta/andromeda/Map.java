@@ -25,6 +25,8 @@ public class Map extends Activity {
     MoodController moodController;
     double longitude;
     double latitude;
+    String code = getIntent().getStringExtra("code");
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,11 @@ public class Map extends Activity {
             // app-defined int constant. The callback method gets the
             // result of the request.
             }
-            setMap();
+        switch(code){
+            case "main":
+                ArrayList<Mood> moodList = moodController.getAllMoods();
+                setMap(moodList);
+        }
         }
 
     @Override
@@ -75,7 +81,12 @@ public class Map extends Activity {
 
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
-                        setMap();
+                    switch(code){
+                        case "main":
+                            ArrayList<Mood> moodList = moodController.getAllMoods();
+                            setMap(moodList);
+                    }
+
 
                 } else {
 
@@ -91,7 +102,7 @@ public class Map extends Activity {
         }
     }
 
-    public void setMap(){
+    public void setMap(ArrayList<Mood> moodList){
         setContentView(R.layout.activity_map);
         MapView map = (MapView) findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
@@ -103,7 +114,8 @@ public class Map extends Activity {
         mapController.setZoom(9);
         mapController.setCenter(startPoint);
 
-        ArrayList<Mood> moodList = moodController.getAllMoods();
+
+        //ArrayList<Mood> moodList = moodController.getAllMoods();
         for(int x=0; x<moodList.size(); x++) {
             if (moodList.get(x).getMyLocation() != null){
 
@@ -131,25 +143,25 @@ public class Map extends Activity {
                         Toast.makeText(getApplicationContext(),"\n " + color, Toast.LENGTH_SHORT).show();
                         break;
                     case 0xff794dff:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.confuse));
                         break;
                     case 0xffA47B37:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.dis));
                         break;
                     case 0xff4EDAC5:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.fear));
                         break;
                     case 0xffffff4d:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.happy));
                         break;
                     case 0xff4da6ff:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.sad));
                         break;
                     case 0xffffa64d:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.shame));
                         break;
                     case 0xffff4dff:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.sup));
                         break;
                     default:
                         break;

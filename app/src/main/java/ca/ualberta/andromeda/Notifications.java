@@ -4,11 +4,11 @@
 
 package ca.ualberta.andromeda;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 
 import java.util.ArrayList;
 
@@ -25,11 +25,12 @@ public class Notifications extends AndromedaActivity {
         followRequestList = (ListView) findViewById(R.id.requestList);
 
 
+        final Intent intent = new Intent(this, ViewFriendActivity.class);
         followRequestList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Only if user clicks on other uses name
-                //TODO:
+                //TODO: allow the user to go the the requester's main page.
 
 
             }
@@ -42,8 +43,10 @@ public class Notifications extends AndromedaActivity {
 
         // get all the moods
         requests = user.getFollowerRequest();
-        customAdapter adapter = new customAdapter(requests, this, user.getUsername());
 
+        // https://stackoverflow.com/questions/17525886/listview-with-add-and-delete-buttons-in-each-row-in-android
+        // Date: March 31, 2017
+        CustomAdapter adapter = new CustomAdapter(requests, this, user.getUsername());
         followRequestList.setAdapter(adapter);
     }
 }

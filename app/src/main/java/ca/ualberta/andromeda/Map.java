@@ -110,7 +110,7 @@ public class Map extends Activity {
                 String str = moodList.get(x).getMyLocation();
                 String[] splitStr = str.split("\\s+");
 
-                Toast.makeText(getApplicationContext(),"\n " + splitStr[0], Toast.LENGTH_SHORT).show();
+
                 double lon = Double.parseDouble(splitStr[0]);
                 double lat = Double.parseDouble(splitStr[1]);
                 GeoPoint moodPoint = new GeoPoint(lon,lat);
@@ -123,8 +123,38 @@ public class Map extends Activity {
 
                 map.invalidate();
 
-                startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
-                startMarker.setTitle("Start point");
+                int color = moodList.get(x).getEmotion().getColor();
+
+                switch (color){
+                    case 0xffff4d4d:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.anger_marker));
+                        Toast.makeText(getApplicationContext(),"\n " + color, Toast.LENGTH_SHORT).show();
+                        break;
+                    case 0xff794dff:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        break;
+                    case 0xffA47B37:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        break;
+                    case 0xff4EDAC5:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        break;
+                    case 0xffffff4d:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        break;
+                    case 0xff4da6ff:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        break;
+                    case 0xffffa64d:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        break;
+                    case 0xffff4dff:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_map_marker_black_48dp));
+                        break;
+                    default:
+                        break;
+                }
+
             }
         }
     }

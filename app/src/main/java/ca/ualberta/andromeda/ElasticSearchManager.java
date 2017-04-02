@@ -61,32 +61,66 @@ public class ElasticSearchManager {
 
             ArrayList<User> users = new ArrayList<User>();
 
-            String query = "{\n" +
-                    "    \"query\" : {\n" +
-                    "        \"term\" : { \"user\" : \"" +search_parameters[0]+ "\" }\n" +
-                    "    }\n" +
-                    "}";
-
-            Search search = new Search.Builder(query)
+            String query = "{ \"query\": { \"term\": { \"username\": \""+ search_parameters[0] +"\"}}}";
+                    //"{\"query\": {\"exists\": {\"field\": \"username\" }}}";
+            Search search = new Search.Builder("")
                     .addIndex("cmput301w17t16")
                     .addType("user")
                     .build();
 
             try {
                 SearchResult result = client.execute(search);
+
                 if (result.isSucceeded()){
                     List<User> foundUsers = result.getSourceAsObjectList(User.class);
+                    Log.i("Search",String.valueOf(foundUsers.size()));
                     users.addAll(foundUsers);
                 }else{
-                    Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch");
+                    Log.i("Error", "The search query failed to find any users that matched " + query);
+                    //Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch");
                 }
             }
             catch (Exception e) {
                 Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
             }
-
+            Log.i("Found Users: ", String.valueOf(users.size()));
+            Log.i("With Query: ", query);
             return users;
         }
+    }
+
+    public static class GetUsersTask extends AsyncTask<Void, Void, ArrayList<User>> {
+
+        @Override
+        protected ArrayList<User> doInBackground(Void... users) {
+            verifySettings();
+
+            ArrayList<User> userList = new ArrayList<User>();
+            Search search = new Search.Builder("")
+                    .addIndex("cmput301w17t16")
+                    .addType("user")
+                    .build();
+
+            try {
+                SearchResult result = client.execute(search);
+
+                if (result.isSucceeded()){
+                    List<User> foundUsers = result.getSourceAsObjectList(User.class);
+                    Log.i("Search",String.valueOf(foundUsers.size()));
+                    userList.addAll(foundUsers);
+                }else{
+                    Log.i("Error", "The search query failed to find any users");
+                    //Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch");
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
+            }
+            Log.i("Found Users: ", String.valueOf(userList.size()));
+            return userList;
+        }
+
     }
 
     /**

@@ -5,6 +5,7 @@
 package ca.ualberta.andromeda;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -24,13 +25,14 @@ public class UserModel implements Model<User> {
     private ArrayList<User> userList;
     private Gson gson;
     private final String FILENAME = "users.json";
-
+    //private ElasticSearchManager es;
 
     /**
      * Instantiates a new User model.
      */
     public UserModel(){
         this.gson = new Gson();
+        //this.es = new ElasticSearchManager();
         this.loadList();
     }
 
@@ -43,6 +45,11 @@ public class UserModel implements Model<User> {
     }
 
     public void addItem(User user){
+        Log.i("User Model", "--- Adding User ---");
+
+        ElasticSearchManager.AddUserTask addUser = new ElasticSearchManager.AddUserTask();
+        addUser.execute(user);
+
         this.userList.add(user);
         this.saveList();
     }
@@ -67,6 +74,18 @@ public class UserModel implements Model<User> {
         /* load from disk */
         this.userList = new ArrayList<User>();
 
+        ElasticSearchManager.GetUsersTask getUsers = new ElasticSearchManager.GetUsersTask();
+        System.out.println("--- Fetching ... ---");
+        getUsers.execute();
+        try {
+            this.userList = getUsers.get();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        for(int x=0; x<this.userList.size(); x++){
+            System.out.println(this.userList.get(x).getUsername());
+        }
+        /*
         try {
             FileInputStream fis = ModelManager.getAppInstance().openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
@@ -80,10 +99,12 @@ public class UserModel implements Model<User> {
             e.printStackTrace();
             File file = new File(ModelManager.getAppInstance().getFilesDir(), FILENAME);
         }
+        */
     }
 
     public void saveList(){
         /* save to disk */
+        /*
         try {
             FileOutputStream fos = ModelManager.getAppInstance().openFileOutput(FILENAME, Context.MODE_PRIVATE);
             int length = this.userList.size();
@@ -94,5 +115,6 @@ public class UserModel implements Model<User> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        */
     }
 }

@@ -65,7 +65,7 @@ public class MoodModel implements Model<Mood> {
     public void loadList() {
         /* load from disk */
         this.moodList = new ArrayList<Mood>();
-
+        /*
         try {
             FileInputStream fis = ModelManager.getAppInstance().openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
@@ -82,11 +82,14 @@ public class MoodModel implements Model<Mood> {
             e.printStackTrace();
             File file = new File(ModelManager.getAppInstance().getFilesDir(), FILENAME);
         }
+        */
     }
 
     @Override
     public void saveList() {
         /* save to disk */
+
+        /*
         try {
             FileOutputStream fos = ModelManager.getAppInstance().openFileOutput(FILENAME, Context.MODE_PRIVATE);
             int length = this.moodList.size();
@@ -98,5 +101,6 @@ public class MoodModel implements Model<Mood> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        */
     }
 }

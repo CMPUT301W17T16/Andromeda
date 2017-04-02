@@ -75,7 +75,6 @@ public class UserModel implements Model<User> {
         this.userList = new ArrayList<User>();
 
         ElasticSearchManager.GetUsersTask getUsers = new ElasticSearchManager.GetUsersTask();
-        System.out.println("--- Fetching ... ---");
         getUsers.execute();
         try {
             this.userList = getUsers.get();
@@ -83,7 +82,7 @@ public class UserModel implements Model<User> {
             e.printStackTrace();
         }
         for(int x=0; x<this.userList.size(); x++){
-            System.out.println(this.userList.get(x).getUsername());
+            System.out.println(this.userList.get(x).getId() + " | " + this.userList.get(x).getUsername());
         }
         /*
         try {

@@ -193,6 +193,36 @@ public class ElasticSearchManager {
         }
     }
 
+    public static class GetMoodsTask extends AsyncTask<Void, Void, ArrayList<Mood>> {
+
+        @Override
+        protected ArrayList<Mood> doInBackground(Void... search_parameters) {
+            verifySettings();
+
+            ArrayList<Mood> moods = new ArrayList<Mood>();
+
+            Search search = new Search.Builder("")
+                    .addIndex("cmput301w17t16")
+                    .addType("mood")
+                    .build();
+
+            try {
+                SearchResult result = client.execute(search);
+                if (result.isSucceeded()){
+                    List<Mood> foundMoods = result.getSourceAsObjectList(Mood.class);
+                    moods.addAll(foundMoods);
+                }else{
+                    Log.i("Error", "Search found no Moods");
+                }
+            }
+            catch (Exception e) {
+                Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
+            }
+            Log.i("Found Moods: ", String.valueOf(moods.size()));
+            return moods;
+        }
+    }
+
     /**
      * The type Delete mood task.
      */

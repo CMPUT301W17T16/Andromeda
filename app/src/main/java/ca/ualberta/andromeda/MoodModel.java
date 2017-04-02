@@ -65,6 +65,17 @@ public class MoodModel implements Model<Mood> {
     public void loadList() {
         /* load from disk */
         this.moodList = new ArrayList<Mood>();
+
+        ElasticSearchManager.GetMoodsTask getMoods = new ElasticSearchManager.GetMoodsTask();
+        getMoods.execute();
+        try {
+            this.moodList = getMoods.get();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        for(int x=0; x<this.moodList.size(); x++){
+            System.out.println(this.moodList.get(x).getId() + " | " + this.moodList.get(x).getUser().toString());
+        }
         /*
         try {
             FileInputStream fis = ModelManager.getAppInstance().openFileInput(FILENAME);

@@ -199,7 +199,9 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="2"
+            android:background="@color/Map"
             android:onClick="showLocation"
             android:text="Location"
             android:textSize="18sp" />
@@ -208,8 +210,9 @@
             android:id="@+id/DeleteButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="2"
-            android:backgroundTint="?attr/colorPrimaryDark"
+            android:background="@color/Delete"
             android:onClick="deleteMood"
             android:text="Delete"
             android:textSize="18sp" />
@@ -218,8 +221,9 @@
             android:id="@+id/SaveButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="2"
-            android:backgroundTint="@android:color/holo_red_light"
+            android:background="@color/Save"
             android:onClick="saveMood"
             android:text="Save"
             android:textSize="18sp" />
@@ -230,6 +234,8 @@
         android:id="@+id/commentButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/Comment"
         android:onClick="toComments"
         android:text="Comments (#)" />
 

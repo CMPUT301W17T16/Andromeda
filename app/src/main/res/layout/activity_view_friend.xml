@@ -80,8 +80,7 @@
             android:id="@+id/EmoticonHolder"
             android:layout_width="76dp"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            app:srcCompat="@drawable/anger" />
+            android:padding="5dp" />
 
         <TextView
             android:id="@+id/MoodHolder"
@@ -196,7 +195,9 @@
             android:id="@+id/Location"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="2"
+            android:background="@color/Map"
             android:text="Location"
             android:textSize="18sp" />
 
@@ -204,10 +205,12 @@
             android:id="@+id/UserButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="2"
+            android:background="@color/User"
+            android:onClick="toUser"
             android:text="User"
-            android:textSize="18sp"
-            android:onClick="toUser"/>
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -215,6 +218,8 @@
         android:id="@+id/commentButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/Comment"
         android:onClick="toComments"
         android:text="Comments (#)" />
 

@@ -31,24 +31,27 @@
         android:paddingTop="100dp" />
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText"
         android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
         android:textAlignment="center"
-        android:hint="Username" />
+        android:layout_weight="0.22" />
 
     <Button
         android:id="@+id/enterButton"
-        android:text="Enter"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_width="match_parent"
+        android:background="@color/Enter"
+        android:onClick="login"
+        android:text="Enter"
         android:textAppearance="@android:style/TextAppearance.Small.Inverse"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textStyle="normal|bold"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:onClick="login"/>
+        android:textStyle="normal|bold" />
 </LinearLayout>

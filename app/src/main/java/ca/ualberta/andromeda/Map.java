@@ -21,7 +21,7 @@ import org.osmdroid.views.overlay.Marker;
 
 import java.util.ArrayList;
 
-public class Map extends Activity {
+public class Map extends AndromedaActivity {
 
 
     private MoodController moodController;

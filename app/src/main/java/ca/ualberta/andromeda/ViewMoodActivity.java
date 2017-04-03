@@ -32,7 +32,6 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
     protected String Trigger;
     protected Uri Image;
     protected Emotion.State state;
-    protected String MyLocation;
     protected String idNum;
     protected Mood mood;
 
@@ -93,11 +92,6 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
                 saveToInternalStorage(directory, mypath);
             loadImageFromStorage(mypath);
         }
-    }
-
-    public void showLocation(View v) {
-        MyLocation = mood.getMyLocation();
-        Toast.makeText(getApplicationContext(),MyLocation,Toast.LENGTH_SHORT).show();
     }
 
     public void toComments(View v){

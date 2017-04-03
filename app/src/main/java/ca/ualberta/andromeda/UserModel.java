@@ -66,6 +66,8 @@ public class UserModel implements Model<User> {
 
     public void updateItem( User user, int index){
         this.userList.set(index, user);
+        ElasticSearchManager.EditUserTask editUser = new ElasticSearchManager.EditUserTask();
+        editUser.execute(user);
         this.saveList();
     }
 

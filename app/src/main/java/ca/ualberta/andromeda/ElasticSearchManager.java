@@ -125,6 +125,33 @@ public class ElasticSearchManager {
 
     }
 
+    public static class EditUserTask extends AsyncTask<User, Void, Void> {
+
+        @Override
+        protected Void doInBackground(User... users) {
+            verifySettings();
+
+            for (User user: users) {
+                //Update update = new Update.Builder(user).index("cmput301w17t16").type("user").id(user.getId()).build();
+                Index index = new Index.Builder(user).index("cmput301w17t16").type("user").id(user.getId()).build();
+                try {
+                    DocumentResult result = client.execute(index);
+                    if (result.isSucceeded()){
+                        Log.i("Success", "Edited User");
+                    }else {
+                        Log.i("Error","Elasticsearch was not able to update the user");
+                    }
+                }
+                catch (Exception e) {
+                    Log.i("Error", "The application failed to update the user");
+                }
+
+            }
+            return null;
+
+        }
+    }
+
     /**
      * The type Add mood task.
      */

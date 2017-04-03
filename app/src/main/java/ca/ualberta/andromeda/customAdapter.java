@@ -71,7 +71,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 User user = userController.getUserByUsername(username);
                 userController.declineFollowRequest(list.get(position), user);
-                list.remove(position);
+                //list.remove(position);
                 notifyDataSetChanged();
             }
         });

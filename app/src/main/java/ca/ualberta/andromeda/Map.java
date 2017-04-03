@@ -24,10 +24,14 @@ import java.util.ArrayList;
 public class Map extends Activity {
 
 
-    MoodController moodController;
-    double longitude;
-    double latitude;
-//    String code = getIntent().getStringExtra("code");
+    private MoodController moodController;
+    protected User User;
+    protected UserController userController;
+
+    private double longitude;
+    private double latitude;
+    private Filter filter;
+    //private String user = getIntent().getStringExtra("user");
 
 
     @Override
@@ -36,6 +40,9 @@ public class Map extends Activity {
 
 //        String code = getIntent().getStringExtra("code");
         moodController = ModelManager.getMoodController();
+        userController = ModelManager.getUserController();
+
+//        User = userController.getUserByUsername(getIntent().getStringExtra("user"));
 
         //get current location
         TrackGPS gps = new TrackGPS(Map.this);
@@ -117,7 +124,21 @@ public class Map extends Activity {
         mapController.setZoom(9);
         mapController.setCenter(startPoint);
 
+//        if (getIntent().hasExtra("user")) {
+//            User = userController.getUserByUsername(getIntent().getStringExtra("user"));
+//        }
+        User = userController.getUserByUsername(getIntent().getStringExtra("user"));
+
+        //load all moods
         ArrayList<Mood> moodList = moodController.getAllMoods();
+
+
+
+//         filter the moods
+        if (filter == null) {
+            filter = new Filter(null, null, false, false);
+        }
+        moodList = filter.filterMoods(moodList, User);
 
         for(int x=0; x<moodList.size(); x++) {
             if (moodList.get(x).getMyLocation() != null){
@@ -172,5 +193,11 @@ public class Map extends Activity {
                         "\n" + moodList.get(x).getEmotion().getState());
             }
         }
+    }
+
+
+    public void openFilter(View v){
+        Intent intent = new Intent(this, FilterActivity.class);
+        startActivityForResult(intent, 2);
     }
 }

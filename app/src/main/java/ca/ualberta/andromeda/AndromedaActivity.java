@@ -23,10 +23,10 @@ public abstract class AndromedaActivity extends AppCompatActivity {
         }
     }
 
-    public void openMap(View v){
-        //Intent intent = new Intent(v.getContext(), Map.class);
-        //startActivity(intent);
-    }
+//    public void openMap(View v){
+//        //Intent intent = new Intent(v.getContext(), Map.class);
+//        //startActivity(intent);
+//    }
 
     public void openFilter(View v){
         Intent intent = new Intent(this, FilterActivity.class);

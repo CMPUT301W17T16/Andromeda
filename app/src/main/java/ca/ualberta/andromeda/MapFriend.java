@@ -144,29 +144,29 @@ public class MapFriend extends Activity {
                 int color = moodList.get(x).getEmotion().getColor();
 
                 switch (color){
-                    case 0xffff4d4d:
+                    case 0xffC23B22:
                         startMarker.setIcon(getResources().getDrawable(R.drawable.anger_marker));
                         break;
-                    case 0xff794dff:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.confuse));
+                    case 0xffCB99C9:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.confuse_marker));
                         break;
-                    case 0xffA47B37:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.dis));
+                    case 0xff77DD77:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.dis_marker));
                         break;
-                    case 0xff4EDAC5:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.fear));
+                    case 0xff779ECB:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.fear_marker));
                         break;
-                    case 0xffffff4d:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.happy));
+                    case 0xffFDFD96:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.happy_marker));
                         break;
-                    case 0xff4da6ff:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.sad));
+                    case 0xffAEC6CF:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.sad_marker));
                         break;
-                    case 0xffffa64d:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.shame));
+                    case 0xffF49AC2:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.shame_marker));
                         break;
-                    case 0xffff4dff:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.sup));
+                    case 0xffFFB347:
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.sup_marker));
                         break;
                     default:
                         break;

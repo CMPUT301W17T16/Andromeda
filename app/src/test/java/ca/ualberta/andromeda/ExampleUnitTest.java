@@ -24,7 +24,7 @@ public class ExampleUnitTest {
         assertEquals(map.getLongitude(),113.4909);
 
     }
-    @Test
+
     public void Emotion() throws Exception {
         assertEquals(4, 2 + 2);
     }

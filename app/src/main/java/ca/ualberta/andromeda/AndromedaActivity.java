@@ -17,16 +17,17 @@ public abstract class AndromedaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userController = ModelManager.getUserController();
+        moodController = ModelManager.getMoodController();
 
         if (getIntent().hasExtra("user")) {
             user = userController.getUserByUsername(getIntent().getStringExtra("user"));
         }
     }
 
-    public void openMap(View v){
-        //Intent intent = new Intent(v.getContext(), Map.class);
-        //startActivity(intent);
-    }
+//    public void openMap(View v){
+//        //Intent intent = new Intent(v.getContext(), Map.class);
+//        //startActivity(intent);
+//    }
 
     public void openFilter(View v){
         Intent intent = new Intent(this, FilterActivity.class);

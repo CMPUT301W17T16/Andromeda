@@ -49,7 +49,7 @@ public class MainPageActivity extends AndromedaActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        moodController.loadList();
         // get all the moods
         moodList = moodController.getAllMoods();
 
@@ -89,15 +89,20 @@ public class MainPageActivity extends AndromedaActivity {
         startActivity(intent);
     }
 
+    public void openMap(View v){
+        Intent intent = new Intent(this, Map.class);
+        startActivity(intent);
+    }
+
     /**
      * Notification.
      *
      * @param v the v
      */
     public void notification(View v){
-//        Intent intent = new Intent(this, Notifications.class);
-//        intent.putExtra("user", user.getUsername());
-//        startActivity(intent);
+        Intent intent = new Intent(this, Notifications.class);
+        intent.putExtra("user", user.getUsername());
+        startActivity(intent);
     }
 
     public ListView getMoodListView() {

@@ -96,6 +96,7 @@ public abstract class ViewMoodActivity extends AndromedaActivity {
     }
 
     public void showLocation(View v) {
+        MyLocation = mood.getMyLocation();
         Toast.makeText(getApplicationContext(),MyLocation,Toast.LENGTH_SHORT).show();
     }
 

@@ -136,27 +136,26 @@ public class UserController {
 
     public void sendFollowRequest(String requester, User user){
         user.addFollowerRequest(requester);
-        int index = this.getPosition(user.getUsername());
+        int index = this.getUserPosition(user.getUsername());
         userModel.updateItem(user, index);
     }
 
-    // TODO: Brett use this method to accept requests
     public void acceptFollowRequest(User requester, String user){
         requester.addFollower(user);
-        int index = this.getPosition(requester.getUsername());
+        int index = this.getUserPosition(requester.getUsername());
         userModel.updateItem(requester, index);
     }
 
     // TODO: Brett use this method to decline requests
     public void declineFollowRequest(String requester, User user){
         user.deleteFollowerRequest(requester);
-        int index = this.getPosition(user.getUsername());
+        int index = this.getUserPosition(user.getUsername());
         userModel.updateItem(user, index);
     }
 
     public void unfollow(User user, String unfollow){
         user.unfollow(unfollow);
-        int index = this.getPosition(user.getUsername());
+        int index = this.getUserPosition(user.getUsername());
         userModel.updateItem(user, index);
     }
 
@@ -164,6 +163,16 @@ public class UserController {
         ArrayList<Mood> moodList = moodModel.getList();
         for(int x=0; x<moodList.size(); x++){
             if(moodList.get(x).getId().equals(id)){
+                return x;
+            }
+        }
+        return 0;
+    }
+
+    public Integer getUserPosition(String id) {
+        ArrayList<User> userList = userModel.getList();
+        for(int x=0; x<userList.size(); x++){
+            if(userList.get(x).getUsername().equals(id)){
                 return x;
             }
         }

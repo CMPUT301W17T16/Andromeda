@@ -5,48 +5,33 @@
 package ca.ualberta.andromeda;
 
 import android.os.Bundle;
+import android.widget.ListView;
 
 import java.util.ArrayList;
-//import UserController;
 
 /**
  * Created by brettgarbitt on 2017-02-27.
  */
 public class Notifications extends AndromedaActivity {
     private ArrayList<String> requests;
+    private ListView followRequestList;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notifications);
+        followRequestList = (ListView) findViewById(R.id.requestList);
     }
 
-    /**
-     * View user.
-     *
-     * @param User the user
-     */
-    public void viewUser(String User) {
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-    }
+        // get all the moods
+        requests = user.getFollowerRequest();
 
-    /**
-     * Add to following list.
-     */
-    public void addToFollowingList() {
-
-    }
-
-    /**
-     * Gets requests.
-     */
-    public void getRequests() {
-
-    }
-
-    /**
-     * Remove following list.
-     */
-    public void removeFollowingList() {
-
+        // https://stackoverflow.com/questions/17525886/listview-with-add-and-delete-buttons-in-each-row-in-android
+        // Date: March 31, 2017
+        CustomAdapter adapter = new CustomAdapter(requests, this, user.getUsername());
+        followRequestList.setAdapter(adapter);
     }
 }

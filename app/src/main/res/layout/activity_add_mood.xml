@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1">
 
     <LinearLayout
+        android:id="@+id/linearLayout13"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -17,42 +19,62 @@
             android:id="@+id/textView4"
             android:layout_width="127dp"
             android:layout_height="match_parent"
+            android:padding="10dp"
             android:text="Username:"
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/UsernameHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="none"
+            android:paddingEnd="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
             android:text="UsernameHolder"
-            android:textSize="18sp" />
+            android:textAlignment="textEnd"
+            android:textAppearance="@android:style/TextAppearance.Large" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout14"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout13"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/Date"
-            android:layout_width="125dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0"
+            android:padding="10dp"
             android:text="Date: "
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/DateHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:text="DateHolder" />
+            android:fontFamily="none"
+            android:padding="10dp"
+            android:text="DateHolder"
+            android:textAlignment="textEnd"
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout12"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout14"
         android:orientation="horizontal">
 
         <TextView
@@ -60,21 +82,27 @@
             android:layout_width="125dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
+            android:padding="10dp"
             android:text="Mood: "
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/MoodSpinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:textAlignment="center" />
+            android:textAlignment="textEnd"
+            android:textSize="30dp" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout11"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout12"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -82,20 +110,26 @@
             android:id="@+id/SocialSit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:padding="10dp"
             android:text="Social Situation:"
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/SocialSitSpinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textAlignment="center" />
+            android:textAlignment="textEnd"
+            android:textSize="30dp" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout10"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout11"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -103,22 +137,33 @@
             android:id="@+id/Trigger"
             android:layout_width="127dp"
             android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
             android:text="Trigger: "
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/TriggerHolder"
-            android:layout_width="256dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:ems="10"
-            android:hint="TriggerHolder"
-            android:inputType="text" />
+            android:fontFamily="none"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout9"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout10"
         android:orientation="horizontal">
 
         <TextView
@@ -126,24 +171,33 @@
             android:layout_width="125dp"
             android:layout_height="match_parent"
             android:layout_weight="0.02"
+            android:padding="10dp"
             android:text="Details: "
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/DetailHolder"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.16"
+            android:background="@android:color/transparent"
             android:ems="10"
-            android:hint="Details Holder"
-            android:inputType="text" />
+            android:fontFamily="none"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textAlignment="textEnd"
+            android:textAppearance="@android:style/TextAppearance.Large" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout8"
+        android:layout_below="@+id/linearLayout9"
+        android:layout_alignParentStart="true">
 
         <Switch
             android:id="@+id/LocationSwitch"
@@ -151,25 +205,36 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.24"
             android:checked="false"
+            android:fontFamily="none"
+            android:padding="10dp"
             android:splitTrack="true"
             android:switchMinWidth="30dp"
+            android:switchTextAppearance="@android:style/TextAppearance.Large"
             android:text="Add Location"
-            android:textAlignment="textStart"
-            android:textSize="18sp" />
+            android:textAllCaps="false"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <ImageView
         android:id="@+id/PictureHolder"
         android:layout_width="match_parent"
-        android:layout_height="137dp"
-        app:srcCompat="@android:color/transparent"
-        android:layout_weight="1.05" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout7"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout8"
+        android:layout_weight="1.05"
+        android:onClick="PictureHolder"
+        app:srcCompat="@drawable/select" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout7">
 
         <Button
             android:layout_width="wrap_content"
@@ -191,4 +256,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

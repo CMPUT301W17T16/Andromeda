@@ -20,14 +20,14 @@ public class ExampleUnitTest {
         Photo location = new Photo();
         assertEquals(location.getLocation(), "~/Desktop/CMPUT301/");
     }
-    @Test
-    public void Map() throws Exception {
-        Map map = new Map();
-
-        assertEquals(map.getLatitude(),53.5444);
-        assertEquals(map.getLongitude(),113.4909);
-
-    }
+//    @Test
+//    public void Map() throws Exception {
+//        Map map = new Map();
+//
+//        assertEquals(map.getLatitude(),53.5444);
+//        assertEquals(map.getLongitude(),113.4909);
+//
+//    }
     @Test
     public void Emotion() throws Exception {
         assertEquals(4, 2 + 2);

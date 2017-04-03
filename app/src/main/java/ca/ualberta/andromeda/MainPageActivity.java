@@ -49,7 +49,7 @@ public class MainPageActivity extends AndromedaActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        moodController.loadList();
         // get all the moods
         moodList = moodController.getAllMoods();
 
@@ -62,6 +62,8 @@ public class MainPageActivity extends AndromedaActivity {
         ArrayAdapter<Mood> adapter = new ArrayAdapter<Mood>(this, R.layout.mood_listview);
         adapter.clear();
         adapter.addAll(moodList);
+
+        // TODO IT ERRORS OUT HERE
         oldMoodList.setAdapter(adapter);
     }
 
@@ -84,6 +86,11 @@ public class MainPageActivity extends AndromedaActivity {
     public void myMoods(View v){
         Intent intent = new Intent(this, ProfileUserActivity.class);
         intent.putExtra("user", user.getUsername());
+        startActivity(intent);
+    }
+
+    public void openMap(View v){
+        Intent intent = new Intent(this, Map.class);
         startActivity(intent);
     }
 

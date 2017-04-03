@@ -1,7 +1,5 @@
 package ca.ualberta.andromeda;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,12 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.Date;
 
 /**
  * Created by Jeff on 3/21/2017.
@@ -47,6 +41,7 @@ public class ViewUserActivity extends ViewMoodActivity {
         TriggerHolder = (EditText) findViewById(R.id.TriggerHolder);
         DetailHolder = (EditText) findViewById(R.id.DetailHolder);
         PictureHolder = (ImageView) findViewById(R.id.PictureHolder);
+        EmoticonHolder = (ImageView) findViewById(R.id.EmoticonHolder);
 
         // Drop down list for the moods
         ArrayAdapter<CharSequence> MoodAdapter = ArrayAdapter.createFromResource(this,
@@ -107,22 +102,20 @@ public class ViewUserActivity extends ViewMoodActivity {
 
             }
 
+
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        // Loading Trigger
+        // Loading info
         TriggerHolder.setText(mood.getTrigger());
-
-        // Loading Detail
         DetailHolder.setText(mood.getDetail());
-
-        // Load spinner values
         MoodSpinner.setSelection(getIndex(MoodSpinner, mood.getEmotion().getState()));
         SocialSpinner.setSelection(getIndex(SocialSpinner, mood.getSocialSituation()));
 

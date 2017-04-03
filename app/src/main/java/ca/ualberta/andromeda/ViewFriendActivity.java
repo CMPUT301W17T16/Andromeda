@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -38,6 +39,8 @@ public class ViewFriendActivity extends ViewMoodActivity {
         SocialHolder = (TextView) findViewById(R.id.SocialSitHolder);
         TriggerHolder = (TextView) findViewById(R.id.TriggerHolder);
         DetailHolder = (TextView) findViewById(R.id.DetailHolder);
+        PictureHolder = (ImageView) findViewById(R.id.PictureHolder);
+        EmoticonHolder = (ImageView) findViewById(R.id.EmoticonHolder);
     }
 
     @Override

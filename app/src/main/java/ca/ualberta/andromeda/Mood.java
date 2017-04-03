@@ -4,6 +4,7 @@
 
 package ca.ualberta.andromeda;
 
+import android.graphics.Bitmap;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,33 +16,35 @@ public class Mood {
     private Date date;
     private String detail;
     private String trigger;
-    private String image;
+    private Photo image;
     private Emotion emotion;
+    @JestId
     private String id;
     private String MyLocation;
     private ArrayList<Comment> comments;
 
-    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id){
+    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail){
         this.user = user;
         this.socialSituation = socialSituation;
         this.date = date;
         this.emotion = new Emotion(state);
         this.trigger = trigger;
         this.detail = detail;
-        this.id = id;
         this.comments = new ArrayList<Comment>();
     }
 
-    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id, String MyLocation){
+    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String MyLocation){
         this.user = user;
         this.socialSituation = socialSituation;
         this.date = date;
         this.emotion = new Emotion(state);
         this.trigger = trigger;
         this.detail = detail;
-        this.id = id;
         this.MyLocation = MyLocation;
         this.comments = new ArrayList<Comment>();
+    }
+    public void addImage(Photo image){
+        this.image = image;
     }
 
     public void edit(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail){
@@ -81,8 +84,16 @@ public class Mood {
 
     public String getId() { return id; }
 
-    public ArrayList<Comment> getComments() { return comments; }
+    public void setId(String id){ this.id = id; }
 
+    public Bitmap getImage() {
+        if (image == null){
+            return null;
+        }
+        return image.getBitmap();
+    }
+
+    public ArrayList<Comment> getComments() { return comments; }
 
     public String getMyLocation() { return MyLocation; }
 

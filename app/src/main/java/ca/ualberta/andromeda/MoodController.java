@@ -21,15 +21,15 @@ public class MoodController {
     }
 
     public Mood createMood(String user, String socialSituation, Emotion.State state, String trigger, String detail){
-        String id = getUniqueId();
-        Mood newMood = new Mood(user, socialSituation, new Date(), state, trigger, detail, id);
+        //String id = getUniqueId();
+        Mood newMood = new Mood(user, socialSituation, new Date(), state, trigger, detail);
         this.addMood(newMood);
         return newMood;
     }
 
     public Mood createMood(String user, String socialSituation, Emotion.State state, String trigger, String detail, String MyLocation){
-        String id = getUniqueId();
-        Mood newMood = new Mood(user, socialSituation, new Date(), state, trigger, detail, id, MyLocation);
+        //String id = getUniqueId();
+        Mood newMood = new Mood(user, socialSituation, new Date(), state, trigger, detail, MyLocation);
         this.addMood(newMood);
         return newMood;
     }
@@ -75,12 +75,12 @@ public class MoodController {
 
     public void updateMood(String id, String user, String situation, Date date, Emotion.State state, String trigger, String detail){
         this.getMood(id).edit(user, situation, date, state, trigger, detail);
-        moodModel.saveList();
+        moodModel.updateItem(this.getMood(id));
     }
 
     public void updateMood(String id, Comment comment){
         this.getMood(id).addComment(comment);
-        moodModel.saveList();
+        moodModel.updateItem(this.getMood(id));
     }
 
     public void deleteMood(int index){
@@ -92,12 +92,16 @@ public class MoodController {
     }
 
     public void deleteMood(String id){
-        moodModel.deleteItem(this.getPosition(id));
+        moodModel.deleteItem(id);
     }
 
     public String getUniqueId() {
         String id = UUID.randomUUID().toString();
         return id;
+    }
+
+    public void loadList(){
+        moodModel.loadList();
     }
 
     public Integer getPosition(String id) {

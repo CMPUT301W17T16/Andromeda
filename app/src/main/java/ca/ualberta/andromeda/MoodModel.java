@@ -6,6 +6,7 @@
 package ca.ualberta.andromeda;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -29,12 +30,11 @@ public class MoodModel implements Model<Mood> {
      */
     public MoodModel(){
         this.gson = new Gson();
-        this.loadList();
+        this.moodList = new ArrayList<Mood>();
     }
 
     @Override
     public ArrayList<Mood> getList() {
-        this.loadList();
         return this.moodList;
     }
 
@@ -44,25 +44,42 @@ public class MoodModel implements Model<Mood> {
     }
 
     @Override
-    public void deleteItem(int index) {
+    public void deleteItem(int index){
         this.moodList.remove(index);
-        this.saveList();
+    }
+    public void deleteItem(String id) {
+        Log.i("Mood Model", "--- Deleting Mood "+ id +"---");
+        ElasticSearchManager.DeleteMoodTask deleteMood = new ElasticSearchManager.DeleteMoodTask();
+        deleteMood.execute(id);
     }
 
     @Override
     public void deleteItem(Mood mood) {
         this.moodList.remove(mood);
-        this.saveList();
+        Log.i("Mood Model", "--- Deleting Mood "+ mood.getId() +"---");
+        ElasticSearchManager.DeleteMoodTask deleteMood = new ElasticSearchManager.DeleteMoodTask();
+        deleteMood.execute(mood.getId());
+    }
+
+    public void updateItem(Mood mood) {
+        Log.i("Mood Model", "--- Editing Mood "+ mood.getId() +"---");
+        ElasticSearchManager.EditMoodTask editMood = new ElasticSearchManager.EditMoodTask();
+        editMood.execute(mood);
     }
 
     @Override
     public void addItem(Mood mood) {
+        Log.i("Mood Model", "--- Adding Mood ---");
+
+        ElasticSearchManager.AddMoodTask addMood = new ElasticSearchManager.AddMoodTask();
+        addMood.execute(mood);
         this.moodList.add(0,mood);
         this.saveList();
     }
 
     @Override
     public void loadList() {
+        Log.i("LOAD", "LIST");
         /* load from disk */
         this.moodList = new ArrayList<Mood>();
 

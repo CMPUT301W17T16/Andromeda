@@ -28,8 +28,8 @@ public class MoodTest {
 
         MoodController moodController = ModelManager.getMoodController();
 
-        moodController.addMood(mood1);
-        moodController.addMood(mood2);
+//        moodController.addMood(mood1);
+//        moodController.addMood(mood2);
 
         //check we inserted the mood for the user
 //        assertEquals(moodController.getMood("id1").getId(), mood1.getId());

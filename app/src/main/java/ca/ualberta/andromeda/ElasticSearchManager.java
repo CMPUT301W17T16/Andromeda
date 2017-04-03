@@ -10,10 +10,12 @@ import com.searchly.jestdroid.JestDroidClient;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.searchbox.core.Delete;
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
 import io.searchbox.core.SearchResult;
+import io.searchbox.core.Update;
 
 /**
  * Created by Jeff on 2/27/2017.
@@ -139,7 +141,7 @@ public class ElasticSearchManager {
                 try {
                     DocumentResult result = client.execute(index);
                     if (result.isSucceeded()){
-                        // TODO: fix
+                        mood.setId(result.getId());
                     }else {
                         Log.i("Error","Elasticsearch was not able to add the mood");
                     }
@@ -223,14 +225,57 @@ public class ElasticSearchManager {
         }
     }
 
+    public static class EditMoodTask extends AsyncTask<Mood, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Mood... moods) {
+            verifySettings();
+
+            for (Mood mood: moods) {
+                Update update = new Update.Builder(mood).index("cmput301w17t16").type("mood").id(mood.getId()).build();
+                Index index = new Index.Builder(mood).index("cmput301w17t16").type("mood").id(mood.getId()).build();
+                try {
+                    DocumentResult result = client.execute(index);
+                    if (result.isSucceeded()){
+                        Log.i("Success", "Edited Mood");
+                    }else {
+                        Log.i("Error","Elasticsearch was not able to update the mood");
+                    }
+                }
+                catch (Exception e) {
+                    Log.i("Error", "The application failed to update the mood");
+                }
+
+            }
+            return null;
+
+        }
+    }
+
     /**
      * The type Delete mood task.
      */
 // TODO we need a function which deletes Mood from elastic search
     public static class DeleteMoodTask extends AsyncTask<String, Void, ArrayList<Mood>> {
         @Override
-        protected ArrayList<Mood> doInBackground(String... search_parameters) {
+        protected ArrayList<Mood> doInBackground(String... ids) {
+            verifySettings();
 
+            for (String id: ids) {
+                Delete delete = new Delete.Builder(id).index("cmput301w17t16").type("mood").build();
+                try {
+                    DocumentResult result = client.execute(delete);
+                    if (result.isSucceeded()){
+                        Log.i("Success", "Deleted Mood");
+                    }else {
+                        Log.i("Error","Elasticsearch was not able to delete the mood");
+                    }
+                }
+                catch (Exception e) {
+                    Log.i("Error", "The application failed to delete the mood");
+                }
+
+            }
             return null;
         }
     }

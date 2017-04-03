@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import java.util.ArrayList;
 import java.util.Date;
 
+import io.searchbox.annotations.JestId;
+
 public class Mood {
     private String user;
     private String socialSituation;
@@ -16,29 +18,28 @@ public class Mood {
     private String trigger;
     private Bitmap image;
     private Emotion emotion;
+    @JestId
     private String id;
     private String MyLocation;
     private ArrayList<Comment> comments;
 
-    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id){
+    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail){
         this.user = user;
         this.socialSituation = socialSituation;
         this.date = date;
         this.emotion = new Emotion(state);
         this.trigger = trigger;
         this.detail = detail;
-        this.id = id;
         this.comments = new ArrayList<Comment>();
     }
 
-    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String id, String MyLocation){
+    public Mood(String user, String socialSituation, Date date, Emotion.State state, String trigger, String detail, String MyLocation){
         this.user = user;
         this.socialSituation = socialSituation;
         this.date = date;
         this.emotion = new Emotion(state);
         this.trigger = trigger;
         this.detail = detail;
-        this.id = id;
         this.MyLocation = MyLocation;
         this.comments = new ArrayList<Comment>();
     }
@@ -82,6 +83,8 @@ public class Mood {
     }
 
     public String getId() { return id; }
+
+    public void setId(String id){ this.id = id; }
 
     public Bitmap getImage() { return image;}
 

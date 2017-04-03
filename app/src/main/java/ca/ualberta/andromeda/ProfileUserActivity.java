@@ -76,4 +76,10 @@ public class ProfileUserActivity extends ProfileActivity {
         intent.putExtra("user", user.getUsername());
         startActivity(intent);
     }
+
+    public void openMap(View v){
+        Intent intent = new Intent(this, Map.class);
+        intent.putExtra("user", user.getUsername());
+        startActivity(intent);
+    }
 }

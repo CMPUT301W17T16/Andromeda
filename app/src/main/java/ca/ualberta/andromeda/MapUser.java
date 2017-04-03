@@ -19,13 +19,16 @@ import org.osmdroid.views.overlay.Marker;
 
 import java.util.ArrayList;
 
-public class Map extends Activity {
+public class MapUser extends Activity {
 
 
     MoodController moodController;
+    protected User User;
+    protected UserController userController;
     double longitude;
     double latitude;
-//    String code = getIntent().getStringExtra("code");
+
+    String user = getIntent().getStringExtra("user");
 
 
     @Override
@@ -36,7 +39,7 @@ public class Map extends Activity {
         moodController = ModelManager.getMoodController();
 
         //get current location
-        TrackGPS gps = new TrackGPS(Map.this);
+        TrackGPS gps = new TrackGPS(MapUser.this);
         if (gps.canGetLocation()) {
 
 
@@ -62,15 +65,15 @@ public class Map extends Activity {
             // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
             // app-defined int constant. The callback method gets the
             // result of the request.
-            }
+        }
 
-            setMap();
+        setMap();
 //        switch(code){
 //            case "main":
 //                ArrayList<Mood> moodList = moodController.getAllMoods();
 //                setMap(moodList);
 //        }
-        }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -86,7 +89,7 @@ public class Map extends Activity {
 //                    switch(code){
 //                        case "main":
 
-                        setMap();
+                    setMap();
 //                    }
 
 
@@ -115,7 +118,9 @@ public class Map extends Activity {
         mapController.setZoom(9);
         mapController.setCenter(startPoint);
 
-        ArrayList<Mood> moodList = moodController.getAllMoods();
+        User = userController.getUserByUsername(getIntent().getStringExtra("user"));
+
+        ArrayList<Mood> moodList = moodController.getUserMoods(User);
 
         for(int x=0; x<moodList.size(); x++) {
             if (moodList.get(x).getMyLocation() != null){
@@ -166,7 +171,7 @@ public class Map extends Activity {
                     default:
                         break;
                 }
-                startMarker.setTitle(str + moodList.get(x).getUser());
+                startMarker.setTitle(str + moodList.get(x).getUser() );
 
             }
         }

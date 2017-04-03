@@ -105,5 +105,10 @@ public class ProfileFriendActivity extends ProfileActivity{
         }
 
     }
+    public void openMap(View v){
+        Intent intent = new Intent(this, Map.class);
+        intent.putExtra("user", friend.getUsername());
+        startActivity(intent);
+    }
 
 }

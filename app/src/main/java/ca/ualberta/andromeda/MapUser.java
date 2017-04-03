@@ -37,6 +37,7 @@ public class MapUser extends Activity {
 
 //        String code = getIntent().getStringExtra("code");
         moodController = ModelManager.getMoodController();
+        userController = ModelManager.getUserController();
 
         //get current location
         TrackGPS gps = new TrackGPS(MapUser.this);

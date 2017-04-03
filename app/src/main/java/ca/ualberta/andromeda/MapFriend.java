@@ -37,6 +37,7 @@ public class MapFriend extends Activity {
 
 //        String code = getIntent().getStringExtra("code");
         moodController = ModelManager.getMoodController();
+        userController = ModelManager.getUserController();
 
         //get current location
         TrackGPS gps = new TrackGPS(MapFriend.this);
@@ -118,7 +119,7 @@ public class MapFriend extends Activity {
         mapController.setZoom(9);
         mapController.setCenter(startPoint);
 
-        User = userController.getUserByUsername(getIntent().getStringExtra("user"));
+        User = userController.getUserByUsername(user);
 
         ArrayList<Mood> moodList = moodController.getUserMoods(User);
 

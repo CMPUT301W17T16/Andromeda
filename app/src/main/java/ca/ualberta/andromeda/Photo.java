@@ -35,12 +35,12 @@ public class Photo {
 
     private void compressToSize() {
 
-        if (this.image.getByteCount() > 655356){
-            // TODO Compress the image until it is less than 655356
+        if (this.image.getByteCount() > 65536){
+            // TODO Compress the image until it is less than 65536
             double originalHeight = this.image.getHeight();
             double originalWidth = this.image.getWidth();
             // If the height is large than the width
-            if (originalHeight > originalWidth) {
+            if (originalHeight >= originalWidth) {
                 double newHeight = 128;
                 double ratio = originalWidth / originalHeight;
                 double newWidth = ratio * newHeight;

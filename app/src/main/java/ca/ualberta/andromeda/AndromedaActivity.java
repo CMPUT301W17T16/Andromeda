@@ -17,6 +17,7 @@ public abstract class AndromedaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userController = ModelManager.getUserController();
+        moodController = ModelManager.getMoodController();
 
         if (getIntent().hasExtra("user")) {
             user = userController.getUserByUsername(getIntent().getStringExtra("user"));

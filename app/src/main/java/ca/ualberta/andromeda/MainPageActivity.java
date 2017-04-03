@@ -49,7 +49,7 @@ public class MainPageActivity extends AndromedaActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        moodController.loadList();
         // get all the moods
         moodList = moodController.getAllMoods();
 

@@ -10,10 +10,12 @@ import com.searchly.jestdroid.JestDroidClient;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.searchbox.core.Delete;
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
 import io.searchbox.core.SearchResult;
+import io.searchbox.core.Update;
 
 /**
  * Created by Jeff on 2/27/2017.
@@ -61,32 +63,66 @@ public class ElasticSearchManager {
 
             ArrayList<User> users = new ArrayList<User>();
 
-            String query = "{\n" +
-                    "    \"query\" : {\n" +
-                    "        \"term\" : { \"user\" : \"" +search_parameters[0]+ "\" }\n" +
-                    "    }\n" +
-                    "}";
-
-            Search search = new Search.Builder(query)
+            String query = "{ \"query\": { \"term\": { \"username\": \""+ search_parameters[0] +"\"}}}";
+                    //"{\"query\": {\"exists\": {\"field\": \"username\" }}}";
+            Search search = new Search.Builder("")
                     .addIndex("cmput301w17t16")
                     .addType("user")
                     .build();
 
             try {
                 SearchResult result = client.execute(search);
+
                 if (result.isSucceeded()){
                     List<User> foundUsers = result.getSourceAsObjectList(User.class);
+                    Log.i("Search",String.valueOf(foundUsers.size()));
                     users.addAll(foundUsers);
                 }else{
-                    Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch");
+                    Log.i("Error", "The search query failed to find any users that matched " + query);
+                    //Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch");
                 }
             }
             catch (Exception e) {
                 Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
             }
-
+            Log.i("Found Users: ", String.valueOf(users.size()));
+            Log.i("With Query: ", query);
             return users;
         }
+    }
+
+    public static class GetUsersTask extends AsyncTask<Void, Void, ArrayList<User>> {
+
+        @Override
+        protected ArrayList<User> doInBackground(Void... users) {
+            verifySettings();
+
+            ArrayList<User> userList = new ArrayList<User>();
+            Search search = new Search.Builder("")
+                    .addIndex("cmput301w17t16")
+                    .addType("user")
+                    .build();
+
+            try {
+                SearchResult result = client.execute(search);
+
+                if (result.isSucceeded()){
+                    List<User> foundUsers = result.getSourceAsObjectList(User.class);
+                    Log.i("Search",String.valueOf(foundUsers.size()));
+                    userList.addAll(foundUsers);
+                }else{
+                    Log.i("Error", "The search query failed to find any users");
+                    //Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch");
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
+            }
+            Log.i("Found Users: ", String.valueOf(userList.size()));
+            return userList;
+        }
+
     }
 
     /**
@@ -105,7 +141,7 @@ public class ElasticSearchManager {
                 try {
                     DocumentResult result = client.execute(index);
                     if (result.isSucceeded()){
-                        // TODO: fix
+                        mood.setId(result.getId());
                     }else {
                         Log.i("Error","Elasticsearch was not able to add the mood");
                     }
@@ -159,14 +195,87 @@ public class ElasticSearchManager {
         }
     }
 
+    public static class GetMoodsTask extends AsyncTask<Void, Void, ArrayList<Mood>> {
+
+        @Override
+        protected ArrayList<Mood> doInBackground(Void... search_parameters) {
+            verifySettings();
+
+            ArrayList<Mood> moods = new ArrayList<Mood>();
+
+            Search search = new Search.Builder("")
+                    .addIndex("cmput301w17t16")
+                    .addType("mood")
+                    .build();
+
+            try {
+                SearchResult result = client.execute(search);
+                if (result.isSucceeded()){
+                    List<Mood> foundMoods = result.getSourceAsObjectList(Mood.class);
+                    moods.addAll(foundMoods);
+                }else{
+                    Log.i("Error", "Search found no Moods");
+                }
+            }
+            catch (Exception e) {
+                Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
+            }
+            Log.i("Found Moods: ", String.valueOf(moods.size()));
+            return moods;
+        }
+    }
+
+    public static class EditMoodTask extends AsyncTask<Mood, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Mood... moods) {
+            verifySettings();
+
+            for (Mood mood: moods) {
+                Update update = new Update.Builder(mood).index("cmput301w17t16").type("mood").id(mood.getId()).build();
+                Index index = new Index.Builder(mood).index("cmput301w17t16").type("mood").id(mood.getId()).build();
+                try {
+                    DocumentResult result = client.execute(index);
+                    if (result.isSucceeded()){
+                        Log.i("Success", "Edited Mood");
+                    }else {
+                        Log.i("Error","Elasticsearch was not able to update the mood");
+                    }
+                }
+                catch (Exception e) {
+                    Log.i("Error", "The application failed to update the mood");
+                }
+
+            }
+            return null;
+
+        }
+    }
+
     /**
      * The type Delete mood task.
      */
 // TODO we need a function which deletes Mood from elastic search
     public static class DeleteMoodTask extends AsyncTask<String, Void, ArrayList<Mood>> {
         @Override
-        protected ArrayList<Mood> doInBackground(String... search_parameters) {
+        protected ArrayList<Mood> doInBackground(String... ids) {
+            verifySettings();
 
+            for (String id: ids) {
+                Delete delete = new Delete.Builder(id).index("cmput301w17t16").type("mood").build();
+                try {
+                    DocumentResult result = client.execute(delete);
+                    if (result.isSucceeded()){
+                        Log.i("Success", "Deleted Mood");
+                    }else {
+                        Log.i("Error","Elasticsearch was not able to delete the mood");
+                    }
+                }
+                catch (Exception e) {
+                    Log.i("Error", "The application failed to delete the mood");
+                }
+
+            }
             return null;
         }
     }

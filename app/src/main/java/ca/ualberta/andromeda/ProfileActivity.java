@@ -19,8 +19,14 @@ public abstract class ProfileActivity extends AndromedaActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        moodController = ModelManager.getMoodController();
+        //moodController = ModelManager.getMoodController();
         moodListView = (ListView) findViewById(R.id.MoodList);
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        moodController.loadList();
     }
 
     //http://stackoverflow.com/questions/5565451/display-no-item-message-in-listview?noredirect=1&lq=1

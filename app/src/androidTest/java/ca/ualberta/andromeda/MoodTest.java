@@ -28,8 +28,8 @@ public class MoodTest {
 
         mood1.edit(user1.getUsername(), "Crowd", date1, Emotion.State.ANGER, "", "");
 
-        assertEquals(mood1.getSocialSituation(), "Alone");
-        assertEquals(mood1.getEmotion().getState(), Emotion.State.ANGER.toString());
+        assertEquals(mood1.getSocialSituation(), "Crowd");
+        assertEquals(mood1.getEmotion().getState().toLowerCase(), Emotion.State.ANGER.toString().toLowerCase());
     }
 
 }

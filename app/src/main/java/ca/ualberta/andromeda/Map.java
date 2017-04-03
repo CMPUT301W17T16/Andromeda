@@ -149,7 +149,7 @@ public class Map extends Activity {
                         startMarker.setIcon(getResources().getDrawable(R.drawable.dis));
                         break;
                     case 0xff4EDAC5:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.fear));
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.fear_marker));
                         break;
                     case 0xffffff4d:
                         startMarker.setIcon(getResources().getDrawable(R.drawable.happy));
@@ -158,7 +158,7 @@ public class Map extends Activity {
                         startMarker.setIcon(getResources().getDrawable(R.drawable.sad));
                         break;
                     case 0xffffa64d:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.shame));
+                        startMarker.setIcon(getResources().getDrawable(R.drawable.shame_marker));
                         break;
                     case 0xffff4dff:
                         startMarker.setIcon(getResources().getDrawable(R.drawable.sup));
@@ -167,7 +167,6 @@ public class Map extends Activity {
                         break;
                 }
                 startMarker.setTitle(str + moodList.get(x).getUser());
-
             }
         }
     }

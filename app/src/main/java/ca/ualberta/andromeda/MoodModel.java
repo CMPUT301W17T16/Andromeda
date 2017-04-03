@@ -48,6 +48,7 @@ public class MoodModel implements Model<Mood> {
         this.moodList.remove(index);
     }
     public void deleteItem(String id) {
+        this.moodList.remove(ModelManager.getMoodController().getMood(id));
         Log.i("Mood Model", "--- Deleting Mood "+ id +"---");
         ElasticSearchManager.DeleteMoodTask deleteMood = new ElasticSearchManager.DeleteMoodTask();
         deleteMood.execute(id);

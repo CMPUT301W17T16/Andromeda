@@ -37,5 +37,9 @@ public class UserTest {
         User returnedUser = users.getUser(0);
 
         assertEquals(user, returnedUser);
+
+        users.deleteUser(0);
+
+        assertFalse(users.hasUser(user.getUsername()));
     }
 }

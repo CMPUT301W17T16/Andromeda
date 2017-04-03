@@ -113,16 +113,9 @@ public class ViewUserActivity extends ViewMoodActivity {
     protected void onStart() {
         super.onStart();
 
-        // Loading Trigger
+        // Loading info
         TriggerHolder.setText(mood.getTrigger());
-
-        // Loading Detail
         DetailHolder.setText(mood.getDetail());
-
-        // Load Picture
-        PictureHolder.setImageBitmap(mood.getImage());
-
-        // Load spinner values
         MoodSpinner.setSelection(getIndex(MoodSpinner, mood.getEmotion().getState()));
         SocialSpinner.setSelection(getIndex(SocialSpinner, mood.getSocialSituation()));
 

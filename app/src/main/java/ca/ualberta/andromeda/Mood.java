@@ -16,7 +16,7 @@ public class Mood {
     private Date date;
     private String detail;
     private String trigger;
-    private Bitmap image;
+    private Photo image;
     private Emotion emotion;
     @JestId
     private String id;
@@ -43,7 +43,7 @@ public class Mood {
         this.MyLocation = MyLocation;
         this.comments = new ArrayList<Comment>();
     }
-    public void addImage(Bitmap image){
+    public void addImage(Photo image){
         this.image = image;
     }
 
@@ -86,7 +86,12 @@ public class Mood {
 
     public void setId(String id){ this.id = id; }
 
-    public Bitmap getImage() { return image;}
+    public Bitmap getImage() {
+        if (image == null){
+            return null;
+        }
+        return image.getBitmap();
+    }
 
     public ArrayList<Comment> getComments() { return comments; }
 

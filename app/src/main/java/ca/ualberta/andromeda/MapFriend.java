@@ -171,7 +171,8 @@ public class MapFriend extends Activity {
                     default:
                         break;
                 }
-                startMarker.setTitle(str + moodList.get(x).getUser() );
+                startMarker.setTitle("User: " + moodList.get(x).getUser() +
+                        "\n" + moodList.get(x).getEmotion().getState());
 
             }
         }

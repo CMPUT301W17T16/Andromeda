@@ -171,7 +171,7 @@ public class MapUser extends Activity {
                     default:
                         break;
                 }
-                startMarker.setTitle(str + moodList.get(x).getUser() );
+                startMarker.setTitle( moodList.get(x).getEmotion().getState());
 
             }
         }

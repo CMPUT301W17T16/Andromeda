@@ -21,7 +21,7 @@ import org.osmdroid.views.overlay.Marker;
 
 import java.util.ArrayList;
 
-public class Map extends Activity {
+public class Map5KM extends Activity {
 
 
     private MoodController moodController;
@@ -30,7 +30,7 @@ public class Map extends Activity {
 
     private double longitude;
     private double latitude;
-    private Filter filter;
+
 
 
 
@@ -45,7 +45,7 @@ public class Map extends Activity {
 
 
         //get current location
-        TrackGPS gps = new TrackGPS(Map.this);
+        TrackGPS gps = new TrackGPS(Map5KM.this);
         if (gps.canGetLocation()) {
 
 
@@ -71,11 +71,11 @@ public class Map extends Activity {
             // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
             // app-defined int constant. The callback method gets the
             // result of the request.
-            }
-
-            setMap();
-
         }
+
+        setMap();
+
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -91,7 +91,7 @@ public class Map extends Activity {
 //                    switch(code){
 //                        case "main":
 
-                        setMap();
+                    setMap();
 //                    }
 
 
@@ -141,54 +141,73 @@ public class Map extends Activity {
                 double lat = Double.parseDouble(splitStr[1]);
                 GeoPoint moodPoint = new GeoPoint(lon,lat);
 
+                if (distance(latitude,longitude,lat,lon) <= 5) {
+                    Marker startMarker = new Marker(map);
+                    startMarker.setPosition(moodPoint);
+                    startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                    map.getOverlays().add(startMarker);
 
-                Marker startMarker = new Marker(map);
-                startMarker.setPosition(moodPoint);
-                startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-                map.getOverlays().add(startMarker);
+                    map.invalidate();
 
-                map.invalidate();
+                    int color = moodList.get(x).getEmotion().getColor();
 
-                int color = moodList.get(x).getEmotion().getColor();
-
-                switch (color){
-                    case 0xffC23B22:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.anger_marker));
-                        break;
-                    case 0xffCB99C9:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.confuse_marker));
-                        break;
-                    case 0xff77DD77:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.dis_marker));
-                        break;
-                    case 0xff779ECB:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.fear_marker));
-                        break;
-                    case 0xffFDFD96:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.happy_marker));
-                        break;
-                    case 0xffAEC6CF:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.sad_marker));
-                        break;
-                    case 0xffF49AC2:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.shame_marker));
-                        break;
-                    case 0xffFFB347:
-                        startMarker.setIcon(getResources().getDrawable(R.drawable.sup_marker));
-                        break;
-                    default:
-                        break;
+                    switch (color){
+                        case 0xffC23B22:
+                            startMarker.setIcon(getResources().getDrawable(R.drawable.anger_marker));
+                            break;
+                        case 0xffCB99C9:
+                            startMarker.setIcon(getResources().getDrawable(R.drawable.confuse_marker));
+                            break;
+                        case 0xff77DD77:
+                            startMarker.setIcon(getResources().getDrawable(R.drawable.dis_marker));
+                            break;
+                        case 0xff779ECB:
+                            startMarker.setIcon(getResources().getDrawable(R.drawable.fear_marker));
+                            break;
+                        case 0xffFDFD96:
+                            startMarker.setIcon(getResources().getDrawable(R.drawable.happy_marker));
+                            break;
+                        case 0xffAEC6CF:
+                            startMarker.setIcon(getResources().getDrawable(R.drawable.sad_marker));
+                            break;
+                        case 0xffF49AC2:
+                            startMarker.setIcon(getResources().getDrawable(R.drawable.shame_marker));
+                            break;
+                        case 0xffFFB347:
+                            startMarker.setIcon(getResources().getDrawable(R.drawable.sup_marker));
+                            break;
+                        default:
+                            break;
+                    }
+                    startMarker.setTitle("User: " + moodList.get(x).getUser() +
+                            "\n" + moodList.get(x).getEmotion().getState());
                 }
-                startMarker.setTitle("User: " + moodList.get(x).getUser() +
-                        "\n" + moodList.get(x).getEmotion().getState());
             }
         }
     }
 
 
-    public void openFilter(View v){
-        Intent intent = new Intent(this, Map.class);
-        intent.putExtra("user", User.getUsername());
-        startActivity(intent);
+
+    //Here getting distance in kilometers (km)
+
+    private double distance(double lat1, double lon1, double lat2, double lon2) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1))
+                * Math.sin(deg2rad(lat2))
+                + Math.cos(deg2rad(lat1))
+                * Math.cos(deg2rad(lat2))
+                * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        return (dist);
+    }
+
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    private double rad2deg(double rad) {
+        return (rad * 180.0 / Math.PI);
     }
 }

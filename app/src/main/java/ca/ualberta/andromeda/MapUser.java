@@ -35,7 +35,7 @@ public class MapUser extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        String code = getIntent().getStringExtra("code");
+
         moodController = ModelManager.getMoodController();
         userController = ModelManager.getUserController();
 
@@ -69,11 +69,8 @@ public class MapUser extends Activity {
         }
 
         setMap();
-//        switch(code){
-//            case "main":
-//                ArrayList<Mood> moodList = moodController.getAllMoods();
-//                setMap(moodList);
-//        }
+
+
     }
 
     @Override
@@ -87,11 +84,10 @@ public class MapUser extends Activity {
 
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
-//                    switch(code){
-//                        case "main":
+
 
                     setMap();
-//                    }
+
 
 
                 } else {

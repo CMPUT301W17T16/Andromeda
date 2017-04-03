@@ -52,8 +52,6 @@ public class commentsActivity extends AndromedaActivity {
                 String text = commentHolder.getText().toString();
                 Comment comment = new Comment(text, username);
 
-                // add to the intent list
-                commentList.add(comment);
 
                 // add to mood controller and data set
                 moodController.updateMood(idNum, comment);
